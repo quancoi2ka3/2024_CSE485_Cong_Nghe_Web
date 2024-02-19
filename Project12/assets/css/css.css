@@ -1,0 +1,48 @@
+nav {
+    background-color: #1010e8;
+    padding: 10px 40px;
+    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử bên trong */
+    align-items: center; /* Căn các phần tử theo chiều dọc */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Hiển thị các mục theo hàng ngang */
+}
+
+li {
+    margin-right: 50px;
+    position: relative; /* Sử dụng vị trí tương đối để định vị đường gạch dọc */
+}
+
+li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    height: 80%;
+    width: 1.5px;
+    background-color: white;
+    top: 10%;
+    right: -20px; /* Đặt đường gạch dọc ở bên phải của mỗi mục */
+}
+
+/*li:last-child {*/
+/*    margin-right: 0; !* Loại bỏ margin phải của mục cuối cùng *!*/
+/*}*/
+
+li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+li a:hover {
+    color: yellow;
+}
+
+.home-icon {
+    margin-right: 40px; /* Khoảng cách giữa biểu tượng ngôi nhà và các mục trong menu */
+    color: white;
+    font-size: 40px;
+}
