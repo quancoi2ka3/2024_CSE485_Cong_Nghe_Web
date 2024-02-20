@@ -1,5 +1,5 @@
 nav {
-    background-color: #09095d;
+    background-color: #2e2ecc;
     padding: 30px 40px;
     display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử bên trong */
     align-items: center; /* Căn các phần tử theo chiều dọc */
@@ -38,7 +38,7 @@ li a {
 }
 
 li a:hover {
-    color: red;
+    color: rgb(234, 246, 176);
 }
 
 .home-icon {
