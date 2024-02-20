@@ -1,0 +1,17 @@
+#form {
+    width: 40%;
+    margin: 0 auto;
+    border: 7px solid #d8f5fa;
+    padding: 20px;
+    border-radius: 10px;
+    /* Ngăn các button bị tràn ra khỏi div cha */
+    overflow: hidden; 
+}
+
+.button{
+    float: right;
+}
+
+form{
+    margin-left: 20px;
+}
