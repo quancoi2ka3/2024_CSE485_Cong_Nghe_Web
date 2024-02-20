@@ -1,0 +1,28 @@
+.container{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 430px 430px;
+    grid-gap: 20px;
+
+}
+nav{
+    color: darkred;
+    display: inline-block;
+    border-color: darkred;
+    border-style: solid;
+    border-width: 0 0 0 10px;
+    margin-left: 110px;
+}
+#head{
+    padding-left: 10px;
+}
+p{
+    width: 400px;
+}
+img{
+    height:200px;
+    width:400px;
+}
+i{
+    color: #A01F18;
+}

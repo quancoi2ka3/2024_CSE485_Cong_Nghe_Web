@@ -1,0 +1,49 @@
+*{
+    margin:0;
+    padding:0;
+  }
+  nav {
+background-color: #0A1F77;
+padding: 10px 40px;
+display: flex; 
+align-items: center; 
+}
+
+ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+display: flex; 
+}
+
+li {
+margin-right: 50px;
+position: relative; 
+}
+
+li:not(:last-child)::after {
+content: '';
+position: absolute;
+height: 80%;
+width: 1.5px;
+background-color: white;
+top: 10%;
+right: -20px; 
+}
+
+
+li a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+}
+
+li a:hover {
+color: yellow;
+}
+
+.home-icon {
+margin-right: 40px; 
+color: white;
+font-size: 40px;
+}
