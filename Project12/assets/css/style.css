@@ -1,6 +1,6 @@
 nav {
-    background-color: #1010e8;
-    padding: 10px 40px;
+    background-color: #09095d;
+    padding: 30px 40px;
     display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử bên trong */
     align-items: center; /* Căn các phần tử theo chiều dọc */
 }
@@ -38,11 +38,22 @@ li a {
 }
 
 li a:hover {
-    color: yellow;
+    color: red;
 }
 
 .home-icon {
     margin-right: 40px; /* Khoảng cách giữa biểu tượng ngôi nhà và các mục trong menu */
     color: white;
-    font-size: 40px;
+    /*font-size: 25px;*/
+    position : relative;
+}
+
+.home-icon::after{
+    content: '';
+    position: absolute;
+    height: 80%;
+    width: 1.5px;
+    background-color: white;
+    top: 10%;
+    right: -20px; /* Đặt đường gạch dọc ở bên phải của mỗi mục */
 }
