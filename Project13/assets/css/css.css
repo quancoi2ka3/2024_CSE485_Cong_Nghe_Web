@@ -1,0 +1,20 @@
+.container-fluid{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 350px 350px;
+    grid-gap: 20px;
+}
+nav{
+    color: darkred;
+    display: inline-block;
+    border-color: darkred;
+    border-style: solid;
+    border-width: 0 0 0 10px;
+}
+#head{
+    padding-left: 10px;
+}
+img{
+    height: 300px;
+    width: 450px;
+}
