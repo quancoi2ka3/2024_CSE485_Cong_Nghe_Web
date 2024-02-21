@@ -8,10 +8,22 @@
     overflow: hidden; 
 }
 
-.button{
-    float: right;
+.btn-primary{
+    margin-right: 15px;
 }
+
 
 form{
     margin-left: 20px;
 }
+
+.icon i{
+    font-size: 30px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+
+.form-group{
+    margin-top: 40px;
+}
+
