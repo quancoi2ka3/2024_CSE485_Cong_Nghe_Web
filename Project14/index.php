@@ -132,7 +132,7 @@ $reports = array (
             <div class="form-group row">
                 <label for="address" class="col-sm-3 col-form-label"><b>Address</b></label>
                <div class="col-sm-9">
-                    <input type="text" name="address" id="address" class="form-control"  placeholder="address">
+                    <input type="text" name="address" id="address" class="form-control"  placeholder="số nhà 12, ngách 2, thái thịnh 1">
                </div>
             </div>
             <div class="form-group row">
@@ -214,20 +214,42 @@ $reports = array (
                     </div>
                 </div>
             </div>
-
-            <div>
-            <div class="form-group">
-                <label for="areyouhuman"><b>Are you human?</b></label>
-                <input type="text" name="areyouhuman" id="areyouhuman" class="form-control" placeholder="Enter the code">
+            <div class="form-group row">
+                <label for="areyouhuman" class="col-sm-3 col-form-label"><b>Are you human?</b></label>
+                <div class="col-sm-9">
+                    <span id="verificationCode"></span>
+                    <p>Click to change</p>
+                    <input type="text" name="clicktochange" id="clicktochange" class="form-control" placeholder="Enter the code">
+                </div>
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Tạo một hàm để tạo mã kiểm tra ngẫu nhiên
+                    function generateVerificationCode() {
+                        // Mảng chứa tất cả các ký tự có thể xuất hiện trong mã
+                        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                        const length = 6; // Độ dài của mã kiểm tra
+                        let code = ""; // Chuỗi sẽ chứa mã kiểm tra
+                        // Tạo mã kiểm tra ngẫu nhiên bằng cách chọn ngẫu nhiên các ký tự từ mảng characters
+                        for (let i = 0; i < length; i++) {
+                            const randomIndex = Math.floor(Math.random() * characters.length);
+                            code += characters.charAt(randomIndex);
+                        }
+                        return code; // Trả về mã kiểm tra đã tạo
+                    }
+                    // Hiển thị mã kiểm tra vào phần tử có id="verificationCode"
+                    const verificationCodeElement = document.getElementById("verificationCode");
+                    verificationCodeElement.textContent = generateVerificationCode();
+                });
+            </script>
         </form>
     </div>
     <br>
     <hr>
     <div class="form-group row">
         <div class="icon col-sm-7">
-            <i class="fas fa-square-caret-left"></i>
-            <i class="fas fa-square-caret-right"></i>
+            <a href=""><i class="fas fa-square-caret-left"></i></a>
+            <a href=""><i class="fas fa-square-caret-right"></i></a>
             <div>* required</div>
         </div>
         <div class="button col-sm-5">

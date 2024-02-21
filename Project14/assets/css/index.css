@@ -12,6 +12,10 @@
     margin-right: 15px;
 }
 
+.button, .icon{
+    margin-top: 40px;
+}
+
 
 form{
     margin-left: 20px;
@@ -23,7 +27,17 @@ form{
     padding-bottom: 10px;
 }
 
-.form-group{
-    margin-top: 40px;
+.icon a{
+    color: rgb(57, 51, 51);
+}
+a:hover{
+    color:rgb(8, 0, 255);
 }
 
+#verificationCode{
+    font-size: 25px;
+    color: grey;
+}
+p{
+    text-align: center;
+}
