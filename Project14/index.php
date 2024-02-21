@@ -32,7 +32,7 @@ $reports = array (
 <div id="form"> 
     <div>
         <h5>Basic Info<hr></h5>
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="POST" action="">
             <div class="form-group">
                 <label for="id">Employee ID</label>
                 <input type="text" name="id" id="id" class="form-control"  placeholder="ID">
@@ -87,7 +87,7 @@ $reports = array (
             </div>
 
             <div class="form-group">
-                <label for="country">Reports To</label>
+                <label for="reports">Reports To</label>
                 <select name="reports" id="reports" class="form-control">
                     <?php
                         foreach($reports as $report) {
@@ -101,7 +101,7 @@ $reports = array (
 
     <div>
         <h5>Contact Info<hr></h5>
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="POST" action="">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" class="form-control"  placeholder="name@example.com">
@@ -145,7 +145,7 @@ $reports = array (
 
     <div>
         <h5>Optional Info<hr></h5>
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form method="POST" action="">
             <div class="form-group">
                 <label for="notes">Notes</label>
                 <textarea name="notes" id="notes" class="form-control" placeholder="Notes"></textarea>
