@@ -1,0 +1,25 @@
+label{
+    font-weight: bold;
+    
+}
+form{
+    position: relative;
+    margin-top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: blue;
+}
+
+body{
+    width: auto;
+    height: max-height;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+hr {
+    width: 50%;
+    color: green;
+}
+

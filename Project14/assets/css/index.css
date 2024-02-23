@@ -1,0 +1,44 @@
+label{
+    font-weight: bold;
+    
+}
+form{
+    
+    position: absolute;
+    top: 109%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    font-size: 14px;
+    border: 10px solid grey;
+    display: inline-block;
+    min-width: 200px; /* Độ rộng tối thiểu của khối */
+    min-height: 100px; /
+}
+
+body{
+    width: auto;
+    height: max-content;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+hr {
+    width: 50%;
+    color: green;
+}
+#customlabel{
+    margin-left: 40%;
+}
+#custom{
+    margin-left:13%;
+}
+i{
+    justify-content: center;
+    bottom: 20%;
+    color:white;
+}
+#customcol{
+    margin-left: 50%;
+}
