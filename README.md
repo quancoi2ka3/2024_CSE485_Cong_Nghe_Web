@@ -1,1 +1,1 @@
-![Mô tả](file:///C:/Screenshot1.png)
+![Screenshots](file:///C:/Screenshot1)
