@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   <title>Project13</title>
+   <title>project13</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Danh sách khóa học</title>
