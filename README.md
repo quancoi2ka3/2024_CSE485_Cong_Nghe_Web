@@ -1,1 +1,1 @@
-![Screenshots](file:///C:/Screenshot1)
+![Screenshots](file:///C:/Pictures/Screenshot1.png)
