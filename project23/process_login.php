@@ -1,7 +1,11 @@
 <?php session_start();
    $username = $_POST['username'];
    $password = $_POST['password'];
-   $user = null;
+   $users = [
+      [
+         "username" => "johndoe",         "password" => password_hash("123", PASSWORD_DEFAULT),
+         "name" => "John Doe",         "email" => "johndoe@example.com"
+      ]];
    foreach ($users as $u) {
       if ($u['username'] === $username) {
          $user = $u;
