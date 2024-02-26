@@ -4,13 +4,13 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="/project21/assets/style.css">
+   <link rel="stylesheet" href="/project21/assets/css/style.css">
    <title>Project21</title>
 </head>
 
 <body>
 
-   <div class="home_page" style="">
+   <div class="home_page">
       <?php
    $products = [ [ "id" => 1, 
    'image_url'=>'.vscode/php/2024_CSE485_Cong_Nghe_Web/project21/assets/image/1934c9b6b43c2aa99beb21141d8d8a83.jpg',
