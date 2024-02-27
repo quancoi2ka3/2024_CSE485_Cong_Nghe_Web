@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
+   <link rel="stylesheet" href="/phpdemo/Project22/assets/css/account.css">
 </head>
-
 <body>
-   <form action="update_profile.php" method="post" enctype="multipart/form-data">
-      <h2>Profile Information</h2> <label for="name">Name:</label> <input type="text" name="name"
-         value="<?php $user=['name'=>"quan"];echo $user['name']; ?>" required> <br> <label for="email">Email:</label>
-      <input type="email" name="email" value="<?php  $user=['email'=>"quan@gmail.com"];echo $user['email']; ?>"
-         disabled> <br>
-      <label for="avatar">Avatar:</label> <input type="file" name="avatar" accept="image/*"> <br> <button
-         type="submit">Update Profile</button>
-      <?php  
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {    
-       $errors = [];     
-       $user['name'] = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);       $allowedExtensions = ['jpg', 'jpeg', 'png'];     $maxSize = 1048576;   $targetDir = "uploads/"; 
-      if (!empty($_FILES['avatar']['tmp_name'])) {         $fileInfo = pathinfo($_FILES['avatar']['name']);         if (!in_array($fileInfo['extension'], $allowedExtensions)) {             $errors[] = "Only JPG, JPEG, and PNG files are allowed.";         } else if ($_FILES['avatar']['size'] > $maxSize) {             $errors[] = "File size must be less than 1MB.";         } else {             $fileName = uniqid() . "." . $fileInfo['extension'];             $targetFile = $targetDir . $fileName;              if (move_uploaded_file($_FILES['avatar']['tmp_name'], $targetFile)) {                 $user['avatar'] = $targetFile;     } else {                 $errors[] = "Failed to upload file.";             }         }     }        if (empty($errors)) {               echo "Profile updated successfully!";     } else {         echo "Errors:";         foreach ($errors as $error) {             echo "<br> - $error";         }     } } 
-       ?>
-   </form>
-
+   <div class="container">
+      <form action="../upload.php" method="post" enctype="multipart/form-data">
+         <p>Account Settings</p>
+         <div class="listfuntion">
+            <a href="#">Profile</a>
+            <a href="#">Password</a>
+            <a href="#">Integrations</a>
+            <a href="#">Billing</a>
+         </div>
+         <div class="content">
+            <div class="avatar-container">
+               <label for="avatarInput" class="avatar">
+                  <input type="file" id="avatarInput" name="avatar" accept="image/jpeg, image/png" style="display: none;"> 
+                  <?php
+                  $images=[
+                     ['image'=>'https://gcs.tripi.vn/public-tripi/tripi-feed/img/474083mVb/hinh-anh-avatar-doi-ban-than-de-thuong-2_031546147.png'],
+                  ];
+                  foreach($images as $image):?>
+                  <img src="<?php echo $image['image']?>" alt="">
+                  <?php endforeach ?>
+               </label>
+               <label for="avatarInput" class="choose-image-button">Change my avatar</label>
+            </div>
+            <?php 
+            $profiles=[
+               'full name'=>'ABCD',
+               'Email'=>'example@gmail.com',
+               'phone number'=>'0123456', 
+               'Company name'=>"Company",
+            ];
+            foreach($profiles as $label => $value):?>
+               <label for="" class="label">
+                  <?php echo ucfirst($label); ?>
+               </label>
+               <br>
+               <input type="text" class="custominput" name="<?php echo str_replace(' ', '_', strtolower($label)); ?>" value="<?php echo $value ?>">
+            <?php endforeach ?>
+            
+         </div>
+      </form>
+   </div>
 </body>
-
 </html>
