@@ -1,7 +1,7 @@
 <?php
 function getAllUsers(){
    //b1: Kết nối database server(mysql)
-   $conn = mysqli_connect('localhost', 'root','', 'directory');
+   $conn = mysqli_connect('localhost', 'root','123456', 'news');
    if(!$conn){
         die('Không thể kết nối.');
    }
