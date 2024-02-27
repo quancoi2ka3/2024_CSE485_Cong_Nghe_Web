@@ -1,12 +1,11 @@
 <?php
-    require_once '../models/Employee.php';
-    $employees = getAllEmployees();
+require_once '../models/Employee.php';
+$employees = getAllEmployees();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DANH BẠ ĐIỆN TỬ</title>
+    <title>Website Tra cứu Danh bạ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -20,9 +19,9 @@
         <main class="mt-3">
             <div class="container" style=" padding-right: 0;">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div>
-                            <h3>DANH BẠ NỔI BẬT</h3>
+                            <h3>DANH BẠ NHÂN VIÊN</h3>
                             <div class="row">
                                 <div class="col-md-2">
                                     <select onchange="" id="search" class="form-select">
@@ -30,20 +29,19 @@
                                         <option value="1">Chức vụ</option>
                                         <option value="2">Số điện thoại</option>
                                         <option value="2">Email</option>
-                                        <option value="2">Địa chỉ</option>
+                                    
                                     </select>
                                 </div>
-                                <div class="col-md-7 ms-4">
+                                <div class="col-md-8">
                                     <input type="text" class="form-control" placeholder="Tìm kiếm">
                                 </div>
                                 <div class="col-md ms-2">
-                                    <a href="search.blade.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
+                                    <a href="search.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-5">
-                            <?php
-                                // Number of users per page
+                        <?php
                                 $items = 20;
 
                                 // tính tổng số trang
@@ -55,25 +53,25 @@
                                 // tính số item của 1 trang xem đủ chưa
                                 $startIndex = ($currentPage - 1) * $items;
 
-                                // lấy ra các user cho trang hiện tại
+                                // lấy ra các employee cho trang hiện tại
                                 $employeesForPage = array_slice($employees, $startIndex, $items);
                             ?>
-
                             <table class="table table-bordered">
                                 <thead>
-                                    <tr>
-                                        <th>Họ tên</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Email</th>
-                                        <th>MobilePhone</th>
-                                        <th>Chức vụ</th>
-                                    </tr>
+                                <tr>
+                                    <th>Họ tên</th>
+                                    <th>Email</th>
+                                    <th>Điện thoại</th>
+                                    <th>Chức vụ</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($employeesForPage as $employee): ?>
+                                <?php foreach($employeesForPage as $employee): ?>
                                     <tr>
+                                        <td>
+                                            <img src="<?php echo $employee['Avatar']; ?>" alt="avatar" style="width: 100px; height: 100px;"></img>
+                                        </td>
                                         <td><?php echo $employee['FullName']; ?></td>
-                                        <td><?php echo $employee['Address']; ?></td>
                                         <td><?php echo $employee['Email']; ?></td>
                                         <td><?php echo $employee['MobilePhone']; ?></td>
                                         <td><?php echo $employee['Position']; ?></td>
@@ -95,13 +93,7 @@
                                 <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Sau</a></li>
                                 <?php endif; ?>
                             </ul>
-
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <?php
-                            require_once 'news/new.php';
-                        ?>
                     </div>
                 </div>
             </div>

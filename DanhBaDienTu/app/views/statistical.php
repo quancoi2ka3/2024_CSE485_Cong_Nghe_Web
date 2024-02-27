@@ -1,5 +1,8 @@
 <?php
-require_once '../database.php';
+require_once '../models/Employee.php';
+$employees = getAllEmployees();
+require_once '../models/Department.php';
+$departments = getDepartments();
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,105 +15,54 @@ require_once '../database.php';
 </head>
 <body>  
 <div class="container-fluid">
-        <header>
-            <div>
-                <img class="image" src="../../public/assets/images/baner.png" class="img-fluid" alt="banner">
-            </div>
-            <nav class="navbar navbar-expand-lg mt-1">
-                <div class="container-fluid">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" aria-current="page" href="home.php">Trang chủ</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link text-uppercase" href="#" data-bs-toggle="dropdown">Giới thiệu</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="deverlopment_history.php">Lịch sử hình thành</a></li>
-                                    <hr>
-                                    <li>
-                                        <a class="dropdown-item" href="main_function.php">Chức năng chính</a>
-                                    </li>
-                                    <hr>
-                                    <li>
-                                        <a class="dropdown-item" href="statistical.php">Thống kê danh bạ</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" href="phonebook.php">Danh bạ nổi bật</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link text-uppercase" href="users.php" data-bs-toggle="dropdown">Tin tức & sự kiện</a>
-                                <ul class="dropdown-menu ms-4">
-                                    <li><a class="dropdown-item" href="#">Tin tức</a></li>
-                                    <hr>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Sự kiện</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-uppercase" href="contact.php" tabindex="-1" aria-disabled="true">Liên hệ</a>
-                            </li>
-                        </ul>
-                    </div>
-                        <div>
-                            <ul class="navbar-nav">
-                                <li class="nav-item" style="border-right: none; padding:0;">
-                                    <a class="nav-link" href="#"> <i class="bi bi-person-fill"></i></a>
-                                </li>
-                                <li class="nav-item dropdown" style="border-right: none; padding:0;">
-                                    <a class="nav-link dropdown-toggle" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown">Đăng nhập</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="info.php">Thông tin cá nhân</a></li>
-                                        <hr>
-                                        <li>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-person-plus-fill"></i> &nbsp Đăng kí</a>
-                                        </li>
-                                        <hr>
-                                        <li>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> &nbsp Đăng xuất</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                </div>
-            </nav>
-        </header>
+        <?php
+            require_once 'header.php';
+        ?>
         <main class="mt-3">
             <div class="container" style=" padding-right: 0;">
                 <h3 class="text-center">THỐNG KÊ DANH BẠ</h3>
                 <div class="mt-4">
                             <?php
-                                // Tính tổng số lượng theo từng chức vụ
+                                //Thống kê theo từng chức vụ
                                 $positions = array();
-                                foreach ($users as $user) {
-                                    $position = $user['position'];
+                                foreach ($employees as $employee) {
+                                    $position = $employee['Position'];
                                     if (isset($positions[$position])) {
                                         $positions[$position]++;
                                     } else {
                                         $positions[$position] = 1;
                                     }
                                 }
+
+                                //Thống kê theo đơn vị
+                                // $departments = array();
+                                // foreach ($departments as $department) {
+                                //     $department = $department['DepartmentName'];
+                                //     if (isset($departments[$department])) {
+                                //         $departments[$department]++;
+                                //     } else {
+                                //         $departments[$department] = 1;
+                                //     }
+                                // }
                             ?>
+
                             <div class="mt-3" style="margin: 0 200px;">
                             <?php
                                      // Number of positions per page
-                                     $items = 10;
+                                     $position_items = 10;
                                      // tính tổng số trang
-                                     $totalPositionPages = ceil(count($positions) / $items);
+                                     $totalPositionPages = ceil(count($positions) / $position_items);
 
                                     //trang mặc định là trang 1
                                     $currentPositionPage = isset($_GET['position_page']) ? $_GET['position_page'] : 1;
 
                                     // tính số item của 1 trang xem đủ chưa
-                                     $startPositionIndex = ($currentPositionPage - 1) * $items;
+                                     $startPositionIndex = ($currentPositionPage - 1) * $position_items;
 
                                     // lấy ra tất cả các item
-                                    $positionsForPage = array_slice($positions, $startPositionIndex, $items);
+                                    $positionsForPage = array_slice($positions, $startPositionIndex, $position_items);
                                 ?>
+                                
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -119,12 +71,13 @@ require_once '../database.php';
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($positionsForPage as $position => $count): ?>
-                                        <tr>
-                                            <td><?php echo $position; ?></td>
-                                            <td><?php echo $count; ?></td>
-                                        </tr>
-                                        <?php endforeach; ?>
+                                                <?php foreach ($positionsForPage as $position => $positionCount): ?>
+                                                    <tr>
+                                                        <td><?php echo $position; ?></td>
+                                                        <td><?php echo $positionCount; ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                          
                                     </tbody>
                                 </table>
                                 <ul class="pagination">
@@ -143,19 +96,9 @@ require_once '../database.php';
             </div>
         </main>
         <footer class="mt-4">
-            <div class="row ">
-                <div class="col-md-6 col-xxl-6">
-                    <a href="https://www.google.com/maps/place/Tr%C6%B0%E1%BB%9Dng+%C4%90%E1%BA%A1i+h%E1%BB%8Dc+Th%E1%BB%A7y+l%E1%BB%A3i/@21.0073466,105.8221555,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ac8109765ba5:0xd84740ece05680ee!8m2!3d21.0073466!4d105.8247304!16s%2Fm%2F02r3ch_?hl=vi&entry=ttu">
-                        <img src="../../public/assets/images/map.png" class="image-logo" alt="logo">
-                    </a>
-                </div>
-                <div class="col-md-6 col-xxl-6" style="color: white; padding: 20px 0;">
-                    <h5><b>TRƯỜNG ĐẠI HỌC THỦY LỢI</b></h5>
-                    <p>Địa chỉ: 175 Tây Sơn, Quận Đống Đa, thành phố Hà Nội</p>
-                    <p>Điện thoại: (024) 38522201 - Fax: (024) 35633351</p>
-                    <p>Email: phonghcth@tlu.edu.vn</p>
-                </div>
-            </div>
+            <?php
+                require_once 'footer.php';
+            ?>
         </footer>
     </div>
 </body>
