@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Department.php';
+require_once __DIR__ . '/../../models/Department.php';
 $departments = getDepartments();
 // echo'<pre>';
 // print_r($departments);
@@ -14,7 +14,8 @@ $departments = getDepartments();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department Manage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -28,7 +29,7 @@ $departments = getDepartments();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../admin_dashboard.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="DanhBaDienTu/app/views/admin_dashboard.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Department Manage</a>
@@ -52,11 +53,29 @@ $departments = getDepartments();
         <div class="container-fluid mt-5">
             <div class="row">
                 <h1 class="text-primary text-center mb-5">Danh sách phòng ban</h1>
-                <div class="col-sm"><a href="#" class="btn btn-primary">Thêm mới</a></div>
+                <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
+                <?php
+
+                // Kiểm tra xem có từ khóa tìm kiếm được gửi lên từ form hay không
+                if (isset($_GET['keyword'])) {
+                    $keyword = $_GET['keyword'];
+                    // Gọi hàm searchEmployees để tìm kiếm nhân viên
+                    $departments = searchDepartments($keyword);
+                } else {
+                    // Nếu không có từ khóa tìm kiếm, lấy danh sách nhân viên bình thường
+                    $departments = getDepartments();
+                }
+                ?>
+                <form class="d-flex" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                    <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
                 <table class="table">
 
                     <thead>
                         <tr>
+                            <th scope="col">Number</th>
                             <th scope="col">Department ID</th>
                             <th scope="col">Department Name</th>
                             <th scope="col">Address</th>
@@ -89,15 +108,16 @@ $departments = getDepartments();
                         <?php foreach ($departmentsForPage as $department) : ?>
                             <tr>
                                 <th scope="row"><?= ++$i ?></th>
+                                <td><?= $department['DepartmentID'] ?></td>
                                 <td><?= $department['DepartmentName'] ?></td>
                                 <td><?= $department['Address'] ?></td>
                                 <td><?= $department['Email'] ?></td>
                                 <td><?= $department['Phone'] ?></td>
                                 <td><?= $department['Logo'] ?></td>
                                 <td><?= $department['Website'] ?></td>
-                                <td><a href="#" class="btn btn-primary">Chi tiết</a></td>
-                                <td><a href="#" class="btn btn-danger">Xóa</a></td>
-                                <td><a href="#" class="btn btn-warning">Sửa</a></td>
+                                <td><a href="#" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
+                                <td><a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                                <td><a href="#" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
