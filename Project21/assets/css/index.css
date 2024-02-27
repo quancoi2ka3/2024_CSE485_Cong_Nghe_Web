@@ -1,0 +1,17 @@
+img{
+    height: 250px;
+    width: 200px;
+}
+.product-list{
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+    grid-template-rows: 500px 500px;
+    grid-gap: 20px;
+    height: 500px;
+    width: auto;
+}
+.product{
+    width: 200px;
+    height: 500px;
+    margin-left: 40px;
+}
