@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   PRIMARY KEY (`category_id`),
   KEY `parent_id` (`parent_id`),
   CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table dbdt.categories: ~10 rows (approximately)
 INSERT INTO `categories` (`category_id`, `parent_id`, `category_name`) VALUES
@@ -59,16 +59,16 @@ CREATE TABLE IF NOT EXISTS `departments` (
 
 -- Dumping data for table dbdt.departments: ~10 rows (approximately)
 INSERT INTO `departments` (`DepartmentID`, `DepartmentName`, `Address`, `Email`, `Phone`, `Logo`, `Website`, `ParentDepartmentID`) VALUES
-	(1, 'Human Resources', '7945 Ryan Center', 'augo0@studiopress.com', '560-117-1713', 'http://dummyimage.com/189x100.png/cc0000/ffffff', 'https://quantcast.com/suspendisse/accumsan/tortor/quis.json?sit=cubilia&amet=curae&nulla=donec&quisque=pharetra&arcu=magna&libero=vestibulum&rutrum=aliquet&ac=ultrices', 1),
-	(2, 'Marketing', '2 Westerfield Drive', 'dhryskiewicz1@sohu.com', '957-519-1045', 'http://dummyimage.com/222x100.png/cc0000/ffffff', 'https://slideshare.net/cursus/id/turpis.jpg?non=id&mattis=ligula&pulvinar=suspendisse&nulla=ornare&pede=consequat&ullamcorper=lectus&augue=in&a=est&suscipit=risus&nulla=auctor', 2),
-	(3, 'Support', '04883 Gateway Pass', 'lmacgahey2@ftc.gov', '538-846-0283', 'http://dummyimage.com/181x100.png/cc0000/ffffff', 'https://china.com.cn/eu/orci/mauris/lacinia/sapien.png', 3),
-	(4, 'Support', '94422 Rowland Circle', 'btoothill3@nhs.uk', '546-186-4751', 'http://dummyimage.com/187x100.png/5fa2dd/ffffff', 'http://google.com/pellentesque/at/nulla/suspendisse.xml', 4),
-	(5, 'Services', '74 Rusk Lane', 'aconnolly4@disqus.com', '358-420-6530', 'http://dummyimage.com/204x100.png/5fa2dd/ffffff', 'http://google.co.jp/sed/sagittis/nam/congue.html', 5),
-	(6, 'Services', '6058 Manitowish Plaza', 'rbillingham5@harvard.edu', '425-366-7636', 'http://dummyimage.com/102x100.png/ff4444/ffffff', 'https://harvard.edu/condimentum/curabitur.json', 6),
-	(7, 'Product Management', '8 Scofield Avenue', 'amalafe6@tmall.com', '109-345-2886', 'http://dummyimage.com/161x100.png/dddddd/000000', 'https://bluehost.com/urna/ut/tellus/nulla/ut.js', 7),
-	(8, 'Services', '1416 Truax Terrace', 'vwhittington7@earthlink.net', '686-753-2100', 'http://dummyimage.com/170x100.png/ff4444/ffffff', 'https://squarespace.com/curabitur.json', 8),
-	(9, 'Engineering', '1771 Scofield Parkway', 'jdedrick8@reddit.com', '435-268-5498', 'http://dummyimage.com/194x100.png/5fa2dd/ffffff', 'https://hud.gov/ridiculus.html', 9),
-	(10, 'Sales', '826 Kenwood Avenue', 'rcochrane9@cornell.edu', '174-999-3349', 'http://dummyimage.com/103x100.png/cc0000/ffffff', 'http://usnews.com/lobortis/sapien.jsp', 10);
+	(1, 'Khoa Công Nghệ Thông Tin', 'Nhà C1', 'vpkcntt@tlu.edu.vn', '(+84)-024 3 5632211', 'public/assets/images/logo_cntt', 'https://cse.tlu.edu.vn/', 1),
+	(2, 'Khoa Công Trình', 'P402, Tầng 4, nhà A1', 'vpkhoacongtrinh@tlu.edu.vn', '(024) 3852.2024', 'public/assets/images/logo_khoacongtrinh', 'https://ce.tlu.edu.vn/', 2),
+	(3, 'Khoa Kinh Tế và Quản lý', 'P.206-207 A5', 'KhoaK@tlu.edu.vn', '(04) 3852.2028', 'http://dummyimage.com/181x100.png/cc0000/ffffff', 'https://fem.tlu.edu.vn/', 3),
+	(4, 'Khoa Hóa và Môi Trường', 'P316 nhà A5', 'vpkhoamt@tlu.edu.vn', '(024) 3564.0704', 'http://dummyimage.com/187x100.png/5fa2dd/ffffff', 'https://env.tlu.edu.vn/', 4),
+	(5, 'Khoa Điện-Điện tử', 'P.401, 403 A1', 'vpkhoae@tlu.edu.vn', '(024) 3852.8025', 'http://dummyimage.com/204x100.png/5fa2dd/ffffff', 'https://ee.tlu.edu.vn/', 5),
+	(6, 'Khoa Cơ Khí', 'P.312-314 A1', 'KhoaM@tlu.edu.vn', '(04) 3853.3082', 'http://dummyimage.com/102x100.png/ff4444/ffffff', 'https://khoacokhi.tlu.edu.vn/en-us/', 6),
+	(7, 'Trung tâm Đào tạo quốc tế', 'Phòng 111 -Nhà KTX số 4', 'sie@tlu.edu.vn', '(0243) 564-2795 / (0243) 853-2746', 'http://dummyimage.com/161x100.png/dddddd/000000', 'https://sie.tlu.edu.vn/', 7),
+	(8, ' Khoa Luật và lý luận chính trị', '175 Tây Sơn, Đống Đa, Hà Nội', 'phonghcth@tlu.edu.vn', '(024) 38522201 ', 'http://dummyimage.com/170x100.png/ff4444/ffffff', 'https://pl.tlu.edu.vn/', 8),
+	(9, 'Viện ĐT và KHUD Miền Trung', 'Trường Đại Học Thủy Lợi', 'vdtkh@tlu.edu.vn', '0259.3823027', 'http://dummyimage.com/194x100.png/5fa2dd/ffffff', 'http://vienmientrung.edu.vn/', 9),
+	(10, 'Phân hiệu Đại học Thủy Lợi', 'Số 2 Trường Sa, P.17, Q. Bình Thạnh', 'phanhieu@tlu.edu.vn', '(84).28.38400532', 'http://dummyimage.com/103x100.png/cc0000/ffffff', 'https://tlus.edu.vn/', 10);
 
 -- Dumping structure for table dbdt.employees
 CREATE TABLE IF NOT EXISTS `employees` (
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `Public_Date` datetime DEFAULT NULL,
   `URL_Image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`NewID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table dbdt.news: ~10 rows (approximately)
 INSERT INTO `news` (`NewID`, `Title`, `Content`, `Public_Date`, `URL_Image`) VALUES
