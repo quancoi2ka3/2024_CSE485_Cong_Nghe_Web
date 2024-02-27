@@ -1,22 +1,27 @@
-nav{
+nav {
     background-color: rgb(23, 23, 104);
     color: white;
 }
-ul{
+
+ul {
     list-style-type: none;
     display: flex;
     margin: 0;
     padding: 0;
 }
-li{
+
+li {
     margin-right: 10px;
     padding-left: 10px;
     border-left-style: solid;
     border-color: white;
 }
 
-.home-icon{
+.home-icon {
     color: white;
-    padding:5px ;
+    padding: 5px;
 }
 
+a:hover {
+    color: blue;
+}

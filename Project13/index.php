@@ -8,7 +8,7 @@
    <title>Danh sách khóa học</title>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-   <link rel="stylesheet" href="/Project13/assets/css/css.css">
+   <link rel="stylesheet" href="assets/css/css.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 </head>
@@ -20,32 +20,32 @@
    <div class="container-fluid">
       <?php
     $courses = [[
-        'image_url'=>'.vscode/php/2024_CSE485_Cong_Nghe_Web/project13/assets/image/download.png','title' => 'Lập trình viên quốc tế',
+        'image_url'=>'assets/image/download.png','title' => 'Lập trình viên quốc tế',
         'description' => 'Chương trình đào tạo chính thức tại Việt Nam từ Aptech Global. Phát triển nghề nghiệp sinh viên IT như một lập trình viên quốc tế.',
         'fee' => '15.000.000 VND',
         'start_date' => '2/2/24',
         'duration' => '2 - 2.5 năm'],
-        [ 'image_url'=>'.vscode/php/2024_CSE485_Cong_Nghe_Web/project13/assets/image/download.png','title' => 'Lập trình web full stack',
+        [ 'image_url'=>'assets/image/download.png','title' => 'Lập trình web full stack',
             'description' => 'Chương trình đào tạo chính thức tại Việt Nam từ Aptech Global. Phát triển nghề nghiệp sinh viên IT như một lập trình viên quốc tế.',
             'fee' => '15.000.000 VND',
             'start_date' => '2/2/24',
             'duration' => '2 - 2.5 năm'],
-        [ 'image_url'=>'.vscode/php/2024_CSE485_Cong_Nghe_Web/project13/assets/image/download.png','title' => 'Lập trình java full stack',
+        [ 'image_url'=>'assets/image/download.png','title' => 'Lập trình java full stack',
             'description' => 'Chương trình đào tạo chính thức tại Việt Nam từ Aptech Global. Phát triển nghề nghiệp sinh viên IT như một lập trình viên quốc tế.',
             'fee' => '15.000.000 VND',
             'start_date' => '2/2/24',
             'duration' => '2 - 2.5 năm'],
-        [ 'image_url'=>'.vscode/php/2024_CSE485_Cong_Nghe_Web/project13/assets/image/download.png','title' => 'Lập trình PHP & LARAVEL',
+        [ 'image_url'=>'assets/image/download.png','title' => 'Lập trình PHP & LARAVEL',
             'description' => 'Chương trình đào tạo chính thức tại Việt Nam từ Aptech Global. Phát triển nghề nghiệp sinh viên IT như một lập trình viên quốc tế.',
             'fee' => '15.000.000 VND',
             'start_date' => '2/2/24',
             'duration' => '2 - 2.5 năm'],
-        [ 'image_url'=>'.vscode/php/2024_CSE485_Cong_Nghe_Web/project13/assets/image/download.png','title' => 'KHOÁ HỌC LẬP TRÌNH  .NET',
+        [ 'image_url'=>'assets/image/download.png','title' => 'KHOÁ HỌC LẬP TRÌNH  .NET',
             'description' => 'Chương trình đào tạo chính thức tại Việt Nam từ Aptech Global. Phát triển nghề nghiệp sinh viên IT như một lập trình viên quốc tế.',
             'fee' => '15.000.000 VND',
             'start_date' => '2/2/24',
             'duration' => '2 - 2.5 năm'],
-        [ 'image_url'=>'.vscode/php/2024_CSE485_Cong_Nghe_Web/project13/assets/image/download.png','title' => 'LẬP TRÌNH SQL SERVER',
+        [ 'image_url'=>'assets/image/download.png','title' => 'LẬP TRÌNH SQL SERVER',
             'description' => 'Chương trình đào tạo chính thức tại Việt Nam từ Aptech Global. Phát triển nghề nghiệp sinh viên IT như một lập trình viên quốc tế.',
             'fee' => '15.000.000 VND',
             'start_date' => '2/2/24',

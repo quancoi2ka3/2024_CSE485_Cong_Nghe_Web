@@ -6,144 +6,139 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-   <link rel="stylesheet" href="/project14/assets/css/css.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   <link rel="stylesheet" href="assets/css/style.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
    <script>
-   ClassicEditor
-      .create(document.querySelector('#note'), {
-         toolbar: ['heading', '|', 'bold', 'italic', 'underline', 'strikethrough', '|', 'bulletedList',
-            'numberedList', '|', 'alignment', '|', 'indent', 'outdent', '|', 'link', 'blockQuote', 'imageUpload',
-            '|', 'undo', 'redo'
-         ]
-      })
-      .catch(error => {
-         console.error(error);
-      });
+      ClassicEditor
+         .create(document.querySelector('#note'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'underline', 'strikethrough', '|', 'bulletedList',
+               'numberedList', '|', 'alignment', '|', 'indent', 'outdent', '|', 'link', 'blockQuote', 'imageUpload',
+               '|', 'undo', 'redo'
+            ]
+         })
+         .catch(error => {
+            console.error(error);
+         });
    </script>
 
 </head>
 
 <body>
-   <div class="form-container">
-      <h1>Basic Info</h1>
-      <form action="#" method="post">
-         <div class="form-group">
-            <label for="employee-id">Employee ID:</label>
-            <input type="text" id="employee-id" name="employee-id">
+   <div class="main-form">
+      <h1 style="border-bottom:3px solid rgb(0, 0,0)">Basic Info</h1>
+      <form action=" #" method="post">
+         <div class="item-form-group">
+            <h5>Employee ID:</h5>
+            <input type="text">
          </div>
-         <div class="form-group">
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="last-name">
+         <div class="item-form-group">
+            <h5>Last Name:</h5>
+            <input type="text">
          </div>
-         <div class="form-group">
-            <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="first-name">
+         <div class="item-form-group">
+            <h5>First Name:</h5>
+            <input type="text">
          </div>
-         <div class="form-group" style="display : flex">
-            <label>Gender:</label><br>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for="male">Male</label><br>
-            <input type="radio" id="female" name="gender" value="female">
-            <label for="female">Female</label><br>
-            <input type="radio" id="other" name="gender" value="other">
-            <label for="other">Other</label><br>
+         <div style="display : flex; ">
+            <h5 style="margin-right: 180px">Gender</h5>
+            <div class="options">
+               <input type="radio" id="option1" name="options">
+               <label for="option1">Male</label><br>
+               <input type="radio" id="option2" name="options">
+               <label for="option2">Female</label><br>
+               <input type="radio" id="option2" name="options">
+               <label for="option2">XXX</label><br>
+               <input type="radio" id="option2" name="options">
+               <label for="option2">ZZZ</label><br>
+            </div>
          </div>
-         <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title">
+         <div class="item-form-group">
+            <h5>Title:</h5>
+            <input type="text">
          </div>
-         <div class="form-group">
-            <label for="suffix">Suffix:</label>
-            <input type="text" id="suffix" name="suffix">
+         <div class="item-form-group">
+            <h5>Suffix:</h5>
+            <input type="text">
          </div>
-         <div class="form-group">
-            <label for="birthdate">Birth Date:</label>
-            <input type="date" id="birthdate" name="birthdate">
+         <div class="item-form-group">
+            <h5>BirthDate:</h5>
+            <input type="date" style="width: 700px">
          </div>
-         <div class="form-group">
-            <label for="hiredate">Hire Date:</label>
-            <input type="date" id="hiredate" name="hiredate">
+         <div class="item-form-group">
+            <h5>HireDate:</h5>
+            <input type="date" style="width: 700px">
          </div>
-         <div class="form-group">
-            <label for="ssn">SSN #:</label>
-            <input type="text" id="ssn" name="ssn">
+         <div style="display :flex;">
+            <h5>SSN # (if applicable):</h5>
+            <div class=" input-container">
+               <input type="text" class="icon-input">
+            </div>
          </div>
-         <div class="form-group">
-            <label for="report-to">Report To:</label>
-            <input type="text" id="report-to" name="report-to">
+         <div class="item-form-group">
+            <h5>Report To</h5>
+            <input type="text">
          </div>
-      </form>
-      <h1>Contact Info</h1>
-      <form action="#" method="post">
-         <div class="form-group">
-            <label for="employee-id">Email :</label>
-            <input type="text" id="employee-id" name="employee-id">
-         </div>
-         <div class="form-group">
-            <label for="last-name">Address</label>
-            <input type="text" id="last-name" name="last-name">
-         </div>
-         <div class="form-group">
-            <label for="first-name">City</label>
-            <input type="text" id="first-name" name="first-name">
-         </div>
-         <div class="form-group">
-            <label for="gender">Region:</label>
-            <input type="text" id="first-name" name="first-name">
-         </div>
-         <div class="form-group">
-            <label for="title">Postal Code</label>
-            <input type="text" id="title" name="title">
-         </div>
-         <div class="form-group">
-            <label for="suffix">Country:</label>
-            <select id="gender" name="gender">
-               <option value="male">Vietnam</option>
-               <option value="female">US</option>
-               <option value="other">UKr</option>
-            </select>
-         </div>
-         <div class="form-group">
-            <label for="birthdate">US Home Phone:</label>
-            <input type="text" id="last-name" name="last-name">
-         </div>
-         <div class="form-group">
-            <label for="hiredate">Photo:</label>
-            <input type="file" id="photo" name="photo" accept="image/*">
-         </div>
-      </form>
-      <h1>Optional Info</h1>
-      <form action="#" method="post">
-         <div class="form-group">
-            <label for="note">Note:</label>
-            <textarea id="note" name="note"></textarea>
-         </div>
-         <div class="form-group" style="display : flex">
-            <label for=" last-name">Preferred Shift:</label>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for=" last-name">Regular</label><br>
-            <input type="radio" id="male" name="gender" value="male">
-            <label for=" last-name">Gravy Yard</label>
-         </div>
-         <div class="form-group">
-            <label for="first-name">Active:</label>
-            <input type="radio" id="male" name="gender" value="male">
-
-         </div>
-         <div class="form-group">
-            <label for="captcha">Are you human? </label><br>
-            <img src="captcha_image.jpg" alt="CAPTCHA"><br>
-            <input type="text" id="captcha" name="captcha" placeholder="Enter the code">
-         </div>
-   </div>
-
-   <div class="form-group">
-      <button type="submit" style="float : right">Submit</button>
-      <button type="cancel" style="float : right">Cancel</button>
-   </div>
-   </form>
+         <h1 style="border-bottom:3px solid rgb(0, 0,0)">Contact Info</h1>
+         <form action=" #" method="post">
+            <div class="item-form-group">
+               <h5>Email:</h5>
+               <input type="text" placeholder="name@example.com">
+            </div>
+            <div class="item-form-group">
+               <h5>Address:</h5>
+               <input type="text">
+            </div>
+            <div class="item-form-group">
+               <h5>City:</h5>
+               <input type="text">
+            </div>
+            <div style="display : flex; ">
+               <h5 style="margin-right: 180px">Gender</h5>
+               <input type="text">
+            </div>
+            <div class="item-form-group">
+               <h5>Region:</h5>
+               <input type="text">
+            </div>
+            <div class="item-form-group">
+               <h5>Postal Code:</h5>
+               <input type="text">
+            </div>
+            <div class="item-form-group">
+               <h5>Country:</h5>
+               <input type="text">
+            </div>
+            <div class=" item-form-group">
+               <h5>VN Home Phone:</h5>
+               <input type="text" placeholder="(+84)">
+            </div>
+            <div style="display :flex;">
+               <h5>Photo:</h5>
+               <div class=" input-container">
+                  <input type="file" style="margin-left: 130px">
+               </div>
+            </div>
+         </form>
+         <h1 style="border-bottom:3px solid rgb(0, 0,0)">Optional Info</h1>
+         <form action=" #" method="post">
+            <div class="item-form-group">
+               <h5>Notes:</h5>
+               <input type="text" placeholder="name@example.com">
+            </div>
+            <div class="item-form-group">
+               <h5>Preferred Shift:</h5>
+               <input type="text">
+            </div>
+            <div class="item-form-group">
+               <h5>Active:</h5>
+               <input type="text">
+            </div>
+            <div style="display : flex; ">
+               <h5 style="margin-right: 97px">Are you human?</h5>
+               <input type="text">
+            </div>
    </div>
 
 </body>

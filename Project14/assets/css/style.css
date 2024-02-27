@@ -1,0 +1,47 @@
+.main-form {
+   margin: 0 auto;
+   width: 1000px;
+   border: 8px solid rgb(171, 170, 170);
+   padding: 20px;
+}
+
+.item-form-group {
+   display: flex;
+   margin: 10px auto;
+   justify-content: space-between;
+}
+
+input[type="text"] {
+   width: 700px;
+   align-items: right;
+}
+
+input[type="radio"]:checked+label {
+   background-color: #007bff;
+   color: #fff;
+}
+
+/* Đảm bảo input radio và label nằm sát cạnh nhau */
+input[type="radio"]+label {
+   margin-left: 5px;
+   /* Có thể điều chỉnh giá trị này tùy theo khoảng cách mong muốn */
+}
+
+.input-container {
+   position: relative;
+   margin-left: 55px;
+}
+
+.icon-input {
+   padding-left: 30px;
+   /* Điều chỉnh khoảng cách giữa biểu tượng và văn bản */
+   width: 100%;
+   /* Đảm bảo rằng ô input sẽ đầy đủ chiều rộng của container */
+   background-image: url('../image/download.jpg');
+   /* Đường dẫn đến biểu tượng icon */
+   background-repeat: no-repeat;
+   background-position: 675px center;
+   /* Điều chỉnh vị trí của biểu tượng trong ô input */
+   background-size: 20px 20px;
+   /* Điều chỉnh kích thước của biểu tượng */
+}

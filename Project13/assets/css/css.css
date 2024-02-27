@@ -1,7 +1,7 @@
 .container-fluid {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 350px 350px;
+    grid-template-rows: 500px 500px;
     grid-gap: 20px;
 }
 
@@ -17,8 +17,3 @@ nav {
     padding-left: 10px;
 }
 
-img {
-    height: 250px;
-    width: 350px;
-    display: block;
-}
