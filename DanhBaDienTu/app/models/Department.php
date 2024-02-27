@@ -1,5 +1,5 @@
 <?php 
-require_once '../database.php';
+require_once __DIR__.'/../database.php';
 // Hàm lấy danh sách bộ phận 
 function getDepartments()
 {
@@ -28,16 +28,17 @@ function getDepartmentById($id)
     return $department;
 }
 //Thêm 1 đơn vị mới
-function addDepartment($name, $description)
+function addDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website)
 {
     $conn = connectDB();
-    $sql = "INSERT INTO departments (name, description) VALUES (?, ?)";
+    $sql = "INSERT INTO departments (DepartmentID, DepartmentName,Address,Email,Phone,Logo,Website) VALUES (?, ?,?,?,?,?,?)";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $name, $description);
+    mysqli_stmt_bind_param($stmt, "isssiss", $DepartmentID, $DepartmentName,$Address,$Email,$Phone,$Logo,$Website);
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $result;
 }
+
 function updateDepartment($id, $name, $description)
 {
     $conn = connectDB();

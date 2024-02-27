@@ -48,7 +48,7 @@ require_once __DIR__ . '/../../models/Department.php';
 
     </form>
     <?php
-    
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors = [];
 
@@ -77,17 +77,17 @@ require_once __DIR__ . '/../../models/Department.php';
         if (empty($Phone) || !preg_match('/^\d+$/', $Phone)) {
             $errors[] = 'Số điện thoại không hợp lệ';
         }
-        $Logo = $_FILES['Logo'];
-        if (!empty($Logo['name'])) {
+        $Logo = null;
+        if (isset($_FILES['Logo']) && !empty($_FILES['Logo']['name'])) {
             $allowedExtensions = ['jpg', 'png', 'gif'];
-            $extension = pathinfo($Logo['name'], PATHINFO_EXTENSION);
+            $extension = pathinfo($_FILES['Logo']['name'], PATHINFO_EXTENSION);
             if (!in_array($extension, $allowedExtensions)) {
                 $errors[] = 'Định dạng file logo không hợp lệ';
             } else {
-                $targetDir = 'uploads/';
+                $targetDir = 'uploads/'; // Update with your upload directory
                 $fileName = uniqid() . '.' . $extension;
                 $targetFile = $targetDir . $fileName;
-                if (move_uploaded_file($Logo['tmp_name'], $targetFile)) {
+                if (move_uploaded_file($_FILES['Logo']['tmp_name'], $targetFile)) {
                     $Logo = $targetFile;
                 } else {
                     $errors[] = 'Lỗi upload file logo';
