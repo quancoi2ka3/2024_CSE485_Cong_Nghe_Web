@@ -7,9 +7,6 @@
 4. Project14:
 ![Screenshot 2024-02-27 220824](https://github.com/quancoi2ka3/2024_CSE485_Cong_Nghe_Web/assets/118251984/44639d1f-664f-4f79-bdd5-42435373ea99)
 
-![Screenshot 2024-02-27 220839](https://github.com/quancoi2ka3/2024_CSE485_Cong_Nghe_Web/assets/118251984/3dddd627-947c-4dee-9ff0-e4045124de97)
-
-![Screenshot 2024-02-27 220850](https://github.com/quancoi2ka3/2024_CSE485_Cong_Nghe_Web/assets/118251984/64c7db2a-7d26-4748-9a1b-0a38b8420025)
 5. Project21:
 6. Project22:
 7. Project23:
