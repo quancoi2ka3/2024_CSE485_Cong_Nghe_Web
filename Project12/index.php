@@ -29,9 +29,6 @@
     foreach ($navItems as $item) {
         echo "<li class='nav-item' ><a href='#' style ='color : white;text-decoration: none'>$item</a></li>";
     }
-    
-    
-
     echo '</ul></nav>';
     ?>
 

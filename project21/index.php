@@ -72,11 +72,11 @@
       <?php endif; ?> <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
          <?php if ($i == $currentPage) : ?>
             <span class="active"><?php echo $i; ?></span> <?php else : ?> <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-         <?php endif; ?> <?php endfor; ?> <?php if ($currentPage < $totalPages) : ?> <a href="?page=<?php echo $currentPage + 1; ?>">Next</a> <?php endif; ?>
+         <?php endif; ?>
+      <?php endfor; ?>
+      <?php if ($currentPage < $totalPages) : ?> <a href="?page=<?php echo $currentPage + 1; ?>">Next</a>
+      <?php endif; ?>
    </div>
-
-
-
 </body>
 
 </html>
