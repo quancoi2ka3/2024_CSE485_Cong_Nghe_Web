@@ -10,6 +10,7 @@
    <link rel="stylesheet" href="assets/css/style.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+   <script src="https://ckeditor.com/ckeditor-5/download/"></script>
    <script>
       ClassicEditor
          .create(document.querySelector('#note'), {
@@ -125,7 +126,20 @@
          <form action=" #" method="post">
             <div class="item-form-group">
                <h5>Notes:</h5>
-               <input type="text" placeholder="name@example.com">
+               <div style="margin-right : 64px">
+                  <textarea name="editor" id="editor" rows="14"></textarea>
+
+                  <script>
+                     ClassicEditor
+                        .create(document.querySelector('#editor'))
+                        .then(editor => {
+                           console.log(editor);
+                        })
+                        .catch(error => {
+                           console.error(error);
+                        });
+                  </script>
+               </div>
             </div>
             <div class="" style="display: flex;">
                <h5>Preferred Shift:</h5>
