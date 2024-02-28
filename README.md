@@ -6,7 +6,7 @@ Các thành viên bao gồm :
 3, Cao Thị Khánh Linh
 4, Nguyễn Mạnh Quân
 
-<img src="sceenshot/project13.png">
+<img src="screenshot/project13.png">
 <img src="screenshot/project12.png">
 <img src="screenshot/project14.png">
 <img src="screenshot/project21.png">
