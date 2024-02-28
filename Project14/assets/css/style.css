@@ -45,3 +45,35 @@ input[type="radio"]+label {
    background-size: 20px 20px;
    /* Điều chỉnh kích thước của biểu tượng */
 }
+/* Ẩn checkbox mặc định */
+input[type="checkbox"] {
+   display: none;
+   
+ }
+ 
+ /* Tạo checkbox mới với label */
+ label {
+   cursor: pointer;
+   padding: 10px;
+   border: 1px solid #ccc;
+   display: inline-block;
+ }
+ 
+ /* Tạo khung vuông cho checkbox */
+ label:before {
+   content: "";
+   display: inline-block;
+   width: 16px;
+   height: 16px;
+   border: 1px solid #ccc;
+   margin-right: 10px;
+ }
+ 
+ /* Khi checkbox được chọn, thêm dấu check */
+ input[type="checkbox"]:checked + label:before {
+   content: "✓";
+   text-align: center;
+   font-size: 16px;
+   color: #fff;
+ }
+ 

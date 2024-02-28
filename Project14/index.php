@@ -127,18 +127,42 @@
                <h5>Notes:</h5>
                <input type="text" placeholder="name@example.com">
             </div>
-            <div class="item-form-group">
+            <div class="" style="display: flex;">
                <h5>Preferred Shift:</h5>
-               <input type="text">
+               <div style="margin-left: 107px;"><input type="checkbox" id="my-checkbox"><label for="">Regular</label><br><input type="checkbox" id="my-checkbox"><label for="">Gravy Yard</label><br>
+               </div>
             </div>
-            <div class="item-form-group">
+            <div class="" style="display: flex;">
                <h5>Active:</h5>
-               <input type="text">
+               <div style="margin-left: 183px;"><input type="checkbox" id="my-checkbox">
+               </div>
             </div>
             <div style="display : flex; ">
                <h5 style="margin-right: 97px">Are you human?</h5>
-               <input type="text">
+               <?php
+               // Generate a random number on the server
+               $random_number = rand(1, 10);
+               ?>
+
+               <form action="your_form_submission_action.php" method="post">
+                  <input type="hidden" name="challenge_number" value="<?php echo $random_number; ?>">
+                  <label for="challenge_response">What is <?php echo $random_number; ?> + 2?</label>
+                  <input type="number" name="challenge_response" required>
+                  <button type="submit">Answer</button>
+               </form>
+
             </div>
+            <div class="item-form-group">
+               <div>
+                  <button type="button" onclick="back()">Quay lại</button>
+                  <button type="button" onclick="next()">Tiếp theo</button>
+               </div>
+               <div> <button type="submit">Submit</button>
+                  <button type="cancel">Cancel</button>
+               </div>
+
+            </div>
+
    </div>
 
 </body>
