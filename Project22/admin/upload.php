@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $allowedExtensions = ['jpg', 'jpeg', 'png'];
     $maxSize = 1048576; 
-    $targetDir = "/phpdemo/Project22/assets/images"; 
+    $targetDir = "/BTTH/Project22/assets/images"; 
     if (!empty($_FILES['avatar']['tmp_name'])) {
         echo "Hình ảnh chưa được cập nhật";
         $fileInfo = pathinfo($_FILES['avatar']['name']);
