@@ -1,0 +1,38 @@
+body{
+   
+}
+.container{
+    margin-top: 5%;
+    margin-left: 35%;
+    border:2px solid blue;
+    border-radius: 10%;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+a{
+    position: relative;
+    margin-left: 50px;
+    text-decoration: none;
+    bottom: 10px;
+}
+img{
+    height: 40px;
+    width: 40px;
+}
+a:hover{
+    color: white;
+}
+span{
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    margin-top: 40px;
+    background-color: gray;
+    border:2px solid blue;
+    border-radius: 10px;
+}
+span:hover{
+    background-color: red;
+}
