@@ -1,0 +1,53 @@
+ul{
+    width: 80px;
+}
+li{
+    list-style-type: none;
+    width: 80px;
+    padding-top: 10px;
+}
+form{
+    position: relative;
+    height: 600px;
+    width: 500px;
+    border: 1px solid blue;
+  
+}
+li a{
+    text-decoration: none;
+    
+}
+li:hover a{
+    color: red;
+}
+.profile{
+    position: absolute;
+    width: 350px;
+    height: 500px;
+   
+    bottom: 7%;
+    margin-left: 27%;
+}
+#row1{
+   margin-top: 5%;
+}
+#custom{
+    margin-top: 150px;
+    background-color: red;
+    color: white;
+    margin-left: 100px;
+    border:1px solid black;
+}
+#imageContainer{
+  
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    margin-left: 25%;
+    border-radius: 10%;
+}
+.rounded-image {
+    width: 150px; /* Điều chỉnh kích thước của hình ảnh */
+    height: 150px; /* Điều chỉnh kích thước của hình ảnh */ 
+    border-radius: 50%;
+ }
