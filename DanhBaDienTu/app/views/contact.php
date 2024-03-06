@@ -11,7 +11,7 @@
 <div class="container-fluid">
         <header>
             <div>
-                <img class="image" src="../../public/assets/images/banner.png" class="img-fluid" alt="banner">
+                <img class="image" src="../../public/assets/images/baner.png" class="img-fluid" alt="banner">
             </div>
             <nav class="navbar navbar-expand-lg mt-1">
                 <div class="container-fluid">
@@ -23,14 +23,14 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link text-uppercase" href="#" data-bs-toggle="dropdown">Giới thiệu</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Lịch sử hình thành</a></li>
+                                    <li><a class="dropdown-item" href="deverlopment_history.php">Lịch sử hình thành</a></li>
                                     <hr>
                                     <li>
-                                        <a class="dropdown-item" href="#">Chức năng chính</a>
+                                        <a class="dropdown-item" href="main_function.php">Chức năng chính</a>
                                     </li>
                                     <hr>
                                     <li>
-                                        <a class="dropdown-item" href="#">Thống kê danh bạ</a>
+                                        <a class="dropdown-item" href="statistical.php">Thống kê danh bạ</a>
                                     </li>
                                 </ul>
                             </li>

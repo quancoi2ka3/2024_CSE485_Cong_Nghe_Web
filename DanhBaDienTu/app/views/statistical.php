@@ -4,7 +4,7 @@ require_once '../database.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Website Tra cứu Danh bạ</title>
+    <title>DANH BẠ ĐIỆN TỬ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -81,80 +81,64 @@ require_once '../database.php';
         </header>
         <main class="mt-3">
             <div class="container" style=" padding-right: 0;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div>
-                            <h3>DANH BẠ NỔI BẬT</h3>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <select onchange="" id="search" class="form-select">
-                                        <option selected value="0">Tên</option>
-                                        <option value="1">Chức vụ</option>
-                                        <option value="2">Số điện thoại</option>
-                                        <option value="2">Email</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm">
-                                </div>
-                                <div class="col-md ms-2">
-                                    <a href="search.blade.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                        <?php
-                                // Number of users per page
-                                $items = 20;
-
-                                // tính tổng số trang
-                                $totalPages = ceil(count($users) / $items);
-
-                               //trang mặc định là trang 1
-                                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-                                // tính số item của 1 trang xem đủ chưa
-                                $startIndex = ($currentPage - 1) * $items;
-
-                                // lấy ra các user cho trang hiện tại
-                                $usersForPage = array_slice($users, $startIndex, $items);
+                <h3 class="text-center">THỐNG KÊ DANH BẠ</h3>
+                <div class="mt-4">
+                            <?php
+                                // Tính tổng số lượng theo từng chức vụ
+                                $positions = array();
+                                foreach ($users as $user) {
+                                    $position = $user['position'];
+                                    if (isset($positions[$position])) {
+                                        $positions[$position]++;
+                                    } else {
+                                        $positions[$position] = 1;
+                                    }
+                                }
                             ?>
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Họ tên</th>
-                                    <th>Chức vụ</th>
-                                    <th>Điện thoại</th>
-                                    <th>Email</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach($usersForPage as $user): ?>
-                                    <tr>
-                                        <td><?php echo $user['fullname']; ?></td>
-                                        <td><?php echo $user['position']; ?></td>
-                                        <td><?php echo $user['phonenumber']; ?></td>
-                                        <td><?php echo $user['email']; ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                            <div class="mt-3" style="margin: 0 200px;">
+                            <?php
+                                     // Number of positions per page
+                                     $items = 10;
+                                     // tính tổng số trang
+                                     $totalPositionPages = ceil(count($positions) / $items);
 
-                            <ul class="pagination">
-                                <?php if ($currentPage > 1): ?>
-                                <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">Trước</a></li>
-                                <?php endif; ?>
+                                    //trang mặc định là trang 1
+                                    $currentPositionPage = isset($_GET['position_page']) ? $_GET['position_page'] : 1;
 
-                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <li class="page-item <?php echo ($i == $currentPage) ? 'active' : ''; ?>"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-                                <?php endfor; ?>
+                                    // tính số item của 1 trang xem đủ chưa
+                                     $startPositionIndex = ($currentPositionPage - 1) * $items;
 
-                                <?php if ($currentPage < $totalPages): ?>
-                                <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Sau</a></li>
-                                <?php endif; ?>
-                            </ul>
-                        </div>
-                    </div>
+                                    // lấy ra tất cả các item
+                                    $positionsForPage = array_slice($positions, $startPositionIndex, $items);
+                                ?>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Chức vụ</th>
+                                            <th>Số lượng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($positionsForPage as $position => $count): ?>
+                                        <tr>
+                                            <td><?php echo $position; ?></td>
+                                            <td><?php echo $count; ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <ul class="pagination">
+                                    <?php if ($currentPositionPage > 1): ?>
+                                        <li class="page-item"><a class="page-link" href="?position_page=<?php echo $currentPositionPage - 1; ?>">Trước</a></li>
+                                    <?php endif; ?>
+                                    <?php for ($i = 1; $i <= $totalPositionPages; $i++): ?>
+                                        <li class="page-item <?php echo ($i == $currentPositionPage) ? 'active' : ''; ?>"><a class="page-link" href="?position_page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                    <?php endfor; ?>
+                                    <?php if ($currentPositionPage < $totalPositionPages): ?>
+                                        <li class="page-item"><a class="page-link" href="?position_page=<?php echo $currentPositionPage + 1; ?>">Sau</a></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
                 </div>
             </div>
         </main>

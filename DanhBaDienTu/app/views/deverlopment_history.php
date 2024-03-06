@@ -4,7 +4,7 @@ require_once '../database.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Website Tra cứu Danh bạ</title>
+    <title>DANH BẠ ĐIỆN TỬ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -26,7 +26,7 @@ require_once '../database.php';
                             <li class="nav-item dropdown">
                                 <a class="nav-link text-uppercase" href="#" data-bs-toggle="dropdown">Giới thiệu</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="deverlopment_history.php">Lịch sử hình thành</a></li>
+                                    <li><a class="dropdown-item" href="#">Lịch sử hình thành</a></li>
                                     <hr>
                                     <li>
                                         <a class="dropdown-item" href="main_function.php">Chức năng chính</a>
@@ -81,79 +81,96 @@ require_once '../database.php';
         </header>
         <main class="mt-3">
             <div class="container" style=" padding-right: 0;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div>
-                            <h3>DANH BẠ NỔI BẬT</h3>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <select onchange="" id="search" class="form-select">
-                                        <option selected value="0">Tên</option>
-                                        <option value="1">Chức vụ</option>
-                                        <option value="2">Số điện thoại</option>
-                                        <option value="2">Email</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm">
-                                </div>
-                                <div class="col-md ms-2">
-                                    <a href="search.blade.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5">
-                        <?php
-                                // Number of users per page
-                                $items = 20;
+                <h3>LỊCH SỬ PHÁT TRIỂN</h3>
+                <div style="display: flex" class="mt-4">
+                    <div>
+                        <img style="width: 300px; height: 150px; margin-left: 250px" src="https://www.tlu.edu.vn/Portals/0/1609.png" alt="logo">
+                    </div>
+                    <div class="ms-4 mt-2 text-right">
+                        <a href="" class="text-decoration-none" style="color: black; font-size: 20px;"><b>Giai đoạn 2006 – 2019: Thực hiện chiến lược phát triển</b></a>
+                        <p>07/10/2021 09:39</p>
+                        <p class="text-right mt-5">
+                            <a href="https://www.tlu.edu.vn/lich-su-su-kien/giai-doan-2006-2019-thuc-hien-chien-14883" class="text-decoration-none">
+                                <i class="bi bi-chevron-right"></i>
+                                <em>Xem chi tiết</em>
+                            </a>
+                        </p>
+                    </div>
+                </div>
 
-                                // tính tổng số trang
-                                $totalPages = ceil(count($users) / $items);
+                <br><br>
+                <hr style="border: none;border-top: 1px dashed #000;">
 
-                               //trang mặc định là trang 1
-                                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                <div style="display: flex" class="mt-5">
+                    <div>
+                        <img style="width: 300px; height: 150px; margin-left: 250px" src="https://www.tlu.edu.vn/Portals/0/ht.png" alt="logo">
+                    </div>
+                    <div class="ms-4 mt-2 text-right">
+                        <a href="" class="text-decoration-none" style="color: black; font-size: 20px;"><b>Giai đoạn 1986 – 2005: Cùng đất nước đổi mới</b></a>
+                        <p>07/10/2021 09:30</p>
+                        <p class="text-right mt-5">
+                            <a href="https://www.tlu.edu.vn/lich-su-su-kien/giai-doan-1986-2005-cung-dat-nuoc-14882" class="text-decoration-none">
+                                <i class="bi bi-chevron-right"></i>
+                                <em>Xem chi tiết</em>
+                            </a>
+                        </p>
+                    </div>
+                </div>
 
-                                // tính số item của 1 trang xem đủ chưa
-                                $startIndex = ($currentPage - 1) * $items;
+                <br><br>
+                <hr style="border: none;border-top: 1px dashed #000;">
 
-                                // lấy ra các user cho trang hiện tại
-                                $usersForPage = array_slice($users, $startIndex, $items);
-                            ?>
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Họ tên</th>
-                                    <th>Chức vụ</th>
-                                    <th>Điện thoại</th>
-                                    <th>Email</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach($usersForPage as $user): ?>
-                                    <tr>
-                                        <td><?php echo $user['fullname']; ?></td>
-                                        <td><?php echo $user['position']; ?></td>
-                                        <td><?php echo $user['phonenumber']; ?></td>
-                                        <td><?php echo $user['email']; ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                <div style="display: flex" class="mt-5">
+                    <div>
+                        <img style="width: 300px; height: 150px; margin-left: 250px" src="https://www.tlu.edu.vn/Portals/0/dhtl.jpg" alt="logo">
+                    </div>
+                    <div class="ms-4 text-right">
+                        <a href="" class="text-decoration-none" style="color: black; font-size: 20px;"><b>Giai đoạn 1976 – 1985: Xây dựng và phát triển gắn với nhiệm vụ kiến thiết đất nước sau chiến tranh</b></a>
+                        <p>07/10/2021 09:28</p>
+                        <p class="text-right mt-4">
+                            <a href="https://www.tlu.edu.vn/lich-su-su-kien/giai-doan-1976-1985-xay-dung-va-phat-14881" class="text-decoration-none">
+                                <i class="bi bi-chevron-right"></i>
+                                <em>Xem chi tiết</em>
+                            </a>
+                        </p>
+                    </div>
+                </div>
 
-                            <ul class="pagination">
-                                <?php if ($currentPage > 1): ?>
-                                <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">Trước</a></li>
-                                <?php endif; ?>
+                <br><br>
+                <hr style="border: none;border-top: 1px dashed #000;">
 
-                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <li class="page-item <?php echo ($i == $currentPage) ? 'active' : ''; ?>"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-                                <?php endfor; ?>
+                <div style="display: flex" class="mt-5">
+                    <div>
+                        <img style="width: 300px; height: 150px; margin-left: 250px" src="https://www.tlu.edu.vn/Portals/0/images-1-.jpg" alt="logo">
+                    </div>
+                    <div class="ms-4 mt-2 text-right">
+                        <a href="" class="text-decoration-none" style="color: black; font-size: 20px;"><b>Giai đoạn 1965 – 1975: Vươn lên trong điều kiện chiến tranh ác liệt</b></a>
+                        <p>07/10/2021 09:24</p>
+                        <p class="text-right mt-5">
+                            <a href="https://www.tlu.edu.vn/gioi-thieu/giai-doan-1965-1975-vuon-len-trong-14880" class="text-decoration-none">
+                                <i class="bi bi-chevron-right"></i>
+                                <em>Xem chi tiết</em>
+                            </a>
+                        </p>
+                    </div>
+                </div>
 
-                                <?php if ($currentPage < $totalPages): ?>
-                                <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Sau</a></li>
-                                <?php endif; ?>
-                            </ul>
-                        </div>
+                <br><br>
+                <hr style="border: none;border-top: 1px dashed #000;">
+
+                <div style="display: flex" class="mt-5 mb-5">
+                    <div>
+                        <img style="width: 300px; height: 150px; margin-left: 250px" src="https://www.tlu.edu.vn/Portals/0/khoa14.jpg" alt="logo">
+                    </div>
+                    <div class="ms-4  mt-2 text-right">
+                        <a href="" class="text-decoration-none" style="color: black; font-size: 20px;"><b>Giai đoạn 1959 – 1964: Sự ra đời của Nhà trường và những bước đi ban đầu</b></a>
+                        <p>07/10/2021 09:22</p>
+                        <p class="text-right mt-5">
+                            <a href="https://www.tlu.edu.vn/gioi-thieu/giai-doan-1959-1964-su-ra-doi-cua-14879" class="text-decoration-none">
+                                <i class="bi bi-chevron-right"></i>
+                                <em>Xem chi tiết</em>
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
