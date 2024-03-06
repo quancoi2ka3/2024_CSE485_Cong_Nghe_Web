@@ -4,7 +4,7 @@ require_once '../database.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DANH BẠ ĐIỆN TỬ</title>
+    <title>Website Tra cứu Danh bạ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -82,9 +82,9 @@ require_once '../database.php';
         <main class="mt-3">
             <div class="container" style=" padding-right: 0;">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div>
-                            <h3>DANH BẠ ĐIỆN TỬ</h3>
+                            <h3>DANH BẠ NỔI BẬT</h3>
                             <div class="row">
                                 <div class="col-md-2">
                                     <select onchange="" id="search" class="form-select">
@@ -94,7 +94,7 @@ require_once '../database.php';
                                         <option value="2">Email</option>
                                     </select>
                                 </div>
-                                <div class="col-md-7 ms-4">
+                                <div class="col-md-8">
                                     <input type="text" class="form-control" placeholder="Tìm kiếm">
                                 </div>
                                 <div class="col-md ms-2">
@@ -103,7 +103,7 @@ require_once '../database.php';
                             </div>
                         </div>
                         <div class="mt-5">
-                            <?php
+                        <?php
                                 // Number of users per page
                                 $items = 20;
 
@@ -119,18 +119,17 @@ require_once '../database.php';
                                 // lấy ra các user cho trang hiện tại
                                 $usersForPage = array_slice($users, $startIndex, $items);
                             ?>
-
                             <table class="table table-bordered">
                                 <thead>
-                                    <tr>
-                                        <th>Họ tên</th>
-                                        <th>Chức vụ</th>
-                                        <th>Điện thoại</th>
-                                        <th>Email</th>
-                                    </tr>
+                                <tr>
+                                    <th>Họ tên</th>
+                                    <th>Chức vụ</th>
+                                    <th>Điện thoại</th>
+                                    <th>Email</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($usersForPage as $user): ?>
+                                <?php foreach($usersForPage as $user): ?>
                                     <tr>
                                         <td><?php echo $user['fullname']; ?></td>
                                         <td><?php echo $user['position']; ?></td>
@@ -154,87 +153,6 @@ require_once '../database.php';
                                 <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Sau</a></li>
                                 <?php endif; ?>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="paper">
-                                <div class="alert" role="alert">
-                                    <div class="alert-heading text-center">
-                                        <h5>THÔNG BÁO</h5>
-                                    </div>
-                                    <div id="notificationContainer">
-                                        <marquee behavior="scroll" direction="up" scrollamount="2" height="150">
-                                            <a href="#" class="text-decoration-none text-right">Trung tâm Nghiên cứu, ứng dụng và dịch vụ khoa học công nghệ tỉnh Kon Tum hỗ trợ tư vấn đăng ký chứng nhân VietGAP lĩnh vực Trồng trọt</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Thông báo về việc quy định mức thu lệ phí cấp mới, cấp lại, cấp đổi giấy phép lái xe (quốc gia và quốc tế)</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Lịch tiếp công dân định kỳ của Chủ tịch UBND tỉnh tại Trụ sở Tiếp công dân tỉnh, năm 2024</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Thông báo về tiếp nhận hồ sơ đăng ký dự thi tiếng Hàn theo Chương trình EPS năm 2024</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Triệu tập thí sinh đủ điều kiện dự thi vòng 2 kỳ tuyển dụng công chức năm 2023</a>
-                                        </marquee>
-                                    </div>
-                                </div>
-                                <script>
-                                    // Automatically scroll the notifications
-                                    setInterval(function() {
-                                    var notificationContainer = document.getElementById("notificationContainer");
-                                    notificationContainer.scrollTop += 1;
-                                    }, 50);
-                                 </script>
-                                <div class="alert" role="alert">
-                                    <div class="alert-heading text-center">
-                                        <h5>VĂN BẢN MỚI</h5>
-                                    </div>
-                                    <div id="notificationContainer">
-                                        <marquee behavior="scroll" direction="up" scrollamount="2" height="150">
-                                            <a href="#" class="text-decoration-none text-right">Trung tâm Nghiên cứu, ứng dụng và dịch vụ khoa học công nghệ tỉnh Kon Tum hỗ trợ tư vấn đăng ký chứng nhân VietGAP lĩnh vực Trồng trọt</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Thông báo về việc quy định mức thu lệ phí cấp mới, cấp lại, cấp đổi giấy phép lái xe (quốc gia và quốc tế)</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Lịch tiếp công dân định kỳ của Chủ tịch UBND tỉnh tại Trụ sở Tiếp công dân tỉnh, năm 2024</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Thông báo về tiếp nhận hồ sơ đăng ký dự thi tiếng Hàn theo Chương trình EPS năm 2024</a>
-                                            <hr>
-                                            <a href="#" class="text-decoration-none text-right">Triệu tập thí sinh đủ điều kiện dự thi vòng 2 kỳ tuyển dụng công chức năm 2023</a>
-                                        </marquee>
-                                    </div>
-                                </div>
-                                <div class="alert" role="alert">
-                                    <div class="alert-heading text-center">
-                                        <h5>DANH BẠ ĐIỆN TỬ KHÁC</h5>
-                                    </div>
-                                    <div>
-                                        <a href="https://bacgiang.gov.vn/danh-ba-dien-tu" class="text-decoration-none">
-                                            <p class="text-center">
-                                            <img src="../../public/assets/images/bacgiang.png" class="logo-tinh" alt="logo">
-                                                Cổng thông tin điện tử Bắc Giang
-                                            </p>
-                                        </a>
-                                        <hr>
-                                        <a href="https://www.nghean.gov.vn/danh-ba-dien-thoai" class="text-decoration-none">
-                                            <p class="text-center">
-                                                <img src="../../public/assets/images/nghean.png" class="logo-tinh" alt="logo">
-                                                Cổng thông tin điện tử Nghệ An &nbsp
-                                            </p>
-                                        </a>
-                                        <hr>
-                                        <a href="https://sonla.gov.vn/danh-ba-dien-tu" class="text-decoration-none">
-                                            <p class="text-center">
-                                                <img src="../../public/assets/images/sonla.png" class="logo-tinh" alt="logo">
-                                                 Cổng thông tin điện tử Sơn La &nbsp&nbsp&nbsp&nbsp&nbsp
-                                            </p>
-                                        </a>
-                                        <hr>
-                                        <a href="https://namtuliem.hanoi.gov.vn/danh-ba-dien-tu" class="text-decoration-none">
-                                            <p class="text-center">
-                                                <img src="../../public/assets/images/namtuliem.jpg" class="logo-tinh" alt="logo">
-                                                Cổng thông tin điện tử quận Nam Từ Liêm
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,7 @@
-<?php
-require_once '../database.php';
-?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DANH BẠ ĐIỆN TỬ</title>
+    <title>Website Tra cứu Danh bạ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -38,7 +35,7 @@ require_once '../database.php';
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-uppercase" href="phonebook.php">Danh bạ nổi bật</a>
+                                <a class="nav-link text-uppercase" href="../phonebook.php">Danh bạ nổi bật</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link text-uppercase" href="users.php" data-bs-toggle="dropdown">Tin tức & sự kiện</a>
@@ -84,7 +81,8 @@ require_once '../database.php';
                 <div class="row">
                     <div class="col-md-9">
                         <div>
-                            <h3>DANH BẠ ĐIỆN TỬ</h3>
+                            <br>
+                            <!-- <h3>DANH BẠ ĐIỆN TỬ</h3> -->
                             <div class="row">
                                 <div class="col-md-2">
                                     <select onchange="" id="search" class="form-select">
@@ -98,62 +96,23 @@ require_once '../database.php';
                                     <input type="text" class="form-control" placeholder="Tìm kiếm">
                                 </div>
                                 <div class="col-md ms-2">
-                                    <a href="search.blade.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
+                                    <a href="search.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5">
-                            <?php
-                                // Number of users per page
-                                $items = 20;
+                        <div class="mt-5 info">
+                            <h2>LIÊN HỆ</h2>
+                                <br>
+                                <p><b>Danh bạ điện tử trường Đại học Thủy Lợi</b></p>
+                                <br>
+                                <p>Địa chỉ: Số 175 Tây sơn - Đống Đa – Hà Nội</p>
+                                <br>
+                                <p>Điện thoại: (024) 3852 2201</p>
+                                <br>
+                                <p>Fax: (024) 3563 3351</p>
+                                <br>
+                                <p>Email: <a href="">phonghcth@tlu.edu.vn</a></p>
 
-                                // tính tổng số trang
-                                $totalPages = ceil(count($users) / $items);
-
-                               //trang mặc định là trang 1
-                                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
-                                // tính số item của 1 trang xem đủ chưa
-                                $startIndex = ($currentPage - 1) * $items;
-
-                                // lấy ra các user cho trang hiện tại
-                                $usersForPage = array_slice($users, $startIndex, $items);
-                            ?>
-
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Họ tên</th>
-                                        <th>Chức vụ</th>
-                                        <th>Điện thoại</th>
-                                        <th>Email</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($usersForPage as $user): ?>
-                                    <tr>
-                                        <td><?php echo $user['fullname']; ?></td>
-                                        <td><?php echo $user['position']; ?></td>
-                                        <td><?php echo $user['phonenumber']; ?></td>
-                                        <td><?php echo $user['email']; ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-
-                            <ul class="pagination">
-                                <?php if ($currentPage > 1): ?>
-                                <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">Trước</a></li>
-                                <?php endif; ?>
-
-                                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <li class="page-item <?php echo ($i == $currentPage) ? 'active' : ''; ?>"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-                                <?php endfor; ?>
-
-                                <?php if ($currentPage < $totalPages): ?>
-                                <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Sau</a></li>
-                                <?php endif; ?>
-                            </ul>
                         </div>
                     </div>
                     <div class="col-md-3">

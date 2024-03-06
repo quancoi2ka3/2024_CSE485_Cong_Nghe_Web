@@ -1,0 +1,95 @@
+
+.navbar-nav .nav-item {
+    border-right: 2px solid white;
+    padding: 0 20px; 
+
+}
+.navbar-nav .nav-item .no-border-right {
+    border-right: none;
+}
+.navbar{
+     background-color: rgb(239, 49, 20);
+     border: 1px solid rgb(54, 52, 51);
+}
+.navbar-nav .nav-item .nav-link{
+    color: white;
+}
+.navbar-nav .nav-item .nav-link:hover {
+    color: rgb(242, 238, 113);
+}
+
+.image{
+     width: 100%;
+     height: 190px;
+}
+
+.dropdown-menu{
+    background-color: rgb(239, 49, 20);
+}
+.dropdown-item{
+    color: white;
+}
+hr{
+    border: 1px solid rgb(172, 169, 169);
+}
+
+.mt-3 h3{
+    text-align: center;
+    padding: 20px 0;
+    color:rgb(239, 49, 20);
+    font-weight: bold;
+}
+.mt-3 .col-md-9{
+    border: 1px solid rgb(214, 207, 207);
+    border-top: 3px solid rgb(239, 49, 20);
+}
+.col-md-3{
+    border: 1px solid rgb(214, 207, 207);
+    border-left: none;
+}
+
+.mt-4 .row{
+    background-color: rgb(239, 49, 20);
+}
+.paper{
+    /* border: 1px solid rgb(214, 207, 207); */
+}
+
+.alert-heading h5{
+    color: white;
+    font-weight: bold;
+    background-color: rgb(239, 49, 20);
+    padding: 10px;
+}
+.image-logo{
+    width: 50%;
+    height: 150px;
+    margin: 20px 30px;
+    margin-left: 89px;
+}
+.logo-tinh{
+    width: 30px; 
+    height: 30px;
+}
+.text-decoration-none p{
+    color: black;
+}
+.text-decoration-none p:hover{
+    color: rgb(239, 49, 20);
+}
+marquee a{
+    color: black;
+}
+marquee a:hover{
+    color: rgb(239, 49, 20);
+}
+.info{
+    margin: 0 30%;
+    font-size: 18px;
+}
+h2{
+    margin-top: 150px;
+    color: rgb(239, 49, 20);
+    font-weight: bold;
+}
+

@@ -63,7 +63,7 @@ require_once '../database.php';
                                 <li class="nav-item dropdown" style="border-right: none; padding:0;">
                                     <a class="nav-link dropdown-toggle" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown">Đăng nhập</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="info.php">Thông tin cá nhân</a></li>
+                                        <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
                                         <hr>
                                         <li>
                                             <a class="dropdown-item" href="#"><i class="bi bi-person-plus-fill"></i> &nbsp Đăng kí</a>
@@ -84,7 +84,7 @@ require_once '../database.php';
                 <div class="row">
                     <div class="col-md-9">
                         <div>
-                            <h3>DANH BẠ ĐIỆN TỬ</h3>
+                            <br>
                             <div class="row">
                                 <div class="col-md-2">
                                     <select onchange="" id="search" class="form-select">
@@ -98,12 +98,12 @@ require_once '../database.php';
                                     <input type="text" class="form-control" placeholder="Tìm kiếm">
                                 </div>
                                 <div class="col-md ms-2">
-                                    <a href="search.blade.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
+                                    <a href="search.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-5">
-                            <?php
+                        <?php
                                 // Number of users per page
                                 $items = 20;
 
@@ -119,23 +119,33 @@ require_once '../database.php';
                                 // lấy ra các user cho trang hiện tại
                                 $usersForPage = array_slice($users, $startIndex, $items);
                             ?>
-
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Họ tên</th>
-                                        <th>Chức vụ</th>
-                                        <th>Điện thoại</th>
-                                        <th>Email</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($usersForPage as $user): ?>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Họ tên</th>
+                                <th>Chức vụ</th>
+                                <th>Điện thoại</th>
+                                <th>Email</th>
+                                <th scope="col" colspan="3" class="text-center">Thao tác</th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($usersForPage as $user): ?>
                                     <tr>
                                         <td><?php echo $user['fullname']; ?></td>
                                         <td><?php echo $user['position']; ?></td>
                                         <td><?php echo $user['phonenumber']; ?></td>
                                         <td><?php echo $user['email']; ?></td>
+                                        <th scope="col">
+                                            <a href="user_detail.php?id=1" class="btn"><i class="bi bi-eye-fill"></i></a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="user_edit.php?id=1" class="btn"><i class="bi bi-pencil-fill"></i></a>
+                                        </th>
+                                        <th scope="col">
+                                            <a href="user_del.php?id=1" class="btn"><i class="bi bi-trash3-fill"></i></a>
+                                        </th>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
