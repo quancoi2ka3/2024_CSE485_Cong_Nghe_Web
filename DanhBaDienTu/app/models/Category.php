@@ -2,24 +2,24 @@
 require_once '../database.php';
 $conn = connect();
 
-function getAllDepartments(){
+function getAllCategories(){
     global $conn; 
 
-    $sql = "SELECT * FROM departments";
+    $sql = "SELECT * FROM categories";
  
     // Thực thi câu lệnh
     $result = mysqli_query($conn, $sql);
  
     // Tạo mảng chứa dữ liệu
-    $departments = [];
+    $categories = [];
     if(mysqli_num_rows($result) > 0){
          while($row = mysqli_fetch_assoc($result)){
-             $departments[] = $row;
+             $categories[] = $row;
          }
     }
     // Đóng kết nối
     mysqli_close($conn);
-    return $departments;
+    return $categories;
 }
 
 ?>

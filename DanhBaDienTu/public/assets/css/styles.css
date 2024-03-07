@@ -62,8 +62,8 @@ hr{
     padding: 10px;
 }
 .image-logo{
-    width: 50%;
-    height: 150px;
+    width: 70%;
+    height: 160px;
     margin: 20px 30px;
     margin-left: 89px;
 }
@@ -81,7 +81,7 @@ marquee a{
     color: black;
 }
 marquee a:hover{
-    color: rgb(239, 49, 20);
+    color: rgb(223, 37, 8);
 }
 .info{
     margin: 0 30%;
