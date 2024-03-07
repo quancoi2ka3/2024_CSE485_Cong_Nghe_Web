@@ -1,31 +1,5 @@
-<<<<<<< HEAD
-<?php
+<?php 
 require_once '../database.php';
-$conn = connect();
-
-function getAllDepartments(){
-    global $conn; 
-
-    $sql = "SELECT * FROM departments";
- 
-    // Thực thi câu lệnh
-    $result = mysqli_query($conn, $sql);
- 
-    // Tạo mảng chứa dữ liệu
-    $departments = [];
-    if(mysqli_num_rows($result) > 0){
-         while($row = mysqli_fetch_assoc($result)){
-             $departments[] = $row;
-         }
-    }
-    // Đóng kết nối
-    mysqli_close($conn);
-    return $departments;
-}
-
-?>
-=======
-<?php require_once '../database.php';
 // Hàm lấy danh sách bộ phận 
 function getDepartments()
 {
@@ -111,4 +85,3 @@ function searchDepartments($keyword)
         $departments[] = $row;
     }
 }
->>>>>>> c8d7c757afbc44c6b41e6b6dd15b5a433c7ce503

@@ -2,7 +2,7 @@
 require_once '../models/Employee.php';
 $employees = getAllEmployees();
 require_once '../models/Department.php';
-$departments = getAllDepartments();
+$departments = getDepartments();
 ?>
 <!DOCTYPE html>
 <html>

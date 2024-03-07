@@ -1,6 +1,6 @@
 <?php
 require_once '../models/Department.php';
-$departments = getAllDepartments();
+$departments = getDepartments();
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ $departments = getAllDepartments();
                                     <input type="text" class="form-control" placeholder="Tìm kiếm">
                                 </div>
                                 <div class="col-md ms-2">
-                                    <a href="search.blade.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
+                                    <a href="search.php" class="btn btn-danger"> <i class="bi bi-search"></i> &nbsp Tìm kiếm nâng cao</a>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php
 require_once '../database.php';
-$conn = connect();
+$conn = connectDB();
 
 function getAllUsers(){
     global $conn; 

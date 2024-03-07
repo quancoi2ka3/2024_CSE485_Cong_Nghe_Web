@@ -1,10 +1,6 @@
 <?php
-<<<<<<< HEAD
-    require_once '../models/User.php';
-    $users = getAllUsers();
-=======
-require_once '../functions.php';
->>>>>>> c8d7c757afbc44c6b41e6b6dd15b5a433c7ce503
+    require_once '../models/Employee.php';
+    $employees = getAllEmployees();
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +30,7 @@ require_once '../functions.php';
                                         <option value="1">Chức vụ</option>
                                         <option value="2">Số điện thoại</option>
                                         <option value="2">Email</option>
+                                        <option value="2">Địa chỉ</option>
                                     </select>
                                 </div>
                                 <div class="col-md-7 ms-4">
@@ -66,23 +63,20 @@ require_once '../functions.php';
                                 <thead>
                                     <tr>
                                         <th>Họ tên</th>
-                                        <th>Passwors</th>
-                                        <th>Role</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Email</th>
+                                        <th>MobilePhone</th>
+                                        <th>Chức vụ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach($employeesForPage as $employee): ?>
                                     <tr>
-<<<<<<< HEAD
-                                        <td><?php echo $user['Username']; ?></td>
-                                        <td><?php echo $user['Password']; ?></td>
-                                        <td><?php echo $user['Role']; ?></td>
-=======
                                         <td><?php echo $employee['FullName']; ?></td>
-                                        <td><?php echo $employee['Position']; ?></td>
-                                        <td><?php echo $employee['MobilePhone']; ?></td>
+                                        <td><?php echo $employee['Address']; ?></td>
                                         <td><?php echo $employee['Email']; ?></td>
->>>>>>> c8d7c757afbc44c6b41e6b6dd15b5a433c7ce503
+                                        <td><?php echo $employee['MobilePhone']; ?></td>
+                                        <td><?php echo $employee['Position']; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
