@@ -1,6 +1,10 @@
 <?php
+<<<<<<< HEAD
     require_once '../models/User.php';
     $users = getAllUsers();
+=======
+require_once '../functions.php';
+>>>>>>> c8d7c757afbc44c6b41e6b6dd15b5a433c7ce503
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +50,7 @@
                                 $items = 20;
 
                                 // tính tổng số trang
-                                $totalPages = ceil(count($users) / $items);
+                                $totalPages = ceil(count($employees) / $items);
 
                                //trang mặc định là trang 1
                                 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -55,7 +59,7 @@
                                 $startIndex = ($currentPage - 1) * $items;
 
                                 // lấy ra các user cho trang hiện tại
-                                $usersForPage = array_slice($users, $startIndex, $items);
+                                $employeesForPage = array_slice($employees, $startIndex, $items);
                             ?>
 
                             <table class="table table-bordered">
@@ -67,11 +71,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($usersForPage as $user): ?>
+                                    <?php foreach($employeesForPage as $employee): ?>
                                     <tr>
+<<<<<<< HEAD
                                         <td><?php echo $user['Username']; ?></td>
                                         <td><?php echo $user['Password']; ?></td>
                                         <td><?php echo $user['Role']; ?></td>
+=======
+                                        <td><?php echo $employee['FullName']; ?></td>
+                                        <td><?php echo $employee['Position']; ?></td>
+                                        <td><?php echo $employee['MobilePhone']; ?></td>
+                                        <td><?php echo $employee['Email']; ?></td>
+>>>>>>> c8d7c757afbc44c6b41e6b6dd15b5a433c7ce503
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
