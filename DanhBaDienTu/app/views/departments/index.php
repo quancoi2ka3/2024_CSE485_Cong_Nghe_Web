@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../models/Department.php';
+require_once 'delete_department.php';
 $departments = getDepartments();
 // echo'<pre>';
 // print_r($departments);
@@ -52,7 +53,7 @@ $departments = getDepartments();
     <main>
         <div class="container-fluid mt-5">
             <div class="row">
-                <h1 class="text-primary text-center mb-5">Danh sách phòng ban</h1>
+                <h1 class="text-primary text-center mb-5">Quản lý phòng ban</h1>
                 <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
                 <?php
                 require_once __DIR__ . '/../../models/Department.php';

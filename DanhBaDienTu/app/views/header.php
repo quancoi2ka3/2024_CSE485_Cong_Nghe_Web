@@ -66,7 +66,7 @@
                                     <a class="nav-link" href="login/login.php"> <i class="bi bi-person-fill"></i></a>
                                 </li>
                                 <li class="nav-item dropdown" style="border-right: none; padding:0;">
-                                    <a class="nav-link dropdown-toggle" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown">Đăng nhập</a>
+                                    <a class="nav-link dropdown-toggle" href="login/login.php" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown">Đăng nhập</a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="info.php">Trang cá nhân</a></li>
                                         <hr>
