@@ -66,13 +66,12 @@ function getEmployees() {
     mysqli_stmt_close($stmt);
     return $count > 0;
     }
-    function searchEmployees($keyword) {
+    function searchEmployees($Position, $keyword) {
         $conn = connectDB();
-        $sql = "SELECT * FROM employees WHERE FullName LIKE ? OR Address LIKE ? OR Email LIKE ? OR MobilePhone LIKE ? OR Position LIKE ? OR DepartmentID IN (SELECT DepartmentID FROM departments WHERE DepartmentName LIKE ?)";
-
+        $sql = "SELECT * FROM employees WHERE Position = ? AND (FullName LIKE ? OR Address LIKE ? OR Email LIKE ? OR MobilePhone LIKE ? OR DepartmentID IN (SELECT DepartmentID FROM departments WHERE DepartmentName LIKE ?))";
         $keyword = "%$keyword%";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ssssss", $keyword,$keyword,$keyword,$keyword,$keyword,$keyword);
+        mysqli_stmt_bind_param($stmt, "ssssss", $Position, $keyword, $keyword, $keyword, $keyword, $keyword);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         $employees = [];
@@ -81,5 +80,6 @@ function getEmployees() {
         }
         return $employees;
     }
+    
     
 ?>
