@@ -28,7 +28,7 @@ $currentPageItems =array_slice($employees, ($currentPage - 1) * $itemsPerPage, $
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/../admin_dashboard.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="../admin_dashboard.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="../departments/index.php">Department Manage</a>
@@ -107,7 +107,7 @@ if(isset($_GET['keyword']) && isset($_GET['Position'])) {
                             <td><?php echo $employee['DepartmentID']?></td>
                             <td><a href="/DBĐT/DanhBaDienTu/app/views/employees/edit_employees.php"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             <td><a href="/DBĐT/DanhBaDienTu/app/views/employees/delete_employees.php"><i class="fa-solid fa-trash"></i></a></td>
-                            <td><a href="/DBĐT/DanhBaDienTu/app/views/employees/infor_employees.php"><i class="fa-solid fa-eye"></i></a></td>
+                            <td><a href="infor_employees.php"><i class="fa-solid fa-eye"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

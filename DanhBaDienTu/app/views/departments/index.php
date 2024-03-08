@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../models/Department.php';
+require_once 'delete_department.php';
 $departments = getDepartments();
 // echo'<pre>';
 // print_r($departments);
@@ -29,7 +30,7 @@ $departments = getDepartments();
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="DanhBaDienTu/app/views/admin_dashboard.php">Home</a>
+                            <a class="nav-link" aria-current="page" href="../admin_dashboard.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Department Manage</a>
@@ -52,7 +53,7 @@ $departments = getDepartments();
     <main>
         <div class="container-fluid mt-5">
             <div class="row">
-                <h1 class="text-primary text-center mb-5">Danh sách phòng ban</h1>
+                <h1 class="text-primary text-center mb-5">Quản lý phòng ban</h1>
                 <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
                 <?php
                 require_once __DIR__ . '/../../models/Department.php';
@@ -60,7 +61,7 @@ $departments = getDepartments();
                 if (isset($_GET['keyword'])) {
                     $keyword = $_GET['keyword'];
                     // Gọi hàm searchEmployees để tìm kiếm nhân viên
-                    $departments = searchDepartment($keyword);
+                    $departments = searchDepartments($keyword);
                 } else {
                     // Nếu không có từ khóa tìm kiếm, lấy danh sách nhân viên bình thường
                     $departments = getDepartments();

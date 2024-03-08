@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__.'/../database.php';
+
 // Hàm lấy danh sách bộ phận 
 function getDepartments()
 {
@@ -30,6 +31,7 @@ function getDepartmentById($id)
 //Thêm 1 đơn vị mới
 function addDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website)
 {
+ try{
     $conn = connectDB();
     $sql = "INSERT INTO departments (DepartmentID, DepartmentName,Address,Email,Phone,Logo,Website) VALUES (?, ?,?,?,?,?,?)";
     $stmt = mysqli_prepare($conn, $sql);
@@ -37,6 +39,10 @@ function addDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Log
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $result;
+ }catch(PDOException $e){
+    
+    echo "Lỗi" ;
+ }
 }
 
 function updateDepartment($id, $name, $description)
@@ -72,10 +78,9 @@ function isDepartmentExist($id)
     mysqli_stmt_close($stmt);
     return $count > 0;
 }
-function searchDepartment($keyword) {
+function searchDepartments($keyword) {
     $conn = connectDB();
     $sql = "SELECT * FROM departments WHERE DepartmentID LIKE ? OR DepartmentName LIKE ? OR Address LIKE ? OR Email LIKE ? OR Phone LIKE ? OR Website LIKE ? ";
-
     $keyword = "%$keyword%";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "isssss", $keyword,$keyword,$keyword,$keyword,$keyword,$keyword);
