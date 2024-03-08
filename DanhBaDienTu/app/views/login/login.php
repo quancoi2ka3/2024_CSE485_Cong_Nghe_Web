@@ -1,3 +1,7 @@
+<?php 
+require_once __DIR__.'/../../models/User.php';
+$users=getAllUsers();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +16,9 @@
 <div class="login-container">
     <img class="header-image" src="../../../public/assets/images/baner.png" alt="Banner Image">
     <h2>Vui lòng đăng nhập thông tin!</h2>
-    <form>
+
+
+    <form method="POST" action="/DBĐT/DanhBaDienTu/app/proccess_login.php">
         <div class="form-group">
             <label for="username">Tên đăng nhập:</label>
             <input type="text" name="username" id="username" required>
@@ -23,14 +29,7 @@
             <input type="password" name="password" id="password" required>
         </div>
 
-        <div class="form-group">
-            <label for="role">Vai trò:</label>
-            <select name="role" id="role">
-                <option value="admin">Admin</option>
-                <option value="user">Người dùng</option>
-                <option value="guest">Khách</option>
-            </select>
-        </div>
+    
 
         <div class="form-group">
             <div class="submit-container">
