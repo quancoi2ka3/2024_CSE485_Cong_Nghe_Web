@@ -72,17 +72,18 @@ function isDepartmentExist($id)
     mysqli_stmt_close($stmt);
     return $count > 0;
 }
-function searchDepartments($keyword)
-{
+function searchDepartment($keyword) {
     $conn = connectDB();
-    $sql = "SELECT * FROM departments WHERE name LIKE ? OR description LIKE ?";
+    $sql = "SELECT * FROM departments WHERE DepartmentID LIKE ? OR DepartmentName LIKE ? OR Address LIKE ? OR Email LIKE ? OR Phone LIKE ? OR Website LIKE ? ";
+
     $keyword = "%$keyword%";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $keyword, $keyword);
+    mysqli_stmt_bind_param($stmt, "isssss", $keyword,$keyword,$keyword,$keyword,$keyword,$keyword);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $departments = array();
+    $departments = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $departments[] = $row;
+        $departments[] = $row; 
     }
+    return $departments;
 }

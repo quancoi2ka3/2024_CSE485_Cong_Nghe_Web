@@ -55,12 +55,12 @@ $departments = getDepartments();
                 <h1 class="text-primary text-center mb-5">Danh sách phòng ban</h1>
                 <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
                 <?php
-
+                require_once __DIR__ . '/../../models/Department.php';
                 // Kiểm tra xem có từ khóa tìm kiếm được gửi lên từ form hay không
                 if (isset($_GET['keyword'])) {
                     $keyword = $_GET['keyword'];
                     // Gọi hàm searchEmployees để tìm kiếm nhân viên
-                    $departments = searchDepartments($keyword);
+                    $departments = searchDepartment($keyword);
                 } else {
                     // Nếu không có từ khóa tìm kiếm, lấy danh sách nhân viên bình thường
                     $departments = getDepartments();
