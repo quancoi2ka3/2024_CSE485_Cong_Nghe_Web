@@ -1,5 +1,5 @@
 <?php 
-require_once '../database.php';
+require_once __DIR__.'/../database.php';
 // Hàm lấy danh sách bộ phận 
 function getDepartments()
 {
@@ -28,16 +28,17 @@ function getDepartmentById($id)
     return $department;
 }
 //Thêm 1 đơn vị mới
-function addDepartment($name, $description)
+function addDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website)
 {
     $conn = connectDB();
-    $sql = "INSERT INTO departments (name, description) VALUES (?, ?)";
+    $sql = "INSERT INTO departments (DepartmentID, DepartmentName,Address,Email,Phone,Logo,Website) VALUES (?, ?,?,?,?,?,?)";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $name, $description);
+    mysqli_stmt_bind_param($stmt, "isssiss", $DepartmentID, $DepartmentName,$Address,$Email,$Phone,$Logo,$Website);
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $result;
 }
+
 function updateDepartment($id, $name, $description)
 {
     $conn = connectDB();
@@ -71,17 +72,18 @@ function isDepartmentExist($id)
     mysqli_stmt_close($stmt);
     return $count > 0;
 }
-function searchDepartments($keyword)
-{
+function searchDepartment($keyword) {
     $conn = connectDB();
-    $sql = "SELECT * FROM departments WHERE name LIKE ? OR description LIKE ?";
+    $sql = "SELECT * FROM departments WHERE DepartmentID LIKE ? OR DepartmentName LIKE ? OR Address LIKE ? OR Email LIKE ? OR Phone LIKE ? OR Website LIKE ? ";
+
     $keyword = "%$keyword%";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $keyword, $keyword);
+    mysqli_stmt_bind_param($stmt, "isssss", $keyword,$keyword,$keyword,$keyword,$keyword,$keyword);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $departments = array();
+    $departments = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $departments[] = $row;
+        $departments[] = $row; 
     }
+    return $departments;
 }
