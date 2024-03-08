@@ -1,6 +1,6 @@
 <?php
     require_once '../models/Employee.php';
-    $employees = getAllEmployees();
+    $employees = getEmployees();
 ?>
 
 <!DOCTYPE html>

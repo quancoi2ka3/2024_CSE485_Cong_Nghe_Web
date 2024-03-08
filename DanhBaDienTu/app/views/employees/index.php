@@ -1,6 +1,10 @@
 <?php 
 require_once __DIR__.'/../../models/Employee.php';
 $employees=getEmployees();
+$itemsPerPage = 10;
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+$totalPages = ceil(count($employees) / $itemsPerPage);
+$currentPageItems =array_slice($employees, ($currentPage - 1) * $itemsPerPage, $itemsPerPage);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,22 +53,27 @@ $employees=getEmployees();
         <div class="row-g-2">
     <div class="col-5">
         <a href="/DBĐT/DanhBaDienTu/app/views/employees/add_employees.php" class="btn btn-primary">Thêm mới</a>
+        
     </div>
     <?php 
 require_once __DIR__.'/../../models/Employee.php';
 
-// Kiểm tra xem có từ khóa tìm kiếm được gửi lên từ form hay không
-if(isset($_GET['keyword'])) {
+if(isset($_GET['keyword']) && isset($_GET['Position'])) {
     $keyword = $_GET['keyword'];
-    // Gọi hàm searchEmployees để tìm kiếm nhân viên
-    $employees = searchEmployees($keyword);
+    $Position = $_GET['Position'];
+    $employees = searchEmployees($Position,$keyword);
 } else {
-    // Nếu không có từ khóa tìm kiếm, lấy danh sách nhân viên bình thường
     $employees = getEmployees();
 }
 ?>
     <form class="d-flex" method="GET">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+   
+    <select name="Position" id="" select class="form-select" aria-label="Default select example">
+        <?php foreach($employees as $employee): ?>
+        <option name="Position" value="<?php echo $employee['Position']?>"><?php echo $employee['Position'] ?></option>
+        <?php endforeach;?>
+        </select>
+    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="keyword">
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
 
@@ -86,29 +95,46 @@ if(isset($_GET['keyword'])) {
     </tr>
   </thead>
   <tbody>
-  <?php if ($employees): ?>
-<?php foreach($employees as $employee): ?>
-<tr>
-<td><?php echo $employee['EmployeeID']?></td>
-<td><?php echo $employee['FullName']?></td>
-<td><?php echo $employee['Address']?></td>
-<td><?php echo $employee['Email']?></td>
-<td><?php echo $employee['MobilePhone']?></td>
-<td><?php echo $employee['Position']?></td>
-<td><?php echo $employee['DepartmentID']?></td>
-<td><a href="/DBĐT/DanhBaDienTu/app/views/employees/edit_employees.php"><i class="fa-solid fa-pen-to-square"></i></a></td>
-<td><a href="/DBĐT/DanhBaDienTu/app/views/employees/delete_employees.php"><i class="fa-solid fa-trash"></i></a></td>
-<td><a href=""><i class="fa-solid fa-ellipsis"></i></a></td>
-</tr>
-<?php endforeach; ?>
-<?php else: ?>
-<tr>
-<td colspan="9">Không tìm thấy kết quả</td>
-</tr>
-<?php endif; ?>
-    
-  </tbody>
+                <?php if ($currentPageItems): ?>
+                    <?php foreach($currentPageItems as $employee): ?>
+                        <tr>
+                            <td><?php echo $employee['EmployeeID']?></td>
+                            <td><?php echo $employee['FullName']?></td>
+                            <td><?php echo $employee['Address']?></td>
+                            <td><?php echo $employee['Email']?></td>
+                            <td><?php echo $employee['MobilePhone']?></td>
+                            <td><?php echo $employee['Position']?></td>
+                            <td><?php echo $employee['DepartmentID']?></td>
+                            <td><a href="/DBĐT/DanhBaDienTu/app/views/employees/edit_employees.php"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td><a href="/DBĐT/DanhBaDienTu/app/views/employees/delete_employees.php"><i class="fa-solid fa-trash"></i></a></td>
+                            <td><a href="/DBĐT/DanhBaDienTu/app/views/employees/infor_employees.php"><i class="fa-solid fa-eye"></i></a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="9">Không tìm thấy kết quả</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+
 </table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+<?php if ($currentPage > 1): ?>
+    <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">Previous</a></li>
+<?php endif; ?><?php for ($i = 1; $i <= $totalPages; $i++): ?>
+<?php if ($i == $currentPage): ?>
+    <li class="page-item active"><a class="page-link" href="#"><?php echo $i; ?></a></li>
+<?php else: ?>
+    <li class="page-item"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+<?php endif; ?>
+<?php endfor; ?>
+<?php if ($currentPage < $totalPages): ?>
+    <li class="page-item"><a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Next</a></li>
+<?php endif; ?>
+</ul>
+</nav>
     </main>
 
 
