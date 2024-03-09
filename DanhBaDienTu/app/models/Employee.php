@@ -15,7 +15,8 @@ function getEmployees() {
     }
     function getEmployeeById($id) {
     $conn = connectDB();
-    $sql = "SELECT * FROM employees WHERE id = ?";$stmt = mysqli_prepare($conn, $sql);
+    $sql = "SELECT * FROM employees WHERE EmployeeID = ?";
+    $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $id);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);

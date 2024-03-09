@@ -5,11 +5,11 @@ $itemsPerPage = 10;
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $totalPages = ceil(count($employees) / $itemsPerPage);
 $currentPageItems =array_slice($employees, ($currentPage - 1) * $itemsPerPage, $itemsPerPage);
-session_start();
-if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
-$_SESSION['user_role'] !== "admin") {
-header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
-}
+// session_start();
+// if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
+// $_SESSION['user_role'] !== "admin") {
+// header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,7 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                         </li>
                     </ul>
                     <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
-    <h3 for="">Account:  <?php echo $_SESSION['user_id']; ?> </h3>
+    <!-- <h3 for="">Account:  <?php echo $_SESSION['user_id']; ?> </h3> -->
     <button class="btn btn-outline-danger" type="submit">Log Out</button>
 </form>
 
@@ -112,7 +112,7 @@ if(isset($_GET['keyword']) && isset($_GET['Position'])) {
                             <td><?php echo $employee['DepartmentID']?></td>
                             <td><a href="edit_employees.php"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             <td><a href="delete_employees.php"><i class="fa-solid fa-trash"></i></a></td>
-                            <td><a href="infor_employees.php"><i class="fa-solid fa-eye"></i></a></td>
+                            <td><a href="View_Employee.php?id=<?= $employee['EmployeeID'] ?>"><i class="fa-solid fa-eye"></i></a></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
