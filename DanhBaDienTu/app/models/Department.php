@@ -15,18 +15,18 @@ function getDepartments()
     return $departments;
 }
 // Tìm đơn vị theo ID
-function getDepartmentById($id)
+function getDepartmentById($DepartmentID)
 {
     $conn = connectDB();
-    $sql = "SELECT * FROM departments WHERE id =?";
+    $sql = "SELECT * FROM departments WHERE DepartmentID =?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_bind_param($stmt, "i", $DepartmentID);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $department = mysqli_fetch_assoc($result);
+    $departments = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
     mysqli_stmt_close($stmt);
-    return $department;
+    return $departments;
 }
 //Thêm 1 đơn vị mới
 function addDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website)
@@ -45,32 +45,32 @@ function addDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Log
  }
 }
 
-function updateDepartment($id, $name, $description)
+function updateDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website)
 {
     $conn = connectDB();
-    $sql = "UPDATE departments SET name = ?, description = ? WHERE id = ?";
+    $sql = "UPDATE departments SET DepartmentName = ?, Address = ?, Email = ?, Phone = ?, Logo = ?, Website = ? WHERE DepartmentID = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssi", $name, $description, $id);
+    mysqli_stmt_bind_param($stmt, "ssssssi", $DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website);
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $result;
 }
-function deleteDepartment($id)
+function deleteDepartment($DepartmentID)
 {
     $conn = connectDB();
-    $sql = "DELETE FROM departments WHERE id = ?";
+    $sql = "DELETE FROM departments WHERE DepartmentID = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_bind_param($stmt, "i", $DepartmentID);
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $result;
 }
-function isDepartmentExist($id)
+function isDepartmentExist($DepartmentID)
 {
     $conn = connectDB();
-    $sql = "SELECT COUNT(*) FROM departments WHERE id = ?";
+    $sql = "SELECT COUNT(*) FROM departments WHERE DepartmentID = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_bind_param($stmt, "i", $DepartmentID);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $count = mysqli_fetch_row($result)[0];

@@ -1,7 +1,28 @@
 <?php
+
+//localhost/danhbadientu/index.php?controller=A&action=B
+
+$controller = isset($_GET['controller']) ? $_GET['controller']:'home';
+$action = isset($_GET['action']) ? $_GET['action']:'index';
+
+$controller =ucfirst($controller);
+
+$path = 'app/models/'.$controller.'.php';
+
+if(!file_exists($path)){
+    die('tep tin k ton tai');
+}else{
+    echo $path;
+}
+
+require($path);
+
+//Muc tieu
+//Goi ra controller 
+
 // Khai báo thư viện 
-require_once '../config.php';
-require_once '../functions.php';
+require_once '../app/config.php';
+require_once '../app/functions.php';
 // Khởi tạo các biến 
 $url = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];

@@ -43,7 +43,7 @@ require_once __DIR__ . '/../../models/Department.php';
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Website" aria-label="Website" aria-describedby="basic-addon1" name="Website">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Add</button>
         <a href="index.php" class="btn btn-primary"><i class="fa-solid fa-house"></i></a>
 
     </form>

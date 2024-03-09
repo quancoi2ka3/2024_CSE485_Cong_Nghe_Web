@@ -56,6 +56,11 @@ $departments = getDepartments();
             <div class="row">
                 <h1 class="text-primary text-center mb-5">Quản lý phòng ban</h1>
                 <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
+                <?php if(isset($_GET['msg'])):?>
+                    <div class="alert alert-success" role="alert">
+                        <?= $_GET['msg']?>
+                    </div>
+                    <?php endif;?>
                 <?php
                 require_once __DIR__ . '/../../models/Department.php';
                 // Kiểm tra xem có từ khóa tìm kiếm được gửi lên từ form hay không
@@ -117,9 +122,9 @@ $departments = getDepartments();
                                 <td><?= $department['Phone'] ?></td>
                                 <td><?= $department['Logo'] ?></td>
                                 <td><?= $department['Website'] ?></td>
-                                <td><a href="#" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
+                                <td><a href="View_Department.php?id=<?= $department['DepartmentID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
                                 <td><a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
-                                <td><a href="#" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td><a href="edit_department.php" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
