@@ -12,7 +12,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $role = $user['Role'];
             if ($role == 'admin') {
                 setcookie('logged_in', true, time() + 60 * 60 * 24 * 30, "/"); 
-                header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/admin_dashboard.php');
+                header('Location:views/admin_dashboard.php');
             } else {
                 header('Location: https://www.tlu.edu.vn/');
             }

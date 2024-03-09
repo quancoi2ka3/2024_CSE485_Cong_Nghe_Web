@@ -1,11 +1,13 @@
-<?php 
-require_once __DIR__.'/../models/User.php';
-require_once __DIR__.'/../models/Employee.php';
-require_once __DIR__.'/../models/Department.php';
+<?php
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/Employee.php';
+require_once __DIR__ . '/../models/Department.php';
 session_start();
-if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
-$_SESSION['user_role'] !== "admin") {
-header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
+if (
+    !isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
+    $_SESSION['user_role'] !== "admin"
+) {
+    header('Location:login/login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -42,12 +44,12 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                             <a class="nav-link" href="users/index.php">Users Manage</a>
                         </li>
                     </ul>
-                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
-    <h3 for="">Account: 
-        <?php echo $_SESSION['user_id']; ?>
-    </h3>
-    <button class="btn btn-outline-danger" type="submit">Log Out</button>
-</form>
+                    <form action="../logout.php" method="post" class="d-flex">
+                        <h3 for="">Account:
+                            <?php echo $_SESSION['user_id']; ?>
+                        </h3>
+                        <button class="btn btn-outline-danger" type="submit">Log Out</button>
+                    </form>
 
                 </div>
             </div>
@@ -60,20 +62,9 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số phòng ban</h5>
-<<<<<<< HEAD
-                            <p class="card-text"><?php require_once('../models/Department.php');echo sizeof(getDepartments())?></p>
-=======
-                            <p class="card-text">
-                            <?php 
-                            $cout_departments=getCountDepartment();
-                            echo $cout_departments;
-                            ?>
-                            </p>
-
-                            <p class="card-text"><?php require_once('../models/Department.php');echo sizeof(getDepartments())?></p>
-
->>>>>>> acb4551e543c3fb901b11c61d64fc46646804a57
-                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <p class="card-text"><?php require_once('../models/Department.php');
+                                                    echo sizeof(getDepartments()) ?></p>
+                            <a href="departments/index.php" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -83,12 +74,9 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                             <h5 class="card-title">Số nhân viên</h5>
                             <p class="card-text">
                             </p>
-                            <p class="card-text"><?php require_once('../models/Employee.php');echo sizeof(getEmployees())?></p>
-<<<<<<< HEAD
-=======
-
->>>>>>> acb4551e543c3fb901b11c61d64fc46646804a57
-                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <p class="card-text"><?php require_once('../models/Employee.php');
+                                                    echo sizeof(getEmployees()) ?></p>
+                            <a href="employees/index.php" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
                 </div>
@@ -96,16 +84,10 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số người dùng</h5>
-<<<<<<< HEAD
 
-                            
-                            <p class="card-text"><?php require_once('../models/User.php');echo sizeof(getUsers())?></p>
-=======
-                            <p class="card-text"><?php 
-                            $cout_users=getCountUser();
-                            echo $cout_users;
-                            ?></p>
->>>>>>> acb4551e543c3fb901b11c61d64fc46646804a57
+
+                            <p class="card-text"><?php require_once('../models/User.php');
+                                                    echo sizeof(getUsers()) ?></p>
                             <a href="users/index.php" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>

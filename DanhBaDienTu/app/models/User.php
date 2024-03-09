@@ -29,21 +29,39 @@ function getUserByID($UserID)
     return $users;
 }
 //Thêm 1 đơn vị mới
-function AddUser($Username,$Password,$Role,$EmployeeID)
+function AddUser($Username,$Password,$Role)
 {
     try {
         // Validate user input to prevent SQL injection (prepared statements already help, but additional validation is recommended)
-        $Username = filter_var($Username); // Sanitize username
-        $Password = password_hash($Password, PASSWORD_DEFAULT); // Hash password securely
+        $Username = filter_var($Username); // Sanitize username // Hash password securely
     
         if (!in_array($Role, ['admin', 'regular'])) {
           throw new InvalidArgumentException('Invalid Role. Must be "admin" or "regular".');
         }
     
         $conn = connectDB();
-        $sql = "INSERT INTO users (Username, Password, Role, EmployeeID) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (Username, Password, Role) VALUES (?, ?, ?)";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ssss", $Username, $Password, $Role, $EmployeeID);
+        mysqli_stmt_bind_param($stmt, "sss", $Username, $Password, $Role);
+        $result = mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    
+        return $result;
+      } catch (InvalidArgumentException $e) {
+        echo "Invalid user data: " . $e->getMessage();
+      } catch (PDOException $e) {
+        echo "Database error: " . $e->getMessage();
+      }
+}
+function SignUp($Username,$Password)
+{
+    try {
+        // Validate user input to prevent SQL injection (prepared statements already help, but additional validation is recommended)
+        $Username = filter_var($Username); // Sanitize username
+        $conn = connectDB();
+        $sql = "INSERT INTO users (Username, Password, Role) VALUES (?, ?, 'regular')";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "sss", $Username, $Password);
         $result = mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
     

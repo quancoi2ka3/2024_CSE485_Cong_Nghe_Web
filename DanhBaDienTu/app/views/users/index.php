@@ -56,7 +56,7 @@ $users = getUsers();
         <div class="container-fluid mt-5">
             <div class="row">
                 <h1 class="text-primary text-center mb-5">Quản lý tài khoản người dùng</h1>
-                <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
+                <div class="col-sm"><a href="Add_User.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
                 <?php if (isset($_GET['msg'])) : ?>
                     <div class="alert alert-success" role="alert">
                         <?= $_GET['msg'] ?>

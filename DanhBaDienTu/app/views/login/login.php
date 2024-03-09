@@ -41,7 +41,7 @@ $users = getUsers();
                 <div class="submit-container">
                     <input type="submit" value="Đăng nhập">
                     <div class="forgot-password">
-                        <a href="forgot-password.php">Quên mật khẩu?</a>
+                        <a href="forgot_password.php">Quên mật khẩu?</a>
                     </div>
                 </div>
             </div>

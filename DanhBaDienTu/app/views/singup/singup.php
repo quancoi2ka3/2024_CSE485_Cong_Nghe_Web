@@ -14,7 +14,7 @@
         <img class="header-image" src="../../../public/assets/images/baner.png" alt="Banner Image">
 
             <h2>Tạo tài khoản cá nhân</h2>
-            <form>
+            <form action="Signup_Process.php" method="post">
                 <div class="form-group">
                     <label for="avatar">Ảnh đại diện:</label>
                     <input type="file" name="avatar" id="avatar">
@@ -72,8 +72,8 @@
                     <input type="email" name="email" id="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="role">Vai trò:</label>
-                    <input type="text" name="role" id="role" required>
+                    <label for="role">Tên đăng nhập:</label>
+                    <input type="text" name="username" id="username" required>
                 </div>
 
                 <div class="form-group">
