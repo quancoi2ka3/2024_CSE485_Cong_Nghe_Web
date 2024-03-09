@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../models/User.php';
 
-$users = getAllUsers();
+$users = getUsers();
 // echo'<pre>';
 // print_r($departments);
 // '</pre>';
@@ -33,7 +33,7 @@ $users = getAllUsers();
                             <a class="nav-link" aria-current="page" href="../admin_dashboard.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Department Manage</a>
+                            <a class="nav-link " href="../departments/index.php">Department Manage</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../employees/index.php">Employee Manage</a>
@@ -42,18 +42,12 @@ $users = getAllUsers();
                             <a class="nav-link active" href="../users/index.php">Users Manage</a>
                         </li>
                     </ul>
-<<<<<<< HEAD
-                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
-    <h3 for="">Account : </h3>
-    <button class="btn btn-outline-danger" type="submit">Log Out</button>
-</form>
 
-=======
-                    <form class="d-flex">
+
+                    <form action="../../logout.php" method="post" class="d-flex">
                         <h4 for="" class="text-success">Account : mquan </h4>
                         <button class="btn btn-outline-danger" type="submit">Log Out</button>
                     </form>
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
                 </div>
             </div>
         </nav>
@@ -63,21 +57,21 @@ $users = getAllUsers();
             <div class="row">
                 <h1 class="text-primary text-center mb-5">Quản lý tài khoản người dùng</h1>
                 <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
-                <?php if(isset($_GET['msg'])):?>
+                <?php if (isset($_GET['msg'])) : ?>
                     <div class="alert alert-success" role="alert">
-                        <?= $_GET['msg']?>
+                        <?= $_GET['msg'] ?>
                     </div>
-                    <?php endif;?>
+                <?php endif; ?>
                 <?php
                 require_once __DIR__ . '/../../models/User.php';
                 // Kiểm tra xem có từ khóa tìm kiếm được gửi lên từ form hay không
                 if (isset($_GET['keyword'])) {
                     $keyword = $_GET['keyword'];
                     // Gọi hàm searchEmployees để tìm kiếm nhân viên
-                    $users = searchDepartments($keyword);
+                    $users = searchUsers($keyword);
                 } else {
                     // Nếu không có từ khóa tìm kiếm, lấy danh sách nhân viên bình thường
-                    $users = getDepartments();
+                    $users = getUsers();
                 }
                 ?>
                 <form class="d-flex" method="GET">
@@ -89,25 +83,23 @@ $users = getAllUsers();
 
                     <thead>
                         <tr>
-                            <th scope="col">Number</th>
-                            <th scope="col">Department ID</th>
-                            <th scope="col">Department Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Logo</th>
-                            <th scope="col">Website</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">EmployeeID</th>
+
                             <th scope="col" colspan="4" class="text-center">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $i = 0;
+                        
                         // Number of users per page
                         $items = 3;
 
                         // tính tổng số trang
-                        $totalPages = ceil(count($departments) / $items);
+                        $totalPages = ceil(count($users) / $items);
 
                         //trang mặc định là trang 1
                         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -116,22 +108,20 @@ $users = getAllUsers();
                         $startIndex = ($currentPage - 1) * $items;
 
                         // lấy ra các user cho trang hiện tại
-                        $departmentsForPage = array_slice($departments, $startIndex, $items);
+                        $usersForPage = array_slice($users, $startIndex, $items);
                         ?>
 
-                        <?php foreach ($departmentsForPage as $department) : ?>
+                        <?php foreach ($usersForPage as $user) : ?>
                             <tr>
-                                <th scope="row"><?= ++$i ?></th>
-                                <td><?= $department['DepartmentID'] ?></td>
-                                <td><?= $department['DepartmentName'] ?></td>
-                                <td><?= $department['Address'] ?></td>
-                                <td><?= $department['Email'] ?></td>
-                                <td><?= $department['Phone'] ?></td>
-                                <td><?= $department['Logo'] ?></td>
-                                <td><?= $department['Website'] ?></td>
-                                <td><a href="View_Department.php?id=<?= $department['DepartmentID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
+                            <td><?= $user['ID'] ?></td>
+                                <td><?= $user['Username'] ?></td>
+                                <td><?= $user['Password'] ?></td>
+                                <td><?= $user['Role'] ?></td>
+                                <td><?= $user['EmployeeID'] ?></td>
+
+                                <td><a href="View_User.php?id=<?= $user['ID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
                                 <td><a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
-                                <td><a href="edit_department.php" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td><a href="Edit_User.php?id=<?= $user['ID'] ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

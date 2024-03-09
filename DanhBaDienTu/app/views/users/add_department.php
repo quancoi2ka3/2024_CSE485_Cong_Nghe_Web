@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../models/Department.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Department</title>
+    <title>Add Department</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -15,11 +15,11 @@ require_once __DIR__ . '/../../models/Department.php';
 </head>
 
 <body>
-    <form action="edit_department_process.php" method="post">
-        <h1 class="text-center">Sửa phòng ban</h1>
+    <form action="add_department_process.php" method="post">
+        <h1 class="text-center">Thêm phòng ban</h1>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="DepartmentID" aria-label="DepartmentID" aria-describedby="basic-addon1" name="DepartmentID" value="">
+            <input type="text" class="form-control" placeholder="DepartmentID" aria-label="DepartmentID" aria-describedby="basic-addon1" name="DepartmentID">
         </div>
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="DepartmentName" aria-label="DepartmentName" aria-describedby="basic-addon1" name="DepartmentName">
@@ -43,7 +43,7 @@ require_once __DIR__ . '/../../models/Department.php';
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Website" aria-label="Website" aria-describedby="basic-addon1" name="Website">
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Add</button>
         <a href="index.php" class="btn btn-primary"><i class="fa-solid fa-house"></i></a>
 
     </form>

@@ -105,7 +105,7 @@ if(isset($_GET['keyword']) && isset($_GET['Position'])) {
                             <td><?php echo $employee['MobilePhone']?></td>
                             <td><?php echo $employee['Position']?></td>
                             <td><?php echo $employee['DepartmentID']?></td>
-                            <td><a href="/DBĐT/DanhBaDienTu/app/views/employees/edit_employees.php"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td><a href="edit_employees.php"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             <td><a href="delete_employees.php"><i class="fa-solid fa-trash"></i></a></td>
                             <td><a href="infor_employees.php"><i class="fa-solid fa-eye"></i></a></td>
                         </tr>

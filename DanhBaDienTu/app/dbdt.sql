@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table dbdt.categories: ~10 rows (approximately)
+-- Dumping data for table dbdt.categories: ~8 rows (approximately)
 INSERT INTO `categories` (`category_id`, `parent_id`, `category_name`) VALUES
 	(1, NULL, 'Trang chủ'),
 	(2, NULL, 'Giới Thiệu'),
@@ -57,9 +57,10 @@ CREATE TABLE IF NOT EXISTS `departments` (
   CONSTRAINT `departments_ibfk_1` FOREIGN KEY (`ParentDepartmentID`) REFERENCES `departments` (`DepartmentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table dbdt.departments: ~10 rows (approximately)
+-- Dumping data for table dbdt.departments: ~18 rows (approximately)
 INSERT INTO `departments` (`DepartmentID`, `DepartmentName`, `Address`, `Email`, `Phone`, `Logo`, `Website`, `ParentDepartmentID`) VALUES
-	(1, 'Khoa Công Nghệ Thông Tin', 'Nhà C1', 'vpkcntt@tlu.edu.vn', '(+84)-024 3 5632211', 'public/assets/images/logo_cntt', 'https://cse.tlu.edu.vn/', 1),
+	(0, '33', 'quanmn', 'hanoi', 'abcdzzz@gmail.com', '2138885444', NULL, NULL),
+	(1, 'Khoa Công Nghệ Thông Tin', 'Nhà C1', 'vpkcntt@tlu.edu.vn', '(+84)-024 3 5632211', '../../../public/images/logo_cntt.png', 'https://cse.tlu.edu.vn/', 1),
 	(2, 'Khoa Công Trình', 'P402, Tầng 4, nhà A1', 'vpkhoacongtrinh@tlu.edu.vn', '(024) 3852.2024', 'public/assets/images/logo_khoacongtrinh', 'https://ce.tlu.edu.vn/', 2),
 	(3, 'Khoa Kinh Tế và Quản lý', 'P.206-207 A5', 'KhoaK@tlu.edu.vn', '(04) 3852.2028', 'http://dummyimage.com/181x100.png/cc0000/ffffff', 'https://fem.tlu.edu.vn/', 3),
 	(4, 'Khoa Hóa và Môi Trường', 'P316 nhà A5', 'vpkhoamt@tlu.edu.vn', '(024) 3564.0704', 'http://dummyimage.com/187x100.png/5fa2dd/ffffff', 'https://env.tlu.edu.vn/', 4),
@@ -68,7 +69,14 @@ INSERT INTO `departments` (`DepartmentID`, `DepartmentName`, `Address`, `Email`,
 	(7, 'Trung tâm Đào tạo quốc tế', 'Phòng 111 -Nhà KTX số 4', 'sie@tlu.edu.vn', '(0243) 564-2795 / (0243) 853-2746', 'http://dummyimage.com/161x100.png/dddddd/000000', 'https://sie.tlu.edu.vn/', 7),
 	(8, ' Khoa Luật và lý luận chính trị', '175 Tây Sơn, Đống Đa, Hà Nội', 'phonghcth@tlu.edu.vn', '(024) 38522201 ', 'http://dummyimage.com/170x100.png/ff4444/ffffff', 'https://pl.tlu.edu.vn/', 8),
 	(9, 'Viện ĐT và KHUD Miền Trung', 'Trường Đại Học Thủy Lợi', 'vdtkh@tlu.edu.vn', '0259.3823027', 'http://dummyimage.com/194x100.png/5fa2dd/ffffff', 'http://vienmientrung.edu.vn/', 9),
-	(10, 'Phân hiệu Đại học Thủy Lợi', 'Số 2 Trường Sa, P.17, Q. Bình Thạnh', 'phanhieu@tlu.edu.vn', '(84).28.38400532', 'http://dummyimage.com/103x100.png/cc0000/ffffff', 'https://tlus.edu.vn/', 10);
+	(10, 'Phân hiệu Đại học Thủy Lợi', 'Số 2 Trường Sa, P.17, Q. Bình Thạnh', 'phanhieu@tlu.edu.vn', '(84).28.38400532', 'http://dummyimage.com/103x100.png/cc0000/ffffff', 'https://tlus.edu.vn/', 10),
+	(11, 'khó', 'abcd', '1234', '88888', 'map.png', 'jqk.com', NULL),
+	(14, 'quan', 'dddd', 'abc@gmail.com', '9999222', NULL, NULL, NULL),
+	(15, 'gggg', 'uk', '123444@gmail.com', '12312312', NULL, 'uk', NULL),
+	(20, 'phongvukhi', 'p430a2', 'pvk@gmail.com', '9430013322', NULL, 'p430a2', NULL),
+	(21, 'phongvukhi', 'p430a2', 'pvk@gmail.com', '9430013322', NULL, 'p430a2', NULL),
+	(25, 'phongvukhi', 'p430a2', 'pvk@gmail.com', '9430013322', NULL, 'p430a2', NULL),
+	(27, 'phongvukhi', 'p430a2', 'pvk@gmail.com', '9430013322', NULL, 'p430a2', NULL);
 
 -- Dumping structure for table dbdt.employees
 CREATE TABLE IF NOT EXISTS `employees` (
@@ -123,27 +131,28 @@ INSERT INTO `news` (`NewID`, `Title`, `Content`, `Public_Date`, `URL_Image`) VAL
 
 -- Dumping structure for table dbdt.users
 CREATE TABLE IF NOT EXISTS `users` (
-  `Username` varchar(255) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `Password` varchar(255) DEFAULT NULL,
-  `Role` varchar(50) DEFAULT NULL CHECK (`Role` in ('admin','regular')),
+  `Role` varchar(50) DEFAULT 'admin;regular',
   `EmployeeID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Username`),
+  PRIMARY KEY (`ID`),
   KEY `EmployeeID` (`EmployeeID`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table dbdt.users: ~10 rows (approximately)
-INSERT INTO `users` (`Username`, `Password`, `Role`, `EmployeeID`) VALUES
-	('agomme6', 'vW6}rXwn', 'regular', 7),
-	('anhnguyen', '222222', 'admin', 3),
-	('bgatrill7', 'iC4}IB1<hobIVJ', 'regular', 8),
-	('cclaige9', 'uQ5,LXuH', 'regular', 10),
-	('ctkling', '111111', 'admin', 2),
-	('lmoseby5', 'oF2!kkwXu', 'regular', 6),
-	('mquan', '123456', 'admin', 1),
-	('qhuy', '333333', 'admin', 4),
-	('tcathrall8', 'hH6~o_FCY@zo', 'regular', 9),
-	('user1', '444444', 'regular', 5);
+INSERT INTO `users` (`ID`, `Username`, `Password`, `Role`, `EmployeeID`) VALUES
+	(1, 'aaa', 'vW6}rXwn', 'regular', 7),
+	(2, 'bbb', '222222', 'admin', 3),
+	(3, 'ccc', 'iC4}IB1<hobIVJ', 'regular', 8),
+	(4, 'ddd', 'uQ5,LXuH', 'regular', 10),
+	(5, 'quan', '111111', 'admin', 2),
+	(6, 'aaavvv', 'oF2!kkwXu', 'regular', 6),
+	(7, 'anh', '123456', 'admin', 1),
+	(8, 'huy', '333333', 'admin', 4),
+	(9, 'hhhh', 'hH6~o_FCY@zo', 'regular', 9),
+	(10, 'linh', '444444', 'admin', 5);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
