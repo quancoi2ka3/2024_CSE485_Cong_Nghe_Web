@@ -50,7 +50,7 @@ function updateDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$
     $conn = connectDB();
     $sql = "UPDATE departments SET DepartmentName = ?, Address = ?, Email = ?, Phone = ?, Logo = ?, Website = ? WHERE DepartmentID = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssssi", $DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website);
+    mysqli_stmt_bind_param($stmt, "ssssssi",$DepartmentName,$Address,$Email,$Phone,$Logo,$Website,$DepartmentID);
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $result;

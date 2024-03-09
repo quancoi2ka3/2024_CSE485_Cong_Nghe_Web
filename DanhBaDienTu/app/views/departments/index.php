@@ -63,7 +63,7 @@ $departments = getDepartments();
                 <div class="col-sm"><a href="add_department.php" class="btn btn-primary"> Add <i class="fa-solid fa-plus"></i></a></div>
                 <?php if(isset($_GET['msg'])):?>
                     <div class="alert alert-success" role="alert">
-                        <?= $_GET['msg']?>
+                        <?= $_GET['msg'] ;$departments = getDepartments();?>
                     </div>
                     <?php endif;?>
                 <?php

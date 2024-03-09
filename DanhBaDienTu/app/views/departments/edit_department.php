@@ -26,7 +26,7 @@ require_once __DIR__ . '/../../models/Department.php';
             }
             ?>
             <label for="validationCustom01" class="form-label">Department ID</label>
-            <input type="text" class="form-control" name="DepartmentID" value=<?php echo $department['DepartmentID'] ?>>
+            <input type="text" class="form-control" name="DepartmentID" value=<?php echo $department['DepartmentID'] ?> readonly>
 
             <label for="validationCustom01" class="form-label">Department Name</label>
             <input type="text" class="form-control" name="DepartmentName" value=<?php echo $department['DepartmentName'] ?>>
@@ -37,7 +37,7 @@ require_once __DIR__ . '/../../models/Department.php';
             <label for="validationCustom01" class="form-label">Phone</label>
             <input type="text" class="form-control" name="Phone" value=<?php echo $department['Phone'] ?>>
             <label for="validationCustom01" class="form-label">Logo</label>
-            <input type="text" class="form-control" name="Logo" value=<?php echo $department['Logo'] ?>>
+            <input type="file" class="form-control" id="inputGroupFile02" name="Logo" value=<?php echo $department['Logo'] ?>>
             <label for="validationCustom01" class="form-label">Website</label>
             <input type="text" class="form-control" name="Website" value=<?php echo $department['Website'] ?>>
             <button type="submit" class="btn btn-primary">Save</button>

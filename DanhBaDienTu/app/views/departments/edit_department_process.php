@@ -7,9 +7,7 @@ try {
 
         // Kiểm tra dữ liệu đầu vào
         $DepartmentID = trim($_POST['DepartmentID']);
-        if (empty($DepartmentID)) {
-            $errors[] = 'Mã phòng ban không được để trống';
-        }
+
 
         $DepartmentName = trim($_POST['DepartmentName']);
         if (empty($DepartmentName)) {
