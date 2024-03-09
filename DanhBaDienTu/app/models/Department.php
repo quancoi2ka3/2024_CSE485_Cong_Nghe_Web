@@ -92,3 +92,12 @@ function searchDepartments($keyword) {
     }
     return $departments;
 }
+function getCountDepartment(){
+    $conn = connectDB();
+    $sql = "SELECT COUNT(*) AS count FROM departments";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $count_departments = $row['count'];
+    mysqli_free_result($result);
+    return $count_departments;
+}

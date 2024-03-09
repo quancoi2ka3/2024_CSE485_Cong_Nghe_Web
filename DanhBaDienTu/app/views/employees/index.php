@@ -40,10 +40,11 @@ $currentPageItems =array_slice($employees, ($currentPage - 1) * $itemsPerPage, $
                             <a class="nav-link" href="../users/index.php">Users Manage</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <h3 for="">Account : </h3>
-                        <button class="btn btn-outline-danger" type="submit">Log Out</button>
-                    </form>
+                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
+    <h3 for="">Account : </h3>
+    <button class="btn btn-outline-danger" type="submit">Log Out</button>
+</form>
+
                 </div>
             </div>
         </nav>
@@ -55,17 +56,6 @@ $currentPageItems =array_slice($employees, ($currentPage - 1) * $itemsPerPage, $
         <a href="/DBĐT/DanhBaDienTu/app/views/employees/add_employees.php" class="btn btn-primary">Thêm mới</a>
         
     </div>
-    <?php 
-require_once __DIR__.'/../../models/Employee.php';
-
-if(isset($_GET['keyword']) && isset($_GET['Position'])) {
-    $keyword = $_GET['keyword'];
-    $Position = $_GET['Position'];
-    $employees = searchEmployees($Position,$keyword);
-} else {
-    $employees = getEmployees();
-}
-?>
     <form class="d-flex" method="GET">
    
     <select name="Position" id="" select class="form-select" aria-label="Default select example">
@@ -76,7 +66,17 @@ if(isset($_GET['keyword']) && isset($_GET['Position'])) {
     <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="keyword">
     <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
+<?php 
+require_once __DIR__.'/../../models/Employee.php';
 
+if(isset($_GET['keyword']) && isset($_GET['Position'])) {
+    $keyword = $_GET['keyword'];
+    $Position = $_GET['Position'];
+    $employees = searchEmployees($Position, $keyword);
+} else {
+    $employees = getEmployees();
+}
+?>
 </div>
 
            

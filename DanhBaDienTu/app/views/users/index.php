@@ -42,10 +42,18 @@ $users = getAllUsers();
                             <a class="nav-link active" href="../users/index.php">Users Manage</a>
                         </li>
                     </ul>
+<<<<<<< HEAD
+                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
+    <h3 for="">Account : </h3>
+    <button class="btn btn-outline-danger" type="submit">Log Out</button>
+</form>
+
+=======
                     <form class="d-flex">
                         <h4 for="" class="text-success">Account : mquan </h4>
                         <button class="btn btn-outline-danger" type="submit">Log Out</button>
                     </form>
+>>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
                 </div>
             </div>
         </nav>
