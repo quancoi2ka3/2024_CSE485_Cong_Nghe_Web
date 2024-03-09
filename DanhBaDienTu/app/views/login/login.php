@@ -47,7 +47,7 @@ $users = getUsers();
             </div>
 
             <div class="form-group create-account">
-                <p>Chưa có tài khoản? <a href="../singup/singup.php">Tạo tài khoản mới</a></p>
+                <p>Chưa có tài khoản? <a href="../singup/SignUp.php">Tạo tài khoản mới</a></p>
             </div>
         </form>
     </div>
