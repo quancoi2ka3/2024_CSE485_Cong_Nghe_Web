@@ -63,10 +63,12 @@
 
                 <div class="form-group">
                     <input type="submit" value="Tạo tài khoản">
+                    
                 </div>
                 <?php if (isset($_GET['msg'])) : ?>
                     <div class="alert alert-success" role="alert">
                         <?= $_GET['msg'] ?>
+                        <a href="../login/login.php">Quay về trang đăng nhập</a>
                     </div>
                 <?php endif; ?>
             </form>
