@@ -47,7 +47,7 @@
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số phòng ban</h5>
-                            <p class="card-text">5</p>
+                            <p class="card-text"><?php require_once('../models/Department.php');echo sizeof(getDepartments())?></p>
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số nhân viên</h5>
-                            <p class="card-text">5</p>
+                            <p class="card-text"><?php require_once('../models/Employee.php');echo sizeof(getEmployees())?></p>
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số người dùng</h5>
-                            <p class="card-text">5</p>
+                            <p class="card-text"><?php require_once('../models/User.php');echo sizeof(getAllUsers())?></p>
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>

@@ -6,12 +6,13 @@ $controller = isset($_GET['controller']) ? $_GET['controller']:'home';
 $action = isset($_GET['action']) ? $_GET['action']:'index';
 
 $controller =ucfirst($controller);
-$controller =$controller.'Controller';
-$path = 'controller/'.$controller.'.php';
+
+$path = 'app/models/'.$controller.'.php';
 
 if(!file_exists($path)){
     die('tep tin k ton tai');
-    exit(1);
+}else{
+    echo $path;
 }
 
 require($path);
