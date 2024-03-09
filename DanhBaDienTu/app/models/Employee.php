@@ -66,7 +66,7 @@ function getEmployees() {
     mysqli_stmt_close($stmt);
     return $count > 0;
     }
-    function searchEmployees($Position, $keyword) {
+    function searchEmployees($Position, $keyword){
         $conn = connectDB();
         $sql = "SELECT * FROM employees WHERE Position = ? AND (FullName LIKE ? OR Address LIKE ? OR Email LIKE ? OR MobilePhone LIKE ? OR DepartmentID IN (SELECT DepartmentID FROM departments WHERE DepartmentName LIKE ?))";
         $keyword = "%$keyword%";
@@ -81,5 +81,13 @@ function getEmployees() {
         return $employees;
     }
     
-    
+    function getCountEmployee(){
+        $conn = connectDB();
+        $sql = "SELECT COUNT(*) AS count FROM employees";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $count_employees = $row['count'];
+        mysqli_free_result($result);
+        return $count_employees;
+    }
 ?>

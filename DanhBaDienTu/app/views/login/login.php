@@ -1,7 +1,4 @@
-<?php 
-require_once __DIR__.'/../../models/User.php';
-$users=getAllUsers();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,15 +15,15 @@ $users=getAllUsers();
     <h2>Vui lòng đăng nhập thông tin!</h2>
 
 
-    <form method="POST" action="/DBĐT/DanhBaDienTu/app/proccess_login.php">
+    <form action="/DBĐT/DanhBaDienTu/app/proccess_login.php"method="post">
         <div class="form-group">
             <label for="username">Tên đăng nhập:</label>
-            <input type="text" name="username" id="username" required>
+            <input type="text" name="username"required>
         </div>
 
         <div class="form-group">
             <label for="password">Mật khẩu:</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password"required>
         </div>
 
     

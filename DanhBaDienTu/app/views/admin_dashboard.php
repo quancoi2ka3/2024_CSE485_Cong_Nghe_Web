@@ -1,3 +1,13 @@
+<?php 
+require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../models/Employee.php';
+require_once __DIR__.'/../models/Department.php';
+session_start();
+if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
+$_SESSION['user_role'] !== "admin") {
+header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,10 +42,11 @@
                             <a class="nav-link" href="users/index.php">Users Manage</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <h3 for="">Account : </h3>
-                        <button class="btn btn-outline-danger" type="submit">Log Out</button>
-                    </form>
+                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
+    <h3 for="">Account : </h3>
+    <button class="btn btn-outline-danger" type="submit">Log Out</button>
+</form>
+
                 </div>
             </div>
         </nav>
@@ -47,7 +58,12 @@
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số phòng ban</h5>
-                            <p class="card-text">5</p>
+                            <p class="card-text">
+                            <?php 
+                            $cout_departments=getCountDepartment();
+                            echo $cout_departments;
+                            ?>
+                            </p>
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
@@ -56,7 +72,12 @@
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số nhân viên</h5>
-                            <p class="card-text">5</p>
+                            <p class="card-text">
+                            <?php 
+                            $cout_employees=getCountEmployee();
+                            echo $cout_employees;
+                            ?>
+                            </p>
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
@@ -65,7 +86,10 @@
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số người dùng</h5>
-                            <p class="card-text">5</p>
+                            <p class="card-text"><?php 
+                            $cout_users=getCountUser();
+                            echo $cout_users;
+                            ?></p>
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>

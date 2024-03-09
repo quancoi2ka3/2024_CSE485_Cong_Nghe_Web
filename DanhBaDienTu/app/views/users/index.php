@@ -32,10 +32,11 @@
                             <a class="nav-link active" href="../users/index.php">Users Manage</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <h3 for="">Account : </h3>
-                        <button class="btn btn-outline-danger" type="submit">Log Out</button>
-                    </form>
+                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
+    <h3 for="">Account : </h3>
+    <button class="btn btn-outline-danger" type="submit">Log Out</button>
+</form>
+
                 </div>
             </div>
         </nav>
