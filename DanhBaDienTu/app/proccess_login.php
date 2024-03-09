@@ -14,7 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 setcookie('logged_in', true, time() + 60 * 60 * 24 * 30, "/"); 
                 header('Location:views/admin_dashboard.php');
             } else {
-                header('Location: https://www.tlu.edu.vn/');
+                header('Location:views/home.php');
             }
             exit;
         }

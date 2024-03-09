@@ -1,4 +1,6 @@
-
+<?php
+ session_start();
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,19 +66,21 @@
                         <div>
                             <ul class="navbar-nav">
                                 <li class="nav-item" style="border-right: none; padding:0;">
-                                    <a class="nav-link" href="login/login.php"> <i class="bi bi-person-fill"></i></a>
+                                    <a class="nav-link" href="#"> <i class="bi bi-person-fill"></i></a>
                                 </li>
                                 <li class="nav-item dropdown" style="border-right: none; padding:0;">
-                                    <a class="nav-link dropdown-toggle" href="/login/login.php" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown">Đăng nhập</a>
+                                    <a class="nav-link dropdown-toggle" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown"><?php
+                                        echo "Hello User : " .$_SESSION['user_id'];
+                                        ?></a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="info.php">Trang cá nhân</a></li>
                                         <hr>
                                         <li>
-                                            <a class="dropdown-item" href="singup/singup.php"><i class="bi bi-person-plus-fill"></i> &nbsp Đăng kí</a>
+                                            <a class="dropdown-item" href="../logout.php"><i class="bi bi-person-plus-fill"></i> &nbsp Đăng xuất</a>
                                         </li>
                                         <hr>
                                         <li>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> &nbsp Đăng xuất</a>
+                                            <a class="dropdown-item" href="users/Edit_User.php"><i class="bi bi-box-arrow-right"></i> &nbsp Chỉnh sửa thông tin cá nhân</a>
                                         </li>
                                     </ul>
                                 </li>
