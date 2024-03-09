@@ -63,7 +63,7 @@ try {
             if (UpdateDepartment($DepartmentID, $DepartmentName, $Address, $Email, $Phone, $Logo, $Website)) {
                 header("Location:index.php?msg=Sửa thành công");
             } else {
-                header("Location:index.php?msg=Sửa thất bại");
+                header("Location:Edit_Department.php?msg=Sửa thất bại");
             }
         }
     }

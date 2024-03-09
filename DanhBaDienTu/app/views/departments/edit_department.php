@@ -15,41 +15,45 @@ require_once __DIR__ . '/../../models/Department.php';
 </head>
 
 <body>
-    <form action="edit_department_process.php" method="post">
-        <h1 class="text-center">Sửa phòng ban</h1>
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+        <form action="Edit_Department_Process.php" method="post">
+            <h1 class="text-center">Sửa phòng ban</h1>
+            <?php
+            require_once('../../models/Department.php');
+            if (isset($_GET['id'])) {
+                $DepartmentID = $_GET['id'];
+                $department = getDepartmentById($DepartmentID);
+            }
+            ?>
+            <label for="validationCustom01" class="form-label">Department ID</label>
+            <input type="text" class="form-control" name="DepartmentID" value=<?php echo $department['DepartmentID'] ?>>
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="DepartmentID" aria-label="DepartmentID" aria-describedby="basic-addon1" name="DepartmentID" value="">
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="DepartmentName" aria-label="DepartmentName" aria-describedby="basic-addon1" name="DepartmentName">
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1" name="Address">
-        </div>
+            <label for="validationCustom01" class="form-label">Department Name</label>
+            <input type="text" class="form-control" name="DepartmentName" value=<?php echo $department['DepartmentName'] ?>>
+            <label for="validationCustom01" class="form-label">Address</label>
+            <input type="text" class="form-control" name="Address" value=<?php echo $department['Address'] ?>>
+            <label for="validationCustom01" class="form-label">Email</label>
+            <input type="text" class="form-control" name="Email" value=<?php echo $department['Email'] ?>>
+            <label for="validationCustom01" class="form-label">Phone</label>
+            <input type="text" class="form-control" name="Phone" value=<?php echo $department['Phone'] ?>>
+            <label for="validationCustom01" class="form-label">Logo</label>
+            <input type="text" class="form-control" name="Logo" value=<?php echo $department['Logo'] ?>>
+            <label for="validationCustom01" class="form-label">Website</label>
+            <input type="text" class="form-control" name="Website" value=<?php echo $department['Website'] ?>>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="index.php" class="btn btn-primary"><i class="fa-solid fa-house"></i></a>
+            <?php if (isset($_GET['msg'])) : ?>
+                <div class="alert alert-success" role="alert">
+                    <?= $_GET['msg'] ?>
+                </div>
+            <?php endif; ?>
 
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2" name="Email">
 
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Phone" aria-label="Phone" aria-describedby="basic-addon1" name="Phone">
-        </div>
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupFile02">Logo</label>
-            <input type="file" class="form-control" id="inputGroupFile02" name="Logo">
+        </form>
+    </div>
 
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Website" aria-label="Website" aria-describedby="basic-addon1" name="Website">
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a href="index.php" class="btn btn-primary"><i class="fa-solid fa-house"></i></a>
 
-    </form>
-    
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

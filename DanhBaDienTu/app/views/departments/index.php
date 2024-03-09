@@ -5,12 +5,12 @@ $departments = getDepartments();
 // echo'<pre>';
 // print_r($departments);
 // '</pre>';
-session_start();
-if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
-$_SESSION['user_role'] !== "admin") {
-header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
-}
-?>
+// session_start();
+// if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
+// $_SESSION['user_role'] !== "admin") {
+// header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,8 +47,8 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                             <a class="nav-link" href="../users/index.php">Users Manage</a>
                         </li>
                     </ul>
-                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
-    <h3 for="">Account :  <?php echo $_SESSION['user_id']; ?></h3>
+                    <!-- <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
+    <h3 for="">Account :  <?php echo $_SESSION['user_id']; ?></h3> -->
     <button class="btn btn-outline-danger" type="submit">Log Out</button>
 </form>
 
@@ -129,7 +129,7 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                                 <td><?= $department['Website'] ?></td>
                                 <td><a href="View_Department.php?id=<?= $department['DepartmentID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
                                 <td><a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
-                                <td><a href="edit_department.php" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td><a href="Edit_Department.php?id=<?= $department['DepartmentID'] ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

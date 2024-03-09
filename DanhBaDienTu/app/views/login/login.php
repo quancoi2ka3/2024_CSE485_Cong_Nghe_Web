@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> acb4551e543c3fb901b11c61d64fc46646804a57
 <?php
 require_once __DIR__ . '/../../models/User.php';
 $users = getUsers();
@@ -22,7 +18,6 @@ $users = getUsers();
     <div class="login-container">
         <img class="header-image" src="../../../public/assets/images/baner.png" alt="Banner Image">
         <h2>Vui lòng đăng nhập thông tin!</h2>
-<<<<<<< HEAD
 
 
         <form method="POST" action="../../proccess_login.php">
@@ -35,18 +30,6 @@ $users = getUsers();
                 <label for="password">Mật khẩu:</label>
                 <input type="password" name="password" id="password" required>
             </div>
-=======
-    <form action="/DBĐT/DanhBaDienTu/app/proccess_login.php"method="post">
-        <div class="form-group">
-            <label for="username">Tên đăng nhập:</label>
-            <input type="text" name="username"required>
-        </div>
-
-        <div class="form-group">
-            <label for="password">Mật khẩu:</label>
-            <input type="password" name="password"required>
-        </div>
->>>>>>> acb4551e543c3fb901b11c61d64fc46646804a57
             <?php if (isset($_GET['msg'])) : ?>
                 <div class="alert alert-danger" role="alert">
                     <?= $_GET['msg'] ?>
