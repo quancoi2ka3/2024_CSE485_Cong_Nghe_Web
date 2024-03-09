@@ -66,7 +66,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Số người dùng</h5>
                             <p class="card-text"><?php require_once('../models/User.php');echo sizeof(getAllUsers())?></p>
-                            <a href="#" class="btn btn-primary">Chi tiết</a>
+                            <a href="users/index.php" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
                 </div>
