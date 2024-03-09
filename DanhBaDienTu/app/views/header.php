@@ -1,4 +1,7 @@
-
+<?php 
+session_start();
+require_once __DIR__.'/../models/User.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,20 +69,41 @@
                                 <li class="nav-item" style="border-right: none; padding:0;">
                                     <a class="nav-link" href="login/login.php"> <i class="bi bi-person-fill"></i></a>
                                 </li>
-                                <li class="nav-item dropdown" style="border-right: none; padding:0;">
-                                    <a class="nav-link dropdown-toggle" href="/login/login.php" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown">Đăng nhập</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="info.php">Trang cá nhân</a></li>
-                                        <hr>
-                                        <li>
-                                            <a class="dropdown-item" href="singup/singup.php"><i class="bi bi-person-plus-fill"></i> &nbsp Đăng kí</a>
-                                        </li>
-                                        <hr>
-                                        <li>
-                                            <a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> &nbsp Đăng xuất</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    <?php 
+    if (isset($_SESSION['user_id']) || isset($_COOKIE['logged_in'])) {
+        $username = $_SESSION['user_id'];
+            echo "Welcome, " .$_SESSION['user_id'];
+            
+        }
+    
+    else{
+        echo '<label>Đăng Nhập</label>';
+
+    }
+    
+    
+    ?>
+    
+  </button>
+  <?php 
+  if (
+    isset($_SESSION['user_id']) || isset($_COOKIE['logged_in'])
+) {
+    $username = $_SESSION['user_id'];
+    echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
+    echo '<li><a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/components/dropdowns/#accessibility">Trang cá nhân</a></li>';
+    echo '<li><a class="dropdown-item" href="">Another action</a></li>';
+    echo '<li><a class="dropdown-item" href="/DBĐT/DanhBaDienTu/app/logout.php">Đăng xuất</a></li>';
+    echo '</ul>';    
+}
+else{
+    echo '<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
+    echo '<li><a class="dropdown-item" href="/DBĐT/DanhBaDienTu/app/logout.php">Đi Đến Trang Đăng Nhập</a></li>';
+}
+  ?>
+</div>
                             </ul>
                         </div>
                 </div>

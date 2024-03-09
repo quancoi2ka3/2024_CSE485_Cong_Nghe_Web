@@ -46,6 +46,7 @@ if (
                     </ul>
                     <form action="../logout.php" method="post" class="d-flex">
                         <h3 for="">Account:
+    
                             <?php echo $_SESSION['user_id']; ?>
                         </h3>
                         <button class="btn btn-outline-danger" type="submit">Log Out</button>
