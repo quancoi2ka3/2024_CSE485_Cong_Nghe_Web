@@ -1,10 +1,12 @@
 <?php
 require_once __DIR__ . '/../../models/User.php';
-
-$users = getAllUsers();
-// echo'<pre>';
-// print_r($departments);
-// '</pre>';
+require_once __DIR__ . '/../../models/Department.php';
+$users = getUsers();
+session_start();
+if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
+$_SESSION['user_role'] !== "admin") {
+header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,18 +44,10 @@ $users = getAllUsers();
                             <a class="nav-link active" href="../users/index.php">Users Manage</a>
                         </li>
                     </ul>
-<<<<<<< HEAD
-                    <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
-    <h3 for="">Account : </h3>
-    <button class="btn btn-outline-danger" type="submit">Log Out</button>
-</form>
-
-=======
-                    <form class="d-flex">
-                        <h4 for="" class="text-success">Account : mquan </h4>
+                    <form class="d-flex" action="/DBĐT/DanhBaDienTu/app/logout.php" method="post">
+                        <h4 for="" class="text-success">Account:<?php echo $_SESSION['user_id']; ?></h4>
                         <button class="btn btn-outline-danger" type="submit">Log Out</button>
                     </form>
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
                 </div>
             </div>
         </nav>
@@ -74,10 +68,10 @@ $users = getAllUsers();
                 if (isset($_GET['keyword'])) {
                     $keyword = $_GET['keyword'];
                     // Gọi hàm searchEmployees để tìm kiếm nhân viên
-                    $users = searchDepartments($keyword);
+                    $users = searchUser($keyword);
                 } else {
                     // Nếu không có từ khóa tìm kiếm, lấy danh sách nhân viên bình thường
-                    $users = getDepartments();
+                    $users = getUsers();
                 }
                 ?>
                 <form class="d-flex" method="GET">
@@ -89,14 +83,12 @@ $users = getAllUsers();
 
                     <thead>
                         <tr>
-                            <th scope="col">Number</th>
-                            <th scope="col">Department ID</th>
-                            <th scope="col">Department Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Logo</th>
-                            <th scope="col">Website</th>
+                            <th scope="col">STT</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">EmployeeID</th>
+                            <th scope="col">Details</th>
                             <th scope="col" colspan="4" class="text-center">Thao tác</th>
                         </tr>
                     </thead>
@@ -107,7 +99,7 @@ $users = getAllUsers();
                         $items = 3;
 
                         // tính tổng số trang
-                        $totalPages = ceil(count($departments) / $items);
+                        $totalPages = ceil(count($users) / $items);
 
                         //trang mặc định là trang 1
                         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -116,20 +108,17 @@ $users = getAllUsers();
                         $startIndex = ($currentPage - 1) * $items;
 
                         // lấy ra các user cho trang hiện tại
-                        $departmentsForPage = array_slice($departments, $startIndex, $items);
+                        $departmentsForPage = array_slice($users, $startIndex, $items);
                         ?>
 
-                        <?php foreach ($departmentsForPage as $department) : ?>
+                        <?php foreach ($departmentsForPage as $user) : ?>
                             <tr>
                                 <th scope="row"><?= ++$i ?></th>
-                                <td><?= $department['DepartmentID'] ?></td>
-                                <td><?= $department['DepartmentName'] ?></td>
-                                <td><?= $department['Address'] ?></td>
-                                <td><?= $department['Email'] ?></td>
-                                <td><?= $department['Phone'] ?></td>
-                                <td><?= $department['Logo'] ?></td>
-                                <td><?= $department['Website'] ?></td>
-                                <td><a href="View_Department.php?id=<?= $department['DepartmentID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
+                                <td><?= $user['Username'] ?></td>
+                                <td><?= $user['Password'] ?></td>
+                                <td><?= $user['Role'] ?></td>
+                                <td><?= $user['EmployeeID'] ?></td>
+                                <td><a href="View_Department.php?id=<?= $user['DepartmentID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
                                 <td><a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
                                 <td><a href="edit_department.php" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             </tr>

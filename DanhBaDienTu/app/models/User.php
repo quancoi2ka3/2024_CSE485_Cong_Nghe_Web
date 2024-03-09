@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../database.php';
-
+  
 
 function getUsers() {
     $conn = connectDB();
@@ -11,9 +11,7 @@ function getUsers() {
     $users[] = $row;
     }
     mysqli_free_result($result);
-    return $users;
-<<<<<<< HEAD
-    }
+    return $users;}
     function getUserById($id) {
     $conn = connectDB();
     $sql = "SELECT * FROM users WHERE id = ?";
@@ -25,18 +23,18 @@ function getUsers() {
     mysqli_stmt_close($stmt);
     return $user;
     }
-    function addUser($username, $email, $password) {
-    $conn = connectDB();
-    $sql = "INSERT INTO users (username, email, password) VALUES (?, ?,
-    ?)";
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sss", $username, $email,
-    $hashed_password);
-    $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
-    }
+    // function addUser($username, $email, $password) {
+    // $conn = connectDB();
+    // $sql = "INSERT INTO users (username, email, password) VALUES (?, ?,
+    // ?)";
+    // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // $stmt = mysqli_prepare($conn, $sql);
+    // mysqli_stmt_bind_param($stmt, "sss", $username, $email,
+    // $hashed_password);
+    // $result = mysqli_stmt_execute($stmt);
+    // mysqli_stmt_close($stmt);
+    // return $result;
+    // }
     function updateUser($id, $username, $email, $password) {
     $conn = connectDB();
     $sql = "UPDATE users SET username = ?, email = ?, password = ? WHERE
@@ -95,9 +93,6 @@ function getUsers() {
         mysqli_free_result($result);
         return $count_users;
     }
-    
-=======
-}
 function getUserByUserName($Username)
 {
     $conn = connectDB();
@@ -111,7 +106,6 @@ function getUserByUserName($Username)
     mysqli_stmt_close($stmt);
     return $users;
 }
-//Thêm 1 đơn vị mới
 function AddUser($Username,$Password,$Role,$EmployeeID)
 {
  try{
@@ -127,53 +121,18 @@ function AddUser($Username,$Password,$Role,$EmployeeID)
     echo "Lỗi" ;
  }
 }
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
-
-function updateDepartment($Username,$Password,$Role,$EmployeeID)
-{
+function searchUser($keyword) {
     $conn = connectDB();
-    $sql = "UPDATE departments SET DepartmentName = ?, Address = ?, Email = ?, Phone = ?, Logo = ?, Website = ? WHERE DepartmentID = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssssi", $DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website);
-    $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
-}
-function deleteDepartment($DepartmentID)
-{
-    $conn = connectDB();
-    $sql = "DELETE FROM departments WHERE DepartmentID = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $DepartmentID);
-    $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
-}
-function isDepartmentExist($DepartmentID)
-{
-    $conn = connectDB();
-    $sql = "SELECT COUNT(*) FROM departments WHERE DepartmentID = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $DepartmentID);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $count = mysqli_fetch_row($result)[0];
-    mysqli_free_result($result);
-    mysqli_stmt_close($stmt);
-    return $count > 0;
-}
-function searchDepartments($keyword) {
-    $conn = connectDB();
-    $sql = "SELECT * FROM departments WHERE DepartmentID LIKE ? OR DepartmentName LIKE ? OR Address LIKE ? OR Email LIKE ? OR Phone LIKE ? OR Website LIKE ? ";
+    $sql = "SELECT * FROM users WHERE Username LIKE ? OR Role = ? ";
     $keyword = "%$keyword%";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "isssss", $keyword,$keyword,$keyword,$keyword,$keyword,$keyword);
+    mysqli_stmt_bind_param($stmt, "ss",$keyword, $keyword);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $departments = [];
+    $users = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $departments[] = $row; 
+        $users[] = $row; 
     }
-    return $departments;
+    return $users;
 }
-?>
+

@@ -43,7 +43,9 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                         </li>
                     </ul>
                     <form action="/DBĐT/DanhBaDienTu/app/logout.php" method="post" class="d-flex">
-    <h3 for="">Account : </h3>
+    <h3 for="">Account: 
+        <?php echo $_SESSION['user_id']; ?>
+    </h3>
     <button class="btn btn-outline-danger" type="submit">Log Out</button>
 </form>
 
@@ -58,16 +60,15 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số phòng ban</h5>
-<<<<<<< HEAD
                             <p class="card-text">
                             <?php 
                             $cout_departments=getCountDepartment();
                             echo $cout_departments;
                             ?>
                             </p>
-=======
+
                             <p class="card-text"><?php require_once('../models/Department.php');echo sizeof(getDepartments())?></p>
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
+
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
@@ -76,16 +77,14 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số nhân viên</h5>
-<<<<<<< HEAD
                             <p class="card-text">
                             <?php 
                             $cout_employees=getCountEmployee();
                             echo $cout_employees;
                             ?>
                             </p>
-=======
                             <p class="card-text"><?php require_once('../models/Employee.php');echo sizeof(getEmployees())?></p>
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
+
                             <a href="#" class="btn btn-primary">Chi tiết</a>
                         </div>
                     </div>
@@ -94,16 +93,11 @@ header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.
                     <div class="card" style="width:18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Số người dùng</h5>
-<<<<<<< HEAD
                             <p class="card-text"><?php 
                             $cout_users=getCountUser();
                             echo $cout_users;
                             ?></p>
-                            <a href="#" class="btn btn-primary">Chi tiết</a>
-=======
-                            <p class="card-text"><?php require_once('../models/User.php');echo sizeof(getAllUsers())?></p>
                             <a href="users/index.php" class="btn btn-primary">Chi tiết</a>
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
                         </div>
                     </div>
                 </div>

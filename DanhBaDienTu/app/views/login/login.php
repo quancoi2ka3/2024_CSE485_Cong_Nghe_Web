@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 
-=======
 <?php
 require_once __DIR__ . '/../../models/User.php';
-$users = getAllUsers();
+$users = getUsers();
 ?>
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +19,6 @@ $users = getAllUsers();
     <div class="login-container">
         <img class="header-image" src="../../../public/assets/images/baner.png" alt="Banner Image">
         <h2>Vui lòng đăng nhập thông tin!</h2>
-
-
-<<<<<<< HEAD
     <form action="/DBĐT/DanhBaDienTu/app/proccess_login.php"method="post">
         <div class="form-group">
             <label for="username">Tên đăng nhập:</label>
@@ -35,23 +29,11 @@ $users = getAllUsers();
             <label for="password">Mật khẩu:</label>
             <input type="password" name="password"required>
         </div>
-=======
-        <form method="POST" action="../../proccess_login.php">
-            <div class="form-group">
-                <label for="username">Tên đăng nhập:</label>
-                <input type="text" name="username" id="username" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Mật khẩu:</label>
-                <input type="password" name="password" id="password" required>
-            </div>
             <?php if (isset($_GET['msg'])) : ?>
                 <div class="alert alert-danger" role="alert">
                     <?= $_GET['msg'] ?>
                 </div>
             <?php endif ?>
->>>>>>> 4d12ed75d561349a7d4624311d74806b292b66f1
 
 
             <div class="form-group">
