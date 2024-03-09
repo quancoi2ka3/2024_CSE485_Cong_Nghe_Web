@@ -23,3 +23,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 } else {
     echo 'Không tồn tại';
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> acb4551e543c3fb901b11c61d64fc46646804a57

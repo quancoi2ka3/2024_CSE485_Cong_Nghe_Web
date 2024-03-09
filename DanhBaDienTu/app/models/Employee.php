@@ -68,17 +68,17 @@ function getEmployees() {
     }
     function searchEmployees($Position, $keyword){
         $conn = connectDB();
-        $sql = "SELECT * FROM employees WHERE Position = ? AND (FullName LIKE ? OR Address LIKE ? OR Email LIKE ? OR MobilePhone LIKE ? OR DepartmentID IN (SELECT DepartmentID FROM departments WHERE DepartmentName LIKE ?))";
-        $keyword = "%$keyword%";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ssssss", $Position, $keyword, $keyword, $keyword, $keyword, $keyword);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $employees = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $employees[] = $row; 
-        }
-        return $employees;
+    $sql = "SELECT * FROM employees WHERE FullName LIKE ? AND Position = ?";
+    $keyword = "%$keyword%";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "ss", $keyword, $Position);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $employees = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $employees[] = $row; 
+    }
+    return $employees;
     }
     
     function getCountEmployee(){

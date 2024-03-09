@@ -2,10 +2,12 @@
 require_once __DIR__ . '/../../models/User.php';
 
 $users = getUsers();
-// echo'<pre>';
-// print_r($departments);
-// '</pre>';
-?>
+// session_start();
+// if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in']) ||
+// $_SESSION['user_role'] !== "admin") {
+// header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/login/login.php');
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +44,8 @@ $users = getUsers();
                             <a class="nav-link active" href="../users/index.php">Users Manage</a>
                         </li>
                     </ul>
-
-
-                    <form action="../../logout.php" method="post" class="d-flex">
-                        <h4 for="" class="text-success">Account : mquan </h4>
+                    <form class="d-flex" action="" method="post">
+                        <h4 for="" class="text-success">Account:Mquan</h4>
                         <button class="btn btn-outline-danger" type="submit">Log Out</button>
                     </form>
                 </div>
@@ -88,7 +88,6 @@ $users = getUsers();
                             <th scope="col">Password</th>
                             <th scope="col">Role</th>
                             <th scope="col">EmployeeID</th>
-
                             <th scope="col" colspan="4" class="text-center">Thao tác</th>
                         </tr>
                     </thead>
