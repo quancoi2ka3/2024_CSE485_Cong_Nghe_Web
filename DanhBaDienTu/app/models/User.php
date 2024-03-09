@@ -37,30 +37,58 @@ function getUserByUserName($Username)
 //Thêm 1 đơn vị mới
 function AddUser($Username,$Password,$Role,$EmployeeID)
 {
- try{
-    $conn = connectDB();
-    $sql = "INSERT INTO users (Username,Password,Role,EmployeeID) VALUES (?,?,?,?)";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "sssi", $Username,$Password,$Role,$EmployeeID);
-    $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
- }catch(PDOException $e){
+    try {
+        // Validate user input to prevent SQL injection (prepared statements already help, but additional validation is recommended)
+        $Username = filter_var($Username); // Sanitize username
+        $Password = password_hash($Password, PASSWORD_DEFAULT); // Hash password securely
     
-    echo "Lỗi" ;
- }
+        if (!in_array($Role, ['admin', 'regular'])) {
+          throw new InvalidArgumentException('Invalid Role. Must be "admin" or "regular".');
+        }
+    
+        $conn = connectDB();
+        $sql = "INSERT INTO users (Username, Password, Role, EmployeeID) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ssss", $Username, $Password, $Role, $EmployeeID);
+        $result = mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    
+        return $result;
+      } catch (InvalidArgumentException $e) {
+        echo "Invalid user data: " . $e->getMessage();
+      } catch (PDOException $e) {
+        echo "Database error: " . $e->getMessage();
+      }
 }
 
-function updateDepartment($Username,$Password,$Role,$EmployeeID)
-{
-    $conn = connectDB();
-    $sql = "UPDATE departments SET DepartmentName = ?, Address = ?, Email = ?, Phone = ?, Logo = ?, Website = ? WHERE DepartmentID = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssssssi", $DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website);
-    $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
-}
+function UpdateUser($Username, $Password, $Role, $EmployeeID, $UserID) {
+    try {
+      // Validate user input and ensure UserID is an integer
+      $Username = filter_var($Username, FILTER_SANITIZE_STRING);
+      $Password = password_hash($Password, PASSWORD_DEFAULT);
+      $UserID = filter_var($UserID, FILTER_VALIDATE_INT);
+      if (!$UserID) {
+        throw new InvalidArgumentException('Invalid UserID. Must be an integer.');
+      }
+  
+      if (!in_array($Role, ['admin', 'regular'])) {
+        throw new InvalidArgumentException('Invalid Role. Must be "admin" or "regular".');
+      }
+  
+      $conn = connectDB();
+      $sql = "UPDATE users SET Username = ?, Password = ?, Role = ?, EmployeeID = ? WHERE UserID = ?";
+      $stmt = mysqli_prepare($conn, $sql);
+      mysqli_stmt_bind_param($stmt, "sssi", $Username, $Password, $Role, $EmployeeID, $UserID);
+      $result = mysqli_stmt_execute($stmt);
+      mysqli_stmt_close($stmt);
+  
+      return $result;
+    } catch (InvalidArgumentException $e) {
+      echo "Invalid user data: " . $e->getMessage();
+    } catch (PDOException $e) {
+      echo "Database error: " . $e->getMessage();
+    }
+  }
 function deleteDepartment($DepartmentID)
 {
     $conn = connectDB();
@@ -71,12 +99,12 @@ function deleteDepartment($DepartmentID)
     mysqli_stmt_close($stmt);
     return $result;
 }
-function isDepartmentExist($DepartmentID)
+function isUserExist($Username)
 {
     $conn = connectDB();
-    $sql = "SELECT COUNT(*) FROM departments WHERE DepartmentID = ?";
+    $sql = "SELECT COUNT(*) FROM users WHERE Username = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $DepartmentID);
+    mysqli_stmt_bind_param($stmt, "i", $Username);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $count = mysqli_fetch_row($result)[0];
@@ -84,18 +112,18 @@ function isDepartmentExist($DepartmentID)
     mysqli_stmt_close($stmt);
     return $count > 0;
 }
-function searchDepartments($keyword) {
+function searchUsers($keyword) {
     $conn = connectDB();
-    $sql = "SELECT * FROM departments WHERE DepartmentID LIKE ? OR DepartmentName LIKE ? OR Address LIKE ? OR Email LIKE ? OR Phone LIKE ? OR Website LIKE ? ";
+    $sql = "SELECT * FROM users WHERE Username LIKE ? OR Password LIKE ? OR Role LIKE ? OR EmployeeID LIKE ? ";
     $keyword = "%$keyword%";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "isssss", $keyword,$keyword,$keyword,$keyword,$keyword,$keyword);
+    mysqli_stmt_bind_param($stmt, "sssi", $keyword,$keyword,$keyword,$keyword);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $departments = [];
+    $users = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $departments[] = $row; 
+        $users[] = $row; 
     }
-    return $departments;
+    return $users;
 }
 ?>
