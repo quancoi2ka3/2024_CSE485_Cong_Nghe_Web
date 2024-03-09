@@ -45,12 +45,12 @@ function addDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Log
  }
 }
 
-function updateDepartment($id, $name, $description)
+function updateDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website)
 {
     $conn = connectDB();
-    $sql = "UPDATE departments SET name = ?, description = ? WHERE id = ?";
+    $sql = "UPDATE departments SET DepartmentName = ?, Address = ?, Email = ?, Phone = ?, Logo = ?, Website = ? WHERE DepartmentID = ?";
     $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssi", $name, $description, $id);
+    mysqli_stmt_bind_param($stmt, "ssssssi", $DepartmentID,$DepartmentName,$Address,$Email,$Phone,$Logo,$Website);
     $result = mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     return $result;

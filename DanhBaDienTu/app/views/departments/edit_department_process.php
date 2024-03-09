@@ -60,10 +60,10 @@ try {
             }
         } else {
             // Kiểm tra kết quả
-            if (addDepartment($DepartmentID, $DepartmentName, $Address, $Email, $Phone, $Logo, $Website)) {
-                header("Location:index.php?msg=Thêm mới thành công");
+            if (UpdateDepartment($DepartmentID, $DepartmentName, $Address, $Email, $Phone, $Logo, $Website)) {
+                header("Location:index.php?msg=Sửa thành công");
             } else {
-                header("Location:index.php?msg=Thêm mới thất bại");
+                header("Location:index.php?msg=Sửa thất bại");
             }
         }
     }
@@ -76,7 +76,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Process</title>
+    <title>Edit Process</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
