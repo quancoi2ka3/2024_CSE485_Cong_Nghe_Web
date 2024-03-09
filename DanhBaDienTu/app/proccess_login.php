@@ -19,7 +19,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             exit;
         }
     }
-    echo 'Tên đăng nhập hoặc mật khẩu không chính xác';
+    header("Location:views/login/login.php?msg=Tên đăng nhập hoặc mật khẩu sai");
 } else {
     echo 'Không tồn tại';
 }
