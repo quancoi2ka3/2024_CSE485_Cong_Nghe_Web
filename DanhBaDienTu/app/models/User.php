@@ -97,6 +97,50 @@ function SignUp($Username, $Password, $FullName,$Address, $Email, $MobilePhone, 
   }
 }
 
+function Regular_Edit($Username, $Password, $FullName,$Address, $Email, $MobilePhone, $Position, $Avatar)
+{
+  try {
+    $conn = connectDB();
+
+    // Kiểm tra trùng lặp username và email
+    $sql_check = "SELECT Username FROM users WHERE Username = ?";
+    $stmt_check = mysqli_prepare($conn, $sql_check);
+    mysqli_stmt_bind_param($stmt_check, "s", $Username);
+    mysqli_stmt_execute($stmt_check);
+    $result_check = mysqli_stmt_get_result($stmt_check);
+    if (mysqli_num_rows($result_check) > 0) {
+      throw new Exception("Username already exists!");
+    }
+    mysqli_stmt_close($stmt_check);
+
+    // Mã hóa mật khẩu
+
+    // Chuẩn bị câu lệnh INSERT cho bảng users
+    $sql_users = "UPDATE users SET Password = ? WHERE Username = ?";
+    $stmt_users = mysqli_prepare($conn, $sql_users);
+    mysqli_stmt_bind_param($stmt_users, "ss", $Password, $_SESSION['user_id']);
+
+    // Chuẩn bị câu lệnh INSERT cho bảng employee
+    $sql_employee = "UPDATE employee SET FullName = ?, Email = ?, MobilePhone = ?, Position = ?, Avatar = ? WHERE Username = ?";
+    $stmt_employee = mysqli_prepare($conn, $sql_employee);
+    mysqli_stmt_bind_param($stmt_employee, "ssssss", $FullName, $Address, $Email, $MobilePhone, $Position, $Avatar);
+
+    // Thực thi cả hai câu lệnh INSERT
+    mysqli_stmt_execute($stmt_users);
+    mysqli_stmt_execute($stmt_employee);
+
+    mysqli_stmt_close($stmt_users);
+    mysqli_stmt_close($stmt_employee);
+
+    return true;
+  } catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+    return false;
+  } finally {
+    mysqli_close($conn);
+  }
+}
+
 
 
 function UpdateUser($Username, $Password, $Role, $EmployeeID, $UserID)
