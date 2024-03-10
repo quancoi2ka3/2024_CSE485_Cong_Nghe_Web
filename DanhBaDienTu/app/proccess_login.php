@@ -9,6 +9,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         if ($user['Username'] === $username && $user['Password'] === $password) {
             $_SESSION['user_id'] = $user['Username'];
             $_SESSION['user_role'] = $user['Role'];
+            $_SESSION['EmployeeID'] = $user['EmployeeID'];
             $role = $user['Role'];
             if ($role == 'admin') {
                 setcookie('logged_in', true, time() + 60 * 60 * 24 * 30, "/"); 
