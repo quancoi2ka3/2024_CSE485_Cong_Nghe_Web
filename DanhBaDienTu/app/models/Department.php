@@ -58,7 +58,7 @@ function updateDepartment($DepartmentID,$DepartmentName,$Address,$Email,$Phone,$
 function deleteDepartment($DepartmentID)
 {
     $conn = connectDB();
-    $sql = "DELETE FROM departments WHERE DepartmentID = ?";
+    $sql = "DELETE FROM departments WHERE ParentDepartmentID = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $DepartmentID);
     $result = mysqli_stmt_execute($stmt);

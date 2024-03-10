@@ -128,7 +128,7 @@ $departments = getDepartments();
                                 <td><?= $department['Logo'] ?></td>
                                 <td><?= $department['Website'] ?></td>
                                 <td><a href="View_Department.php?id=<?= $department['DepartmentID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
-                                <td><a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                                <td><a href="Delete_Department.php?id=<?= $department['ParentDepartmentID'] ?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
                                 <td><a href="Edit_Department.php?id=<?= $department['DepartmentID'] ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             </tr>
                         <?php endforeach; ?>

@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 <?php 
 session_start();
 require_once __DIR__.'/../models/User.php';
 ?>
-=======
-<?php
- session_start();
- ?>
->>>>>>> 2311e795fd4d5a9586da4194d0f20458f147f2fa
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +69,6 @@ require_once __DIR__.'/../models/User.php';
                                 <li class="nav-item" style="border-right: none; padding:0;">
                                     <a class="nav-link" href="#"> <i class="bi bi-person-fill"></i></a>
                                 </li>
-<<<<<<< HEAD
                                 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     <?php 
@@ -111,24 +104,6 @@ else{
 }
   ?>
 </div>
-=======
-                                <li class="nav-item dropdown" style="border-right: none; padding:0;">
-                                    <a class="nav-link dropdown-toggle" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="dropdown"><?php
-                                        echo "Hello User : " .$_SESSION['user_id'];
-                                        ?></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="info.php">Trang cá nhân</a></li>
-                                        <hr>
-                                        <li>
-                                            <a class="dropdown-item" href="../logout.php"><i class="bi bi-person-plus-fill"></i> &nbsp Đăng xuất</a>
-                                        </li>
-                                        <hr>
-                                        <li>
-                                            <a class="dropdown-item" href="users/Edit_User.php"><i class="bi bi-box-arrow-right"></i> &nbsp Chỉnh sửa thông tin cá nhân</a>
-                                        </li>
-                                    </ul>
-                                </li>
->>>>>>> 2311e795fd4d5a9586da4194d0f20458f147f2fa
                             </ul>
                         </div>
                 </div>

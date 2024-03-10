@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../../models/User.php';
 
 $users = getUsers();
@@ -45,8 +46,8 @@ $users = getUsers();
                         </li>
                     </ul>
                     <form class="d-flex" action="" method="post">
-                        <h4 for="" class="text-success">Account:Mquan</h4>
-                        <button class="btn btn-outline-danger" type="submit">Log Out</button>
+                        <h4 for="" class="text-success">Account : <?php echo $_SESSION['user_id']?></h4>
+                        <a href="../login/login.php" class="btn btn-outline-danger" type="submit">Log Out</a>
                     </form>
                 </div>
             </div>
@@ -119,7 +120,7 @@ $users = getUsers();
                                 <td><?= $user['EmployeeID'] ?></td>
 
                                 <td><a href="View_User.php?id=<?= $user['ID'] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
-                                <td><a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                                <td><a href="Delete_User.php?id=<?= $user['ID'] ?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
                                 <td><a href="Edit_User.php?id=<?= $user['ID'] ?>" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
                             </tr>
                         <?php endforeach; ?>

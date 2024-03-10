@@ -14,11 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 setcookie('logged_in', true, time() + 60 * 60 * 24 * 30, "/"); 
                 header('Location:views/admin_dashboard.php');
             } else {
-<<<<<<< HEAD
-                header('Location: http://localhost/DB%C4%90T/DanhBaDienTu/app/views/home.php');
-=======
                 header('Location:views/home.php');
->>>>>>> 2311e795fd4d5a9586da4194d0f20458f147f2fa
             }
             exit;
         }
