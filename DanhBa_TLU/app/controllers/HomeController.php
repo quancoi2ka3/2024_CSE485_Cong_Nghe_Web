@@ -1,1 +1,0 @@
-//điều hướng render giữ liệu ra trang chủ
