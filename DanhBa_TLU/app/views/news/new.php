@@ -16,9 +16,9 @@
         </div>
         <div id="notificationContainer">
             <marquee behavior="scroll" direction="up" scrollamount="2" height="150">
-                <a href="https://www.tlu.edu.vn/tin-tuc/le-trao-quyet-dinh-thanh-lap-vien-26144" class="text-decoration-none text-right"><i class="bi bi-megaphone text-danger"></i> &nbsp; <?php echo $new['Title'];?></a> <br>
-                <a href="https://www.tlu.edu.vn/tin-tuc/le-trao-quyet-dinh-thanh-lap-vien-26144" class="text-decoration-none text-right"><?php echo $new['Content'];?></a><br>
-                <a href="https://www.tlu.edu.vn/tin-tuc/le-trao-quyet-dinh-thanh-lap-vien-26144" class="text-decoration-none text-right"><?php echo $new['Public_Date'];?></a>
+                <a href="https://www.tlu.edu.vn/tin-tuc/le-trao-quyet-dinh-thanh-lap-vien-26144" class="text-decoration-none text-right"><i class="bi bi-megaphone text-danger"></i> &nbsp; Lễ trao quyết định thành lập Viện Nghiên cứu ứng dụng công nghệ và hợp tác Doanh nghiệp</a> <br>
+                <a href="https://www.tlu.edu.vn/tin-tuc/le-trao-quyet-dinh-thanh-lap-vien-26144" class="text-decoration-none text-right">Lễ trao quyết định thành lập Viện Nghiên cứu ứng dụng công nghệ và hợp tác Doanh nghiệp</a><br>
+                <a href="https://www.tlu.edu.vn/tin-tuc/le-trao-quyet-dinh-thanh-lap-vien-26144" class="text-decoration-none text-right">Lễ trao quyết định thành lập Viện Nghiên cứu ứng dụng công nghệ và hợp tác Doanh nghiệp</a>
                 <hr>
                 </marquee>
         </div>
