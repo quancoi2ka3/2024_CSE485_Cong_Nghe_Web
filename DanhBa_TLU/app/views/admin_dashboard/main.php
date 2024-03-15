@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php include('header.php')?>
+    <?php include(APP_ROOT.'/app/views/admin_dashboard/header.php')?>
     <main>
         <div class="container-fluid mt-5">
             <div class="row">

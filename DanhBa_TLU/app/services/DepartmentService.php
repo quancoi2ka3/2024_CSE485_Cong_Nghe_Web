@@ -11,7 +11,7 @@ class DepartmentService
             $dbConnection = new DBConnection();
             $conn = $dbConnection->getConnection();
             if ($conn != null) {
-                $sql = "SELECT * FROM departments ";
+                $sql = "SELECT * FROM departments ORDER BY DepartmentID DESC ";
                 $stmt = $conn->query($sql);
                 $departments = [];
                 while ($row = $stmt->fetch()) {
@@ -99,7 +99,7 @@ class DepartmentService
     public function getDepartmentById($DepartmentID)
     {
         try {
-            $DepartmentID =$_GET['id'];
+            $DepartmentID = $_GET['id'];
             $dbConnection = new DBConnection();
             $conn = $dbConnection->getConnection();
             if ($conn != null) {
@@ -120,10 +120,37 @@ class DepartmentService
             return null;
         }
     }
+    public function searchDepartment($keyword) {
+        // Kiểm tra nếu keyword là chuỗi rỗng thì không cần thực hiện truy vấn
+        if (empty($keyword)) {
+            return [];
+        }
+    
+        $dbconnection = new DBConnection();
+        $conn = $dbconnection->getConnection();
+        if ($conn != null) {
+            $conn->query("USE db_tlu");
+            $sql = "SELECT * FROM departments WHERE DepartmentID LIKE :keyword OR DepartmentName LIKE :keyword OR Address LIKE :keyword OR Email LIKE :keyword OR Phone LIKE :keyword OR Logo LIKE :keyword OR Website LIKE :keyword OR ParentDepartmentID LIKE :keyword";
+            $param = "%" . $keyword . "%";
+            
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':keyword', $param, PDO::PARAM_STR);
+            $stmt->execute();
+            $departments = [];
+            while( $row  = $stmt->fetch()){
+                $department = new Department($row['DepartmentID'], $row['DepartmentName'], $row['Address'], $row['Email'], $row['Phone'], $row['Logo'], $row['Website'], $row['ParentDepartmentID']);
+                $departments[] = $department;
+            }
+            
+            return $departments;
+        } else {
+            return [];
+        }
+    }
     function updateDepartment($DepartmentID, $DepartmentName, $Address, $Email, $Phone, $Logo, $Website, $ParentDepartmentID)
     {
         try {
-            $DepartmentID =$_GET['id'];
+            $DepartmentID = $_GET['id'];
             $ParentDepartmentID = $_POST['ParentDepartmentID'];
             $dbConnection = new DBConnection();
             $conn = $dbConnection->getConnection();
@@ -133,7 +160,7 @@ class DepartmentService
                 $stmt->execute([$DepartmentName, $Address, $Email, $Phone, $Logo, $Website, $ParentDepartmentID, $DepartmentID]);
                 return true;
             }
-            if($conn != null){
+            if ($conn != null) {
                 $sql = "UPDATE departments SET DepartmentName=?, Address=?, Email=?, Phone=?, Logo=?, Website=? WHERE DepartmentID=?";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute([$DepartmentName, $Address, $Email, $Phone, $Logo, $Website, $DepartmentID]);
@@ -144,11 +171,50 @@ class DepartmentService
             return false;
         }
     }
-
+    function updateParentDepartment($DepartmentID, $DepartmentName, $Address, $Email, $Phone, $Logo, $Website)
+    {
+        try {
+            $DepartmentID = $_GET['id'];
+            $dbConnection = new DBConnection();
+            $conn = $dbConnection->getConnection();
+            if ($conn != null) {
+                $sql = "UPDATE departments SET DepartmentName=?, Address=?, Email=?, Phone=?, Logo=?, Website=?, ParentDepartmentID=? WHERE DepartmentID=?";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute([$DepartmentName, $Address, $Email, $Phone, $Logo, $Website, $DepartmentID]);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Lỗi: " . $e->getMessage();
+            return false;
+        }
+    }
+    public function getDepartmentsWithLimit($offset, $limit) {
+        $dbconnection = new DBConnection();
+        $conn = $dbconnection->getConnection();
+        
+        if ($conn != null) {
+            $conn->query('USE db_tlu');
+            $sql = "SELECT * FROM departments ORDER BY DepartmentID DESC LIMIT :limit OFFSET :offset ";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            $departments = [];
+            while ($row = $stmt->fetch()) {
+                $department = new Department($row['DepartmentID'], $row['DepartmentName'], $row['Address'], $row['Email'], $row['Phone'], $row['Logo'], $row['Website'], $row['ParentDepartmentID']);
+                $departments[] = $department;
+            }
+            return $departments;
+        } else {
+            return [];
+        }
+    }
     function deleteDepartment($DepartmentID)
     {
         try {
-            $DepartmentID =$_GET['id'];
+            $DepartmentID = $_GET['id'];
             $dbConnection = new DBConnection();
             $conn = $dbConnection->getConnection();
             if ($conn != null) {
