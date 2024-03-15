@@ -24,12 +24,12 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address" required>
             </div>
             <div class="mb-3">
                 <label for="mobilephone" class="form-label">Mobile Phone</label>
-                <input type="text" class="form-control" id="mobilephone" name="mobilephone" required>
-            </div>
+                <input type="text" class="form-control" id="mobilephone" name="mobilephone" pattern="^\d{10}$" title="Please enter a 10-digit phone number" required>
+            </div><div class="invalid-feedback">Please enter a 10 digit phone number.</div>
             <div class="mb-3">
                 <label for="position" class="form-label">Position</label>
                 <input type="text" class="form-control" id="position" name="position" required>
