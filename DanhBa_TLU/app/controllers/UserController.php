@@ -44,33 +44,50 @@
             include 'app/views/user/add.php';;
             break;
         case 'update_user':
+            // if(isset($_GET['id'])){
+            //     $Username = $_GET['id'];
+            //     $table1 = 'users';
+            //     $table2 = 'employees';
+            //     $data = $db->getUserEmployee($Username, $table1, $table2);
+            //     if(isset($_POST['edit'])){
+            //         $Username = $_POST['username'];
+            //         $Password = $_POST['password'];
+            //         //Băm mật khẩu
+            //         $Password = password_hash($Password, PASSWORD_DEFAULT);
+            //         $Role = $_POST['role'];
+            //         $EmployeeID = $_POST['employeeid'];
+            //         $FullName = $_POST['fullname'];
+            //         $Address = $_POST['address'];
+            //         $Email = $_POST['email'];
+            //         $MobilePhone = $_POST['mobilephone'];
+            //         $Position = $_POST['position'];
+            //         $Avatar = $_POST['avatar'];
+            //         if($db->updateUserEmployee($Username, $Password, $Role, $EmployeeID, $FullName, $Address, $Email, $MobilePhone, $Position, $Avatar)){
+            //             $success[] = 'edit_success';
+            //         }
+            //         else{
+            //             $success[] = 'edit_fail';
+            //         }
+            //     }
+            // }
             if(isset($_GET['id'])){
-                $Username = $_GET['id'];
-                $table1 = 'users';
-                $table2 = 'employees';
-                $data = $db->getUserEmployee($Username, $table1, $table2);
-                if(isset($_POST['edit'])){
-                    $Username = $_POST['username'];
-                    $Password = $_POST['password'];
-                    //Băm mật khẩu
-                    $Password = password_hash($Password, PASSWORD_DEFAULT);
-                    $Role = $_POST['role'];
-                    $EmployeeID = $_POST['employeeid'];
-                    $FullName = $_POST['fullname'];
-                    $Address = $_POST['address'];
-                    $Email = $_POST['email'];
-                    $MobilePhone = $_POST['mobilephone'];
-                    $Position = $_POST['position'];
-                    $Avatar = $_POST['avatar'];
-                    if($db->updateUserEmployee($Username, $Password, $Role, $EmployeeID, $FullName, $Address, $Email, $MobilePhone, $Position, $Avatar)){
-                        $success[] = 'edit_success';
-                    }
-                    else{
-                        $success[] = 'edit_fail';
-                    }
-                }
-            }
-
+                    $Username = $_GET['id'];
+                    $table = 'users';
+                    $data = $db->getUserByID($Username, $table);
+                    if(isset($_POST['edit'])){
+                                $Username = $_POST['username'];
+                                $Password = $_POST['password'];
+                                //Băm mật khẩu
+                                $Password = password_hash($Password, PASSWORD_DEFAULT);
+                                $Role = $_POST['role'];
+                                if($db->updateUser($Username, $Password, $Role)){
+                                    $success[] = 'edit_success';
+                                }
+                                else{
+                                    $success[] = 'edit_fail';
+                                }
+                            }
+                        }
             include 'app/views/user/edit.php';;
             break;
         case 'delete':

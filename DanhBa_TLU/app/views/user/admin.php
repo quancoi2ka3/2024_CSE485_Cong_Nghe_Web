@@ -58,7 +58,7 @@
                                         <a href="index.php?controller=user&action=update_user&id=<?php echo $user['Username'];?>" class="btn"><i class="bi bi-pencil-fill"></i></a>
                                     </th>
                                     <th scope="col" class="text-center">
-                                        <a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="index.php?controller=user&action=delete&id=<?php echo $user['Username'];?>" title="delete" class="btn"><i class="bi bi-trash-fill"></i></a>
+                                        <a onclick="return confirm('Bạn có chắc muốn xóa người dùng này không?')" href="index.php?controller=user&action=delete&id=<?php echo $user['Username'];?>" title="delete" class="btn"><i class="bi bi-trash-fill"></i></a>
                                     </th>
                                 </tr>
                                 <?php $count++; ?>
