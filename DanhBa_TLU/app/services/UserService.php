@@ -41,7 +41,7 @@
         //phuong thuc: lay toan bo du lieu
         public function getAllUser($table){
             
-            $sql = "select * from $table";
+            $sql = "select * from $table ORDER BY created_at DESC";
             $this->execute($sql);
             if($this->num_rows() == 0){
                 $data = 0;
@@ -86,20 +86,57 @@
             echo "Database error: " . $e->getMessage();
            }
         }
-            //phuong thuc sua du lieu
-            public function updateUserEmployee($Username, $Password, $Role, $EmployeeID, $FullName, $Address, $Email, $MobilePhone, $Position, $Avartar){
-                try {
-                    $sql1 = "UPDATE employees SET FullName = '$FullName', Address = '$Address', Email = '$Email', MobilePhone = '$MobilePhone', Position = '$Position', Avartar = '$Avartar' WHERE EmployeeID = $EmployeeID";
-                    // $this->execute($sql1);
 
+        //hàm check tên đăng nhập đã tồn tại chưa
+        public function checkUsername($Username){
+            $sql = "SELECT * FROM users WHERE Username = '$Username'";
+            $this->execute($sql);
+            if($this->num_rows() == 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        //thêm vào cả 1 bảng users và employees
+        public function insertUserEmployee($Username, $Password, $Role, $EmployeeID, $FullName, $Address, $Email, $MobilePhone, $Position, $Avatar){
+            try {
+                // Bắt đầu một giao dịch
+                $this->conn->begin_transaction();
+        
+                // Thêm bản ghi vào bảng employees
+                $sql1 = "INSERT INTO employees(EmployeeID, FullName, Address, Email, MobilePhone, Position, Avatar) VALUES('$EmployeeID', '$FullName', '$Address', '$Email', '$MobilePhone', '$Position', '$Avatar')";
+                $this->execute($sql1);
+        
+                // Thêm bản ghi vào bảng users
+                $sql2 = "INSERT INTO users(Username, Password, Role, EmployeeID) VALUES('$Username', '$Password', '$Role', '$EmployeeID')";
+                $this->execute($sql2);
+        
+                // Commit giao dịch
+                $this->conn->commit();
+        
+                return true; // Trả về true nếu cả hai truy vấn đều thành công
+            } catch (Exception $e) {
+                echo "Transaction failed: " . $e->getMessage();
+                return false; // Trả về false nếu có lỗi xảy ra trong quá trình thêm
+            }
+        }
+            //phuong thuc sua du lieu
+            public function updateUserEmployee($Username, $Password, $Role, $EmployeeID, $FullName, $Address, $Email, $MobilePhone, $Position, $Avatar) {
+                try {
+                    $sql1 = "UPDATE employees SET FullName = '$FullName', Address = '$Address', Email = '$Email', MobilePhone = '$MobilePhone', Position = '$Position', Avatar = '$Avatar' WHERE EmployeeID = $EmployeeID";
                     $sql2 = "UPDATE users SET Password = '$Password', Role = '$Role' WHERE Username = '$Username'";
+                    
+                    $this->execute($sql1);
                     $this->execute($sql2);
+            
+                    return true; // Trả về true nếu cả hai truy vấn đều thành công
                 } catch (Exception $e) {
                     echo "Transaction failed: " . $e->getMessage();
+                    return false; // Trả về false nếu có lỗi xảy ra trong quá trình cập nhật
                 }
-                return $this->execute($sql1);
             }
-
+            
         //lay dl ra de edit
         public function getUserEmployee($Username, $table1, $table2){
             $sql = "SELECT * FROM $table1 JOIN employees ON $table1.EmployeeID = $table2.EmployeeID WHERE users.Username = '$Username'";

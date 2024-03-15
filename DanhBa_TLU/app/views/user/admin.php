@@ -7,12 +7,12 @@
 </head>
 <body>
     <div class="container-fluid">
-        <main class="mt-3">
+        <main class="mt-2">
            <div class="row">
                 <div class="col-md">
-                <a href="index.php?controller=user&action=add_user" class="btn btn-success"><i class="bi bi-plus-lg"></i> Thêm mới</a>
+                <a style="margin-left: 90px; margin-bottom: -80px;" href="index.php?controller=user&action=add_user" class="btn btn-success"><i class="bi bi-plus-lg"></i> Thêm mới</a>
                 <!-- thanh search -->
-                <div class="timkiem mt-3 mb-3">
+                <div class="timkiem mt-3 mb-4" style="margin-left: 250px;">
                     <form action="" method="GET">
                         <table>
                             <tr>
@@ -24,7 +24,7 @@
                         <input type="hidden" name="action" value="search">
                     </form>
                 </div>
-                <table class="table table-bordered">
+                <table class="table table-bordered container">
                     <thead>
                         <tr>
                             <th scope="col" class="text-center">STT</th>
@@ -70,7 +70,7 @@
                 <?php
                  $totalPages = ceil($usersCount / $perPage);
                 ?>
-                <div class="pagination">
+                <div class="pagination container">
                     <?php if ($currentPage > 1): ?>
                         <a href="index.php?controller=user&action=list&page=<?php echo $currentPage - 1; ?>" class="pagination-link">Trước</a>
                     <?php endif; ?>

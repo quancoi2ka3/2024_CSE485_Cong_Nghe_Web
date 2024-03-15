@@ -15,9 +15,10 @@
                     <label for="profile"><b>Ảnh đại diện</b></label>
                 </div>
                 <div class="col-sm-9" for="avatar">
-                    <img src="<?php echo $user['Avatar']; ?>" alt="avatar" width="200px" height="150px">
-                    <br><br>
-                    <button type="submit" class="btn btn-primary">Thay ảnh</button>
+                    <input type="file" name="avatar" accept="images/*" value="<?php echo $user['Avatar']; ?>">
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
                 </div>
             </div>
             <div class="form-group row mt-5">

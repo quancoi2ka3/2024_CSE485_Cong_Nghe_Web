@@ -8,17 +8,17 @@
 <body>
     <div id="container" style="border-radius: 20px;">
         <form class="form" action="" method="POST">
-            <h2 class="text-success">Chi tiết người dùng</h2>
+            <h2 style="margin-top: -5px;" class="text-success">Chi tiết người dùng</h2>
             <br><br>
            <div class="form-group row">
                 <div class = "col-sm-3 col-form-label">
                     <label for="profile"><b>Ảnh đại diện</b></label>
                 </div>
-                <div class="col-sm-9" for="avatar">
+                <div class="col-sm-9 mt-5" for="avatar">
                     <img src="<?php echo isset($user['Avatar']) ? $user['Avatar'] : ''; ?>" alt="avatar" width="200px" height="150px">
                 </div>
             </div>
-            <div class="form-group row mt-5">
+            <div class="form-group row mt-4">
                 <label for="billing" class="col-sm-3 col-form-label"><b>Thông tin</b></label>
                 <div class="col-sm-7">
                     <br>

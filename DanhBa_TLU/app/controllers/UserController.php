@@ -1,5 +1,5 @@
 <?php
-    require_once('D:/Anh/MON_HOC/Cong_nghe_web/danh_ba/2024_CSE485_Cong_Nghe_Web/DanhBa_TLU/app/config/config.php');
+    // include 'app/views/header.php';
     if(isset($_GET['action'])) {
         $action = $_GET['action'];
     } else {
@@ -10,6 +10,18 @@
         case 'add_user':
            // lay du lieu tu view de truyen vao model
             if(isset($_POST['add'])){
+                //kiểm tra dữ liệu nhập vào xem có rỗng không
+                if(empty($_POST['username']) || empty($_POST['password1']) || empty($_POST['password2'])){
+                    $error[] = 'empty';
+                }
+                //kiểm tra xem mật khẩu có đủ 6 ký tự không
+                if(strlen($_POST['password1']) < 6){
+                    $error[] = 'password_length';
+                }
+                //kiểm tra xem tên đăng nhập đã tồn tại chưa
+                if(empty($_POST['username']) == $db->checkUsername($_POST['username'])){
+                    $error[] = 'username_exist';
+                }
                 $Username = $_POST['username'];
                 $Role = $_POST['role'];
                 $Password1 = $_POST['password1'];
@@ -33,16 +45,24 @@
             break;
         case 'update_user':
             if(isset($_GET['id'])){
-                $id = $_GET['id'];
-                $table = 'users';
-                $data = $db->getUserByID($id, $table);
+                $Username = $_GET['id'];
+                $table1 = 'users';
+                $table2 = 'employees';
+                $data = $db->getUserEmployee($Username, $table1, $table2);
                 if(isset($_POST['edit'])){
                     $Username = $_POST['username'];
                     $Password = $_POST['password'];
                     //Băm mật khẩu
                     $Password = password_hash($Password, PASSWORD_DEFAULT);
                     $Role = $_POST['role'];
-                    if($db->updateUser($Username, $Password, $Role)){
+                    $EmployeeID = $_POST['employeeid'];
+                    $FullName = $_POST['fullname'];
+                    $Address = $_POST['address'];
+                    $Email = $_POST['email'];
+                    $MobilePhone = $_POST['mobilephone'];
+                    $Position = $_POST['position'];
+                    $Avatar = $_POST['avatar'];
+                    if($db->updateUserEmployee($Username, $Password, $Role, $EmployeeID, $FullName, $Address, $Email, $MobilePhone, $Position, $Avatar)){
                         $success[] = 'edit_success';
                     }
                     else{
@@ -73,7 +93,7 @@
         case 'user':
             $table = 'users';
             $users = $db->getAllUser($table);
-            include 'app/views/user/list.php';
+            include 'app/views/user/admin.php';
             break;
         case 'view':
             if(isset($_GET['id'])){
@@ -134,24 +154,29 @@
             }
             include 'app/views/user/search.php';
             break;
-        case 'login':
-            if(isset($_POST['login'])){
-                $Username = $_POST['username'];
-                $Password = $_POST['password'];
-                $table = 'users';
-                $user = $db->getAllUser($table);
-                if($user && password_verify($Password, $user['Password'])){
-                    $_SESSION['user'] = $user;
-                    header('location: index.php?controller=user&action=user');
-                }
-                else{
-                    $error[] = 'login_error';
-                }
-            }
-            include 'app/views/user/login.php';
+        case 'dangky':
+            // if(isset($_POST['signup'])){
+            //     $Username = $_POST['username'];
+            //     $Password = $_POST['password'];
+            //     $Role = $_POST['role'];
+            //     $EmployeeID = $_POST['employeeid'];
+            //     $FullName = $_POST['fullname'];
+            //     $Address = $_POST['address'];
+            //     $Email = $_POST['email'];
+            //     $MobilePhone = $_POST['mobilephone'];
+            //     $Position = $_POST['position'];
+            //     $Avatar = $_POST['avatar'];
+            //     if($db->insertUserEmployee($Username, $Password, $Role, $EmployeeID, $FullName, $Address, $Email, $MobilePhone, $Position, $Avatar)){
+            //         $success[] = 'add_success';
+            //     }
+            //     else{
+            //         $success[] = 'add_fail';
+            //     }
+            // }
+            include 'app/views/user/signup.php';
             break;
         default:{
-            include 'app/views/user/list.php';
+            include 'app/views/user/admin.php';
             break;
         }
     }

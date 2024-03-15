@@ -9,7 +9,7 @@
     <div class="container mt-5" style="width: 50%; margin: 0 auto; border: 2px solid green; border-radius: 20px; padding: 40px 80px;">
       
         <h3 class="text-success text-center">Sửa thông tin người dùng</h3>
-        
+        <br>
         <?php
             if(isset($success) && in_array('edit_success', $success)){
                 echo '<div class="alert alert-success text-center" role="alert">Chỉnh sửa thành công!</div>';
@@ -20,9 +20,38 @@
             
         ?>
         <form action="" method="POST">
-                    
                     <div class="mb-3">
-                        <label for="username" class="form-label"><b>Tên</b></label>
+                        <img style="margin-left: 190px;" src="<?php echo isset($data['Avatar']) ? $data['Avatar'] : ''; ?>" alt="avatar" width="200px" height="150px">
+                        <br><br>
+                        <label for="" class="form-label mt-2"><b>Thay ảnh</b></label>
+                        <input class="form-control" id="avatar" name="avatar" value="<?php echo $data['Avatar'];?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="employeeid" class="form-label"><b>Mã nhân viên</b></label>
+                        <input type="text" class="form-control" id="employeeid" name="employeeid" value="<?php echo $data['EmployeeID'];?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label"><b>Họ và tên</b></label>
+                        <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $data['FullName'];?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label"><b>Địa chỉ</b></label>
+                        <input type="text" class="form-control" id="address" name="address" value="<?php echo $data['Address'];?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label"><b>Email</b></label>
+                        <input type="text" class="form-control" id="email" name="email" value="<?php echo $data['Email'];?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mobilephone" class="form-label"><b>Số điện thoại</b></label>
+                        <input type="text" class="form-control" id="mobilephone" name="mobilephone" value="<?php echo $data['MobilePhone'];?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label"><b>Chức vụ</b></label>
+                        <input type="text" class="form-control" id="position" name="position" value="<?php echo $data['Position'];?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label"><b>Tên đăng nhập</b></label>
                         <input type="text" class="form-control" id="username" name="username" value="<?php echo $data['Username'];?>">
                     </div>
                     <div class="mb-3">
