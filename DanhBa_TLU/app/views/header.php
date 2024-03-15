@@ -5,7 +5,7 @@
 <body>
     <header>
         <div>
-            <img class="image" src="https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-nen-tham-co-xanh.jpg" class="img-fluid" alt="banner">
+            <img class="image" src="../../public/assets/images/banner.png" class="img-fluid" alt="banner">
         </div>
         <nav class="navbar navbar-expand-lg mt-1">
             <div class="container-fluid">
